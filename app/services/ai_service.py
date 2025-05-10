@@ -1,8 +1,17 @@
 from typing import List, Dict
 import os
 from dotenv import load_dotenv
-from groq import Groq
+from langchain_groq import ChatGroq
+from langchain.prompts import ChatPromptTemplate
+from langchain.output_parsers import PydanticOutputParser
 from pydantic import BaseModel, Field
+from langchain.callbacks.manager import CallbackManager
+from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
@@ -13,63 +22,78 @@ class DocumentAnalysis(BaseModel):
 
 class AIService:
     def __init__(self):
-        self.client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-        self.model = "mixtral-8x7b-32768"
+        # Initialize Groq with callback manager
+        callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
+        
+        api_key = os.getenv("GROQ_API_KEY")
+        if not api_key:
+            raise ValueError("GROQ_API_KEY environment variable is not set")
+        
+        logger.info("Initializing Groq client...")
+        try:
+            self.llm = ChatGroq(
+                api_key=api_key,
+                model="llama-3.3-70b-versatile",  # Using mixtral model
+                callback_manager=callback_manager,
+                verbose=True
+            )
+            logger.info("Groq client initialized successfully")
+        except Exception as e:
+            logger.error(f"Error initializing Groq client: {str(e)}")
+            raise
+        
+        self.parser = PydanticOutputParser(pydantic_object=DocumentAnalysis)
 
     def analyze_documents(self, main_text: str, target_text: str) -> Dict:
         """
-        Analyze two documents for similarities and contradictions using Groq API directly.
+        Analyze two documents for similarities and contradictions using LangChain with Groq.
         """
-        prompt = f"""You are a document analysis expert. Analyze these two documents and provide a JSON response with:
-1. Overall similarity percentage (as a float between 0 and 100)
-2. List of contradictions found
-3. Specific segments that contradict each other
+        logger.info("Starting document analysis...")
+        
+        prompt = ChatPromptTemplate.from_messages([
+            ("system", """You are a document analysis expert. Analyze the given documents for similarities and contradictions.
+            {format_instructions}"""),
+            ("user", """Analyze these two documents and provide:
+            1. Overall similarity percentage
+            2. List of contradictions found
+            3. Specific segments that contradict each other
 
-Main Document:
-{main_text}
+            Main Document:
+            {main_text}
 
-Target Document:
-{target_text}
-
-Provide the response in this exact JSON format:
-{{
-    "similarity": <float>,
-    "contradictions": [<list of strings>],
-    "contradictory_segments": [<list of strings>]
-}}"""
+            Target Document:
+            {target_text}""")
+        ])
 
         try:
-            response = self.client.chat.completions.create(
-                model=self.model,
-                messages=[
-                    {"role": "system", "content": "You are a document analysis expert that provides responses in JSON format."},
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=0.1,
-                max_tokens=2048
-            )
-            
-            # Extract the JSON response from the completion
-            response_text = response.choices[0].message.content
-            try:
-                # Try to parse as DocumentAnalysis
-                analysis = DocumentAnalysis.parse_raw(response_text)
-                return {
-                    "similarity": analysis.similarity,
-                    "contradictions": analysis.contradictions,
-                    "contradictory_segments": analysis.contradictory_segments
-                }
-            except Exception as e:
-                # Fallback parsing if the structured output fails
-                return self._fallback_parse(response_text)
-                
+            logger.info("Creating analysis chain...")
+            # Create a runnable sequence using the pipe operator
+            chain = prompt | self.llm | self.parser
+
+            logger.info("Invoking analysis chain...")
+            # Invoke the chain with the input
+            response = chain.invoke({
+                "main_text": main_text,
+                "target_text": target_text,
+                "format_instructions": self.parser.get_format_instructions()
+            })
+
+            logger.info("Analysis completed successfully")
+            return {
+                "similarity": response.similarity,
+                "contradictions": response.contradictions,
+                "contradictory_segments": response.contradictory_segments
+            }
         except Exception as e:
-            raise Exception(f"Error analyzing documents: {str(e)}")
+            logger.error(f"Error in document analysis: {str(e)}")
+            # Fallback parsing if the structured output fails
+            return self._fallback_parse(str(e))
 
     def _fallback_parse(self, response: str) -> Dict:
         """
         Fallback method to parse the response if the structured output fails.
         """
+        logger.info("Using fallback parsing...")
         lines = response.split('\n')
         result = {
             "similarity": 0.0,

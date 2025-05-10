@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Contract Reviewer</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Contract Reviewer</h1>
+            <p>Upload two documents to compare and analyze contradictions</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-box">
+                    <h3>Main Document (Reference)</h3>
+                    <div class="file-upload">
+                        <input type="file" id="mainDocument" accept=".pdf" class="file-input">
+                        <label for="mainDocument" class="file-label">
+                            <span class="file-icon">📄</span>
+                            <span class="file-text">Choose Main Document</span>
+                        </label>
+                        <span class="file-name" id="mainFileName">No file chosen</span>
+                    </div>
+                </div>
+
+                <div class="upload-box">
+                    <h3>Target Document</h3>
+                    <div class="file-upload">
+                        <input type="file" id="targetDocument" accept=".pdf" class="file-input">
+                        <label for="targetDocument" class="file-label">
+                            <span class="file-icon">📄</span>
+                            <span class="file-text">Choose Target Document</span>
+                        </label>
+                        <span class="file-name" id="targetFileName">No file chosen</span>
+                    </div>
+                </div>
+            </div>
+
+            <button id="compareBtn" class="compare-btn" disabled>Compare Documents</button>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Analyzing documents...</p>
+            </div>
+
+            <div id="results" class="results hidden">
+                <div class="result-section">
+                    <h3>Analysis Results</h3>
+                    <div class="similarity-box">
+                        <h4>Similarity</h4>
+                        <div class="similarity-value" id="similarityValue">0%</div>
+                    </div>
+
+                    <div class="contradictions-box">
+                        <h4>Contradictions Found</h4>
+                        <ul id="contradictionsList"></ul>
+                    </div>
+
+                    <div class="segments-box">
+                        <h4>Contradictory Segments</h4>
+                        <ul id="segmentsList"></ul>
+                    </div>
+                </div>
+
+                <div class="download-section">
+                    <h3>Download Highlighted Documents</h3>
+                    <div class="download-buttons">
+                        <a id="mainDownload" class="download-btn" download>Download Main Document</a>
+                        <a id="targetDownload" class="download-btn" download>Download Target Document</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
