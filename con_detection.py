@@ -34,6 +34,9 @@ import nest_asyncio
 import logging
 import json
 from time import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from functools import lru_cache
+import asyncio
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -54,24 +57,42 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Global models
+# Global models and settings
 nlp = None  # spaCy model
 sentence_model = None  # Sentence transformer model
 nli_tokenizer = None  # NLI tokenizer
 nli_model = None  # NLI model
 lemmatizer = WordNetLemmatizer()
 stop_words = set(stopwords.words('english'))
+MAX_WORKERS = 8  # Number of parallel workers
+BATCH_SIZE = 64  # Batch size for model inference
+MODEL_LOADED = False  # Flag to track if models are loaded
+MAX_SEGMENTS = 30  # Slightly increased from 25
+SIMILARITY_THRESHOLD = 0.5  # Lowered from 0.6
+CONTRADICTION_THRESHOLD = 0.55  # Lowered from 0.7
+PRE_FILTER_THRESHOLD = 0.2  # Lowered from 0.3 for more potential matches
+
+# Cache for similarity calculations with larger cache size
+@lru_cache(maxsize=5000)
+def cached_similarity(text1: str, text2: str) -> float:
+    """Cached version of similarity calculation"""
+    return calculate_tfidf_similarity(text1, text2)
 
 def load_models():
-    global nlp, sentence_model, nli_tokenizer, nli_model
+    """Load models with optimizations"""
+    global nlp, sentence_model, nli_tokenizer, nli_model, MODEL_LOADED
+    
+    if MODEL_LOADED:
+        return
 
     logger.info("Loading NLP models...")
     start_time = time()
 
-    # Load spaCy
+    # Load spaCy with optimizations
     if nlp is None:
         try:
-            nlp = spacy.load('en_core_web_md')
+            nlp = spacy.load('en_core_web_sm')  # Using smaller model
+            nlp.disable_pipe("ner")  # Disable NER for faster processing
             logger.info("Loaded spaCy model")
         except Exception as e:
             logger.error(f"Error loading spaCy model: {str(e)}")
@@ -81,34 +102,218 @@ def load_models():
     if sentence_model is None:
         try:
             sentence_model = SentenceTransformer('paraphrase-MiniLM-L6-v2')
+            if torch.cuda.is_available():
+                sentence_model = sentence_model.cuda()
             logger.info("Loaded Sentence Transformer model")
         except Exception as e:
             logger.error(f"Error loading Sentence Transformer model: {str(e)}")
             sentence_model = None
 
-    # Replace your NLI model loading code with:
+    # Load smaller NLI model by default
     if nli_tokenizer is None or nli_model is None:
         try:
-            MODEL_NAME = "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli"  # More powerful model
+            MODEL_NAME = "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli"  # Using base model
             nli_tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
             nli_model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME)
             nli_model.eval()
             if torch.cuda.is_available():
-                nli_model = nli_model.cuda()  # Move to GPU if available
+                nli_model = nli_model.cuda()
             logger.info("Loaded NLI model")
         except Exception as e:
             logger.error(f"Error loading NLI model: {str(e)}")
-            # Fallback to smaller model
-            try:
-                MODEL_NAME = "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli"
-                nli_tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-                nli_model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME)
-                nli_model.eval()
-                logger.info("Loaded fallback NLI model")
-            except Exception as e:
-                logger.error(f"Error loading fallback NLI model: {str(e)}")
-                nli_tokenizer = None
-                nli_model = None
+            nli_tokenizer = None
+            nli_model = None
+
+    MODEL_LOADED = True
+    logger.info(f"Models loaded in {time() - start_time:.2f} seconds")
+
+async def process_batch(batch, model, tokenizer):
+    """Process a batch of inputs through the model"""
+    try:
+        inputs = tokenizer(
+            batch,
+            return_tensors="pt",
+            truncation=True,
+            max_length=512,
+            padding=True
+        )
+        
+        if torch.cuda.is_available():
+            inputs = {k: v.cuda() for k, v in inputs.items()}
+            
+        with torch.no_grad():
+            outputs = model(**inputs)
+            probs = torch.softmax(outputs.logits, dim=1)
+            
+        return probs.cpu().numpy()
+    except Exception as e:
+        logger.error(f"Error processing batch: {str(e)}")
+        return None
+
+def detect_contradictions(main_segs, target_segs):
+    """Enhanced contradiction detection with balanced thresholds"""
+    if not nli_tokenizer or not nli_model:
+        return []
+
+    contradictions = []
+    pairs = []
+    
+    # Pre-filter segments for potential contradictions
+    filtered_main = []
+    filtered_target = []
+    
+    # Quick pre-filtering using TF-IDF with lower threshold
+    for main_seg in main_segs[:MAX_SEGMENTS]:
+        for target_seg in target_segs[:MAX_SEGMENTS]:
+            if len(main_seg.split()) < 5 or len(target_seg.split()) < 5:
+                continue
+                
+            # Quick similarity check with lower threshold
+            sim = cached_similarity(main_seg, target_seg)
+            if sim > PRE_FILTER_THRESHOLD:  # Lower threshold for more candidates
+                filtered_main.append(main_seg)
+                filtered_target.append(target_seg)
+                pairs.append((main_seg[:512], target_seg[:512], len(filtered_main)-1, len(filtered_target)-1))
+    
+    if not pairs:
+        return []
+    
+    # Process in larger batches
+    for i in range(0, len(pairs), BATCH_SIZE):
+        batch = pairs[i:i + BATCH_SIZE]
+        premises = [p[0] for p in batch]
+        hypotheses = [p[1] for p in batch]
+        
+        # Process batch
+        probs = asyncio.run(process_batch(
+            list(zip(premises, hypotheses)),
+            nli_model,
+            nli_tokenizer
+        ))
+        
+        if probs is not None:
+            for idx, (premise, hypothesis, main_idx, target_idx) in enumerate(batch):
+                contradiction_score = float(probs[idx][2])
+                
+                if contradiction_score > CONTRADICTION_THRESHOLD:
+                    # Add back concept extraction but only for high-scoring contradictions
+                    if contradiction_score > 0.7:  # Only for very strong contradictions
+                        main_concepts = extract_key_concepts(premise)
+                        target_concepts = extract_key_concepts(hypothesis)
+                        common_concepts = set(main_concepts).intersection(set(target_concepts))
+                        concepts = list(common_concepts)
+                    else:
+                        concepts = []
+                        
+                    contradictions.append({
+                        "main_segment": premise,
+                        "target_segment": hypothesis,
+                        "main_index": main_idx,
+                        "target_index": target_idx,
+                        "contradiction_score": contradiction_score,
+                        "common_concepts": concepts
+                    })
+
+    return sorted(contradictions, key=lambda x: x["contradiction_score"], reverse=True)
+
+def get_segment_similarity(main_segs, target_segs, threshold=SIMILARITY_THRESHOLD):
+    """Parallel segment similarity calculation with balanced thresholds"""
+    if not main_segs or not target_segs:
+        return []
+
+    results = []
+    
+    # Pre-filter segments
+    main_segs = main_segs[:MAX_SEGMENTS]
+    target_segs = target_segs[:MAX_SEGMENTS]
+    
+    def process_segment(main_seg, i):
+        best = {"score": 0.0, "main_segment": main_seg, "target_segment": "", "main_index": i, "target_index": -1}
+        
+        # Quick pre-filtering with lower threshold
+        for j, target_seg in enumerate(target_segs):
+            # Use cached similarity for initial filtering
+            tfidf_sim = cached_similarity(main_seg, target_seg)
+            
+            # Only process if initial similarity is promising
+            if tfidf_sim > PRE_FILTER_THRESHOLD:  # Lower threshold
+                semantic_sim = calculate_semantic_similarity(main_seg, target_seg)
+                
+                # Early exit if semantic similarity is too low
+                if semantic_sim < PRE_FILTER_THRESHOLD:  # Lower threshold
+                    continue
+                    
+                fuzzy_sim = calculate_fuzzy_similarity(main_seg, target_seg)
+                jaccard_sim = calculate_jaccard_similarity(main_seg, target_seg)
+                
+                score = (0.3 * tfidf_sim + 0.4 * semantic_sim + 0.2 * fuzzy_sim + 0.1 * jaccard_sim)
+                
+                if score > best["score"]:
+                    best = {
+                        "score": score,
+                        "main_segment": main_seg,
+                        "target_segment": target_seg,
+                        "main_index": i,
+                        "target_index": j,
+                        "metrics": {
+                            "tfidf": tfidf_sim,
+                            "semantic": semantic_sim,
+                            "fuzzy": fuzzy_sim,
+                            "jaccard": jaccard_sim
+                        }
+                    }
+        
+        return best if best["score"] > threshold else None
+
+    # Process segments in parallel with more workers
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        future_to_segment = {
+            executor.submit(process_segment, main_seg, i): (main_seg, i)
+            for i, main_seg in enumerate(main_segs)
+        }
+        
+        for future in as_completed(future_to_segment):
+            result = future.result()
+            if result:
+                results.append(result)
+
+    return sorted(results, key=lambda x: x["score"], reverse=True)
+
+def find_exact_matches(main_segs, target_segs):
+    """Optimized exact match finding"""
+    exact_matches = []
+    
+    # Limit segments
+    main_segs = main_segs[:MAX_SEGMENTS]
+    target_segs = target_segs[:MAX_SEGMENTS]
+    
+    # Pre-filter using length
+    main_segs = [s for s in main_segs if len(s.split()) >= 5]
+    target_segs = [s for s in target_segs if len(s.split()) >= 5]
+    
+    for i, main_seg in enumerate(main_segs):
+        main_clean = re.sub(r'\s+', ' ', main_seg.lower().strip())
+        
+        for j, target_seg in enumerate(target_segs):
+            target_clean = re.sub(r'\s+', ' ', target_seg.lower().strip())
+            
+            # Quick length check
+            if abs(len(main_clean) - len(target_clean)) > 20:  # Skip if lengths differ significantly
+                continue
+                
+            # Calculate edit distance ratio
+            edit_distance = textdistance.levenshtein.normalized_similarity(main_clean, target_clean)
+            
+            if edit_distance > 0.9:
+                exact_matches.append({
+                    "main_segment": main_seg,
+                    "target_segment": target_seg,
+                    "main_index": i,
+                    "target_index": j,
+                    "similarity": edit_distance
+                })
+
+    return exact_matches
 
 # Response models
 class SimilarityResponse(BaseModel):
@@ -197,14 +402,14 @@ def clean_segment(segment):
     words = [lemmatizer.lemmatize(word) for word in words if word.isalnum() and word not in stop_words]
     return ' '.join(words)
 
-def segment_text(text, min_words=3):
+def segment_text(text, min_words=5):  # Increased minimum words
     """Split text into sentences and filter short ones"""
     segments = []
     for s in sent_tokenize(text):
         s = s.strip()
         if s and len(s.split()) >= min_words:
             segments.append(s)
-    return segments
+    return segments[:MAX_SEGMENTS]  # Limit number of segments
 
 def extract_key_concepts(segment):
     """Extract key concepts from a text segment using spaCy"""
@@ -311,135 +516,6 @@ def calculate_jaccard_similarity(text1, text2):
     except Exception as e:
         logger.warning(f"Error in Jaccard similarity: {str(e)}")
         return 0.0
-
-def get_segment_similarity(main_segs, target_segs, threshold=0.5):
-    """Find the most similar pairs of segments above threshold"""
-    if not main_segs or not target_segs:
-        return []
-
-    results = []
-
-    # For each main segment, find the best match in target segments
-    for i, main_seg in enumerate(main_segs):
-        best = {"score": 0.0, "main_segment": main_seg, "target_segment": "", "main_index": i, "target_index": -1}
-
-        for j, target_seg in enumerate(target_segs):
-            # Calculate multiple similarity metrics
-            tfidf_sim = calculate_tfidf_similarity(main_seg, target_seg)
-            semantic_sim = calculate_semantic_similarity(main_seg, target_seg)
-            fuzzy_sim = calculate_fuzzy_similarity(main_seg, target_seg)
-            jaccard_sim = calculate_jaccard_similarity(main_seg, target_seg)
-
-            # Weighted average of similarity scores
-            score = (0.3 * tfidf_sim + 0.4 * semantic_sim + 0.2 * fuzzy_sim + 0.1 * jaccard_sim)
-
-            if score > best["score"]:
-                best = {
-                    "score": score,
-                    "main_segment": main_seg,
-                    "target_segment": target_seg,
-                    "main_index": i,
-                    "target_index": j,
-                    "metrics": {
-                        "tfidf": tfidf_sim,
-                        "semantic": semantic_sim,
-                        "fuzzy": fuzzy_sim,
-                        "jaccard": jaccard_sim
-                    }
-                }
-
-        if best["score"] > threshold:
-            results.append(best)
-
-    # Sort by similarity score
-    return sorted(results, key=lambda x: x["score"], reverse=True)
-
-def find_exact_matches(main_segs, target_segs):
-    """Find segments that are exactly or nearly identical"""
-    exact_matches = []
-
-    for i, main_seg in enumerate(main_segs):
-        for j, target_seg in enumerate(target_segs):
-            # Normalize for comparison
-            main_clean = re.sub(r'\s+', ' ', main_seg.lower().strip())
-            target_clean = re.sub(r'\s+', ' ', target_seg.lower().strip())
-
-            # Calculate edit distance ratio
-            edit_distance = textdistance.levenshtein.normalized_similarity(main_clean, target_clean)
-
-            # Consider it a match if very similar
-            if edit_distance > 0.9:
-                exact_matches.append({
-                    "main_segment": main_seg,
-                    "target_segment": target_seg,
-                    "main_index": i,
-                    "target_index": j,
-                    "similarity": edit_distance
-                })
-
-    return exact_matches
-
-def detect_contradictions(main_segs, target_segs):
-    """Enhanced contradiction detection"""
-    if not nli_tokenizer or not nli_model:
-        return []
-
-    contradictions = []
-
-    # Compare all possible pairs (not just similar ones)
-    for i, main_seg in enumerate(main_segs[:50]):  # Limit to first 50 for performance
-        for j, target_seg in enumerate(target_segs[:50]):
-            # Skip very short segments
-            if len(main_seg.split()) < 5 or len(target_seg.split()) < 5:
-                continue
-
-            try:
-                # Prepare inputs with better formatting
-                premise = main_seg[:512]  # Truncate to model max length
-                hypothesis = target_seg[:512]
-
-                inputs = nli_tokenizer(
-                    premise,
-                    hypothesis,
-                    return_tensors="pt",
-                    truncation=True,
-                    max_length=512,
-                    padding=True
-                )
-
-                # Move to GPU if available
-                if torch.cuda.is_available():
-                    inputs = {k: v.cuda() for k, v in inputs.items()}
-
-                # Get predictions
-                with torch.no_grad():
-                    outputs = nli_model(**inputs)
-                    logits = outputs.logits
-                    probs = torch.softmax(logits, dim=1).squeeze(0)
-
-                # Get contradiction probability
-                contradiction_score = float(probs[2].item()) if len(probs) > 2 else 0.0
-
-                # Lower threshold to 0.5 and require some concept overlap
-                main_concepts = extract_key_concepts(main_seg)
-                target_concepts = extract_key_concepts(target_seg)
-                common_concepts = set(main_concepts).intersection(set(target_concepts))
-
-                if contradiction_score > 0.5 and len(common_concepts) > 0:
-                    contradictions.append({
-                        "main_segment": main_seg,
-                        "target_segment": target_seg,
-                        "main_index": i,
-                        "target_index": j,
-                        "contradiction_score": contradiction_score,
-                        "common_concepts": list(common_concepts)
-                    })
-
-            except Exception as e:
-                logger.warning(f"Error in contradiction detection: {str(e)}")
-                continue
-
-    return sorted(contradictions, key=lambda x: x["contradiction_score"], reverse=True)
 
 def generate_analysis_summary(main_text, target_text, similarity, contradictions, exact_matches):
     """Generate a summary of the analysis results"""
