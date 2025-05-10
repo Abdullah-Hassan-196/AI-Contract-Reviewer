@@ -10,3 +10,7 @@ transformers==4.37.2
 torch==2.1.2
 nest-asyncio==1.5.8
 sentencepiece==0.2.0
+textdistance
+fuzzywuzzy
+spacy
+sentence-transformers
