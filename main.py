@@ -1,6 +1,7 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 import os
 from typing import List
 import tempfile
@@ -33,9 +34,12 @@ ai_service = AIService()
 TEMP_DIR = Path("temp")
 TEMP_DIR.mkdir(exist_ok=True)
 
+# Mount static files
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
+
 @app.get("/")
 async def root():
-    return {"message": "Welcome to AI Contract Reviewer API"}
+    return FileResponse("app/static/index.html")
 
 @app.get("/health")
 async def health_check():
@@ -46,6 +50,12 @@ async def compare_documents(
     main_document: UploadFile = File(...),
     target_document: UploadFile = File(...)
 ):
+    # Initialize variables
+    main_path = None
+    target_path = None
+    main_output = None
+    target_output = None
+    
     try:
         # Save uploaded files temporarily
         main_path = TEMP_DIR / "main.pdf"
@@ -95,14 +105,12 @@ async def compare_documents(
         raise HTTPException(status_code=500, detail=str(e))
     finally:
         # Cleanup temporary files
-        if main_path.exists():
-            main_path.unlink()
-        if target_path.exists():
-            target_path.unlink()
-        if main_output.exists():
-            main_output.unlink()
-        if target_output.exists():
-            target_output.unlink()
+        for file_path in [main_path, target_path, main_output, target_output]:
+            if file_path and file_path.exists():
+                try:
+                    file_path.unlink()
+                except Exception as e:
+                    print(f"Error deleting file {file_path}: {str(e)}")
 
 @app.get("/download/{filename}")
 async def download_file(filename: str):
