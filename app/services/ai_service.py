@@ -8,6 +8,7 @@ from pydantic import BaseModel, Field
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 import logging
+import google.generativeai as genai
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -42,36 +43,29 @@ class DocumentAnalysis(BaseModel):
 
 class AIService:
     def __init__(self):
-        # Initialize Groq with callback manager
-        callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
-        
-        api_key = os.getenv("GROQ_API_KEY")
+        load_dotenv()
+        api_key = os.getenv("GEMINI_API_KEY")
         if not api_key:
-            raise ValueError("GROQ_API_KEY environment variable is not set")
-        
-        logger.info("Initializing Groq client...")
-        try:
-            self.llm = ChatGroq(
-                api_key=api_key,
-                model="llama-3.3-70b-versatile",
-                callback_manager=callback_manager,
-                verbose=True
-            )
-            logger.info("Groq client initialized successfully")
-        except Exception as e:
-            logger.error(f"Error initializing Groq client: {str(e)}")
-            raise
-        
-        self.parser = PydanticOutputParser(pydantic_object=DocumentAnalysis)
+            raise ValueError("GEMINI_API_KEY environment variable is not set")
+        genai.configure(api_key=api_key)
+        self.model = genai.GenerativeModel("gemini-2.5-flash-preview-04-17")
 
     def analyze_documents(self, main_text: str, target_text: str, main_blocks: List[dict], target_blocks: List[dict]) -> Dict:
-        """
-        Analyze two documents for similarities, contradictions, and legal implications using LangChain with Groq.
-        """
-        logger.info("Starting document analysis...")
-        
-        prompt = ChatPromptTemplate.from_messages([
-            ("system", """
+        # Literal check for identical content
+        if main_text.strip() == target_text.strip():
+            return {
+                "similarity": 100.0,
+                "contradictions": [],
+                "contradictory_segments": [],
+                "clause_analysis": [],
+                "missing_clauses": [],
+                "overall_risk_score": 0.0,
+                "key_findings": ["The documents are identical."],
+                "main_highlights": [],
+                "target_highlights": []
+            }
+
+        prompt = f"""
 You are an expert legal document analyst. Analyze the given documents for:
 1. Similarities and contradictions
 2. Risk assessment for each clause
@@ -98,10 +92,6 @@ Format the 'Contradictions Found' section as a list of objects, each containing:
 - explanation: A brief explanation of the contradiction
 
 For each contradiction or important clause, provide the exact location in the document using the provided text blocks.
-{format_instructions}
-"""),
-            ("user", """
-Analyze these two documents comprehensively:
 
 Main Document:
 {main_text}
@@ -109,52 +99,16 @@ Main Document:
 Target Document:
 {target_text}
 
-Consider:
-- Legal precedents
-- Industry best practices
-- Potential risks and liabilities
-- Missing or problematic clauses
-- Recommendations for improvement
-
-When identifying contradictions, focus on:
-- Numerical differences (amounts, dates, percentages)
-- Location changes (addresses, place names)
-- Sentences that are in direct conflict
-
-For each contradiction, return the exact sentences from both documents and a brief explanation.
 Main Document Blocks: {main_blocks}
 Target Document Blocks: {target_blocks}
-""")
-        ])
+"""
 
-        try:
-            logger.info("Creating analysis chain...")
-            chain = prompt | self.llm | self.parser
+        response = self.model.generate_content(prompt)
+        # You will need to parse the response.text into your expected output format.
+        # (You may want to use a stricter output format or JSON mode if Gemini supports it.)
 
-            logger.info("Invoking analysis chain...")
-            response = chain.invoke({
-                "main_text": main_text,
-                "target_text": target_text,
-                "main_blocks": main_blocks,
-                "target_blocks": target_blocks,
-                "format_instructions": self.parser.get_format_instructions()
-            })
-
-            logger.info("Analysis completed successfully")
-            return {
-                "similarity": response.similarity,
-                "contradictions": response.contradictions,
-                "contradictory_segments": response.contradictory_segments,
-                "clause_analysis": [clause.dict() for clause in response.clause_analysis],
-                "missing_clauses": response.missing_clauses,
-                "overall_risk_score": response.overall_risk_score,
-                "key_findings": response.key_findings,
-                "main_highlights": [highlight.dict() for highlight in response.main_highlights],
-                "target_highlights": [highlight.dict() for highlight in response.target_highlights]
-            }
-        except Exception as e:
-            logger.error(f"Error in document analysis: {str(e)}")
-            return self._fallback_parse(str(e))
+        # For now, fallback to your existing _fallback_parse logic:
+        return self._fallback_parse(response.text)
 
     def _fallback_parse(self, response: str) -> Dict:
         """
