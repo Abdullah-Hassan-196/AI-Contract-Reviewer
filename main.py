@@ -98,11 +98,4 @@ async def compare_documents(
                 try:
                     file_path.unlink()
                 except Exception as e:
-                    print(f"Error deleting file {file_path}: {str(e)}")
-
-@app.get("/download/{filename}")
-async def download_file(filename: str):
-    file_path = TEMP_DIR / filename
-    if not file_path.exists():
-        raise HTTPException(status_code=404, detail="File not found")
-    return FileResponse(str(file_path), filename=filename) 
+                    print(f"Error deleting file {file_path}: {str(e)}") 

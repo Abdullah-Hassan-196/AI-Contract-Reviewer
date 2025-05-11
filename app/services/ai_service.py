@@ -71,34 +71,60 @@ class AIService:
         logger.info("Starting document analysis...")
         
         prompt = ChatPromptTemplate.from_messages([
-            ("system", """You are an expert legal document analyst. Analyze the given documents thoroughly for:
-            1. Similarities and contradictions
-            2. Risk assessment for each clause
-            3. Legal implications
-            4. Industry standard compliance
-            5. Missing clauses
-            6. Overall risk assessment
-            
-            For each contradiction or important clause, provide the exact location in the document.
-            {format_instructions}"""),
-            ("user", """Analyze these two documents comprehensively:
+            ("system", """
+You are an expert legal document analyst. Analyze the given documents for:
+1. Similarities and contradictions
+2. Risk assessment for each clause
+3. Legal implications
+4. Industry standard compliance
+5. Missing clauses
+6. Overall risk assessment
 
-            Main Document:
-            {main_text}
+When searching for contradictions, pay special attention to:
+- Differences in numerical values (amounts, percentages, dates, etc.)
+- Changes in locations (place names, addresses, etc.)
+- Sentences that are in direct conflict or create obligations that cannot both be true
 
-            Target Document:
-            {target_text}
+If the content of the two documents is 100% the same (regardless of file name), return a similarity score of 100% and no contradictions.
 
-            Consider:
-            - Legal precedents
-            - Industry best practices
-            - Potential risks and liabilities
-            - Missing or problematic clauses
-            - Recommendations for improvement
+For each contradiction you find, output:
+- The exact sentence(s) from the Main Document
+- The exact sentence(s) from the Target Document
+- A brief explanation of the contradiction
 
-            For each contradiction or important clause, identify its location in the document using the provided text blocks.
-            Main Document Blocks: {main_blocks}
-            Target Document Blocks: {target_blocks}""")
+Format the 'Contradictions Found' section as a list of objects, each containing:
+- main_sentence: The sentence from the Main Document
+- target_sentence: The sentence from the Target Document
+- explanation: A brief explanation of the contradiction
+
+For each contradiction or important clause, provide the exact location in the document using the provided text blocks.
+{format_instructions}
+"""),
+            ("user", """
+Analyze these two documents comprehensively:
+
+Main Document:
+{main_text}
+
+Target Document:
+{target_text}
+
+Consider:
+- Legal precedents
+- Industry best practices
+- Potential risks and liabilities
+- Missing or problematic clauses
+- Recommendations for improvement
+
+When identifying contradictions, focus on:
+- Numerical differences (amounts, dates, percentages)
+- Location changes (addresses, place names)
+- Sentences that are in direct conflict
+
+For each contradiction, return the exact sentences from both documents and a brief explanation.
+Main Document Blocks: {main_blocks}
+Target Document Blocks: {target_blocks}
+""")
         ])
 
         try:

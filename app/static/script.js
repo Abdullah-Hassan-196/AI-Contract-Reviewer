@@ -92,7 +92,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         for (let pageNum = 1; pageNum <= numPages; pageNum++) {
             const page = await pdf.getPage(pageNum);
-            const viewport = page.getViewport({ scale: 1.5 });
+            // Increase scale for better readability
+            const viewport = page.getViewport({ scale: 2.0 });
             
             const canvas = document.createElement('canvas');
             const context = canvas.getContext('2d');
@@ -117,15 +118,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     highlightLayer.style.left = '0';
                     highlightLayer.style.width = '100%';
                     highlightLayer.style.height = '100%';
+                    highlightLayer.style.pointerEvents = 'none'; // Allow clicking through highlights
                     
                     pageHighlights.forEach(highlight => {
                         const highlightElement = document.createElement('div');
                         highlightElement.className = 'highlight-contradiction';
                         highlightElement.style.position = 'absolute';
-                        highlightElement.style.left = `${highlight.bbox[0]}px`;
-                        highlightElement.style.top = `${highlight.bbox[1]}px`;
-                        highlightElement.style.width = `${highlight.bbox[2] - highlight.bbox[0]}px`;
-                        highlightElement.style.height = `${highlight.bbox[3] - highlight.bbox[1]}px`;
+                        // Scale the coordinates to match the viewport
+                        highlightElement.style.left = `${highlight.bbox[0] * 2}px`;
+                        highlightElement.style.top = `${highlight.bbox[1] * 2}px`;
+                        highlightElement.style.width = `${(highlight.bbox[2] - highlight.bbox[0]) * 2}px`;
+                        highlightElement.style.height = `${(highlight.bbox[3] - highlight.bbox[1]) * 2}px`;
                         highlightLayer.appendChild(highlightElement);
                     });
                     
@@ -253,15 +256,6 @@ document.addEventListener('DOMContentLoaded', () => {
             li.textContent = segment;
             segmentsList.appendChild(li);
         });
-
-        // Update download links
-        mainDownload.href = `/download/${data.highlighted_documents.main.split('/').pop()}`;
-        targetDownload.href = `/download/${data.highlighted_documents.target.split('/').pop()}`;
-        
-        // Create and update analysis download
-        const analysisBlob = new Blob([JSON.stringify(data.analysis, null, 2)], { type: 'application/json' });
-        analysisDownload.href = URL.createObjectURL(analysisBlob);
-        analysisDownload.download = 'contract_analysis.json';
 
         // Show results
         results.classList.remove('hidden');
