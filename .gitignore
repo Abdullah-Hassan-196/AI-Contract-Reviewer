@@ -7,9 +7,9 @@ __pycache__/
 .Python
 
 # Virtual Environment
-.env/
+.env
 .venv/
-
+temp/*
 # IDE
 .vscode/
 .idea/
