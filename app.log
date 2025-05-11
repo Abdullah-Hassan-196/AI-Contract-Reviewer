@@ -1,0 +1,366 @@
+2025-05-11 20:03:59,801 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:03:59,806 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:08:33,353 - main - INFO - Files saved: temp/main_72d2cd9d_10017 MSA.pdf, temp/target_ff515fb4_10048 MSA.pdf
+2025-05-11 20:08:33,353 - app.services.pdf_service - INFO - Extracting text from PDF: temp/main_72d2cd9d_10017 MSA.pdf
+2025-05-11 20:08:33,364 - app.services.pdf_service - INFO - Extracted 109 text blocks from PDF
+2025-05-11 20:08:33,364 - app.services.pdf_service - INFO - Extracting text from PDF: temp/target_ff515fb4_10048 MSA.pdf
+2025-05-11 20:08:33,464 - app.services.pdf_service - INFO - Extracted 899 text blocks from PDF
+2025-05-11 20:08:33,465 - app.services.ai_service - INFO - Starting document analysis
+2025-05-11 20:08:43,530 - app.services.ai_service - INFO - Successfully parsed 2 contradictions
+2025-05-11 20:08:43,530 - app.services.ai_service - INFO - Found 2 potential contradictions
+2025-05-11 20:08:43,530 - app.services.pdf_service - INFO - Searching for text: 'Company name or number Search  Companies   Officer...' in 109 blocks
+2025-05-11 20:08:43,531 - app.services.pdf_service - INFO - Found 6 matching blocks
+2025-05-11 20:08:43,531 - app.services.pdf_service - INFO - Searching for text: 'CEDAR HOLDINGS INTERNATIONAL INC. ... Ocampo Wisem...' in 899 blocks
+2025-05-11 20:08:43,532 - app.services.pdf_service - INFO - Found 8 matching blocks
+2025-05-11 20:08:43,532 - app.services.ai_service - INFO - Processed contradiction: 'Company name or number Search ...' vs 'CEDAR HOLDINGS INTERNATIONAL I...'
+2025-05-11 20:08:43,532 - app.services.pdf_service - INFO - Searching for text: 'Registered Address 14020 13TH AVE SW BURIEN 98166-...' in 109 blocks
+2025-05-11 20:08:43,532 - app.services.pdf_service - INFO - Found 6 matching blocks
+2025-05-11 20:08:43,532 - app.services.pdf_service - INFO - Searching for text: 'principal place of business at 5230 Las Virgenes R...' in 899 blocks
+2025-05-11 20:08:43,533 - app.services.pdf_service - INFO - Found 42 matching blocks
+2025-05-11 20:08:43,533 - app.services.ai_service - INFO - Processed contradiction: 'Registered Address 14020 13TH ...' vs 'principal place of business at...'
+2025-05-11 20:08:51,927 - app.services.pdf_service - INFO - Highlighting 2 contradictions in temp/main_72d2cd9d_10017 MSA.pdf
+2025-05-11 20:08:51,930 - app.services.pdf_service - INFO - Added highlight on page 1 at (37.0, 152.4495391845703, 155.91542053222656, 163.61862182617188)
+2025-05-11 20:08:51,932 - app.services.pdf_service - INFO - Added highlight on page 1 at (34.0, 401.1367492675781, 138.71914672851562, 414.5429992675781)
+2025-05-11 20:08:51,936 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/main_highlighted_50fcf68a.pdf
+2025-05-11 20:08:51,937 - app.services.pdf_service - INFO - Highlighting 2 contradictions in temp/target_ff515fb4_10048 MSA.pdf
+2025-05-11 20:08:51,939 - app.services.pdf_service - INFO - Added highlight on page 1 at (294.4100036621094, 131.77276611328125, 433.17840576171875, 141.356689453125)
+2025-05-11 20:08:51,940 - app.services.pdf_service - INFO - Added highlight on page 1 at (493.17999267578125, 111.57799530029297, 536.9775390625, 121.14103698730469)
+2025-05-11 20:08:51,944 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/target_highlighted_dd8052f5.pdf
+2025-05-11 20:08:51,945 - main - INFO - Analysis complete with 2 contradictions
+2025-05-11 20:13:56,359 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:13:56,364 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:13:58,482 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:13:58,491 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:14:12,582 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:14:12,587 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:14:29,357 - main - INFO - Files saved: temp/main_b9f6edc3_10017 MSA.pdf, temp/target_62f47fde_10048 MSA.pdf
+2025-05-11 20:14:29,357 - app.services.pdf_service - INFO - Extracting text from PDF: temp/main_b9f6edc3_10017 MSA.pdf
+2025-05-11 20:14:29,374 - app.services.pdf_service - INFO - Extracted 109 text blocks from PDF
+2025-05-11 20:14:29,374 - app.services.pdf_service - INFO - Extracting text from PDF: temp/target_62f47fde_10048 MSA.pdf
+2025-05-11 20:14:29,502 - app.services.pdf_service - INFO - Extracted 899 text blocks from PDF
+2025-05-11 20:14:29,503 - app.services.ai_service - INFO - Starting document analysis
+2025-05-11 20:14:46,771 - app.services.ai_service - INFO - Successfully parsed 3 contradictions
+2025-05-11 20:14:46,772 - app.services.ai_service - INFO - Found 3 potential contradictions
+2025-05-11 20:14:46,772 - app.services.pdf_service - INFO - Searching for text: 'DUKAT MANAGEMENT, LLC....' in 109 blocks
+2025-05-11 20:14:46,772 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:14:46,772 - app.services.pdf_service - INFO - Searching for text: 'by and between CEDAR HOLDINGS INTERNATIONAL INC. ....' in 899 blocks
+2025-05-11 20:14:46,775 - app.services.pdf_service - INFO - Found 12 matching blocks
+2025-05-11 20:14:46,775 - app.services.ai_service - INFO - Processed contradiction: 'DUKAT MANAGEMENT, LLC....' vs 'by and between CEDAR HOLDINGS ...'
+2025-05-11 20:14:46,776 - app.services.pdf_service - INFO - Searching for text: 'Jurisdiction Washington (US)...' in 109 blocks
+2025-05-11 20:14:46,776 - app.services.pdf_service - INFO - Found 3 matching blocks
+2025-05-11 20:14:46,776 - app.services.pdf_service - INFO - Searching for text: 'CEDAR HOLDINGS INTERNATIONAL INC., a Delaware corp...' in 899 blocks
+2025-05-11 20:14:46,778 - app.services.pdf_service - INFO - Found 6 matching blocks
+2025-05-11 20:14:46,778 - app.services.ai_service - INFO - Processed contradiction: 'Jurisdiction Washington (US)...' vs 'CEDAR HOLDINGS INTERNATIONAL I...'
+2025-05-11 20:14:46,780 - app.services.pdf_service - INFO - Searching for text: 'Registered Address 14020 13TH AVE SW BURIEN 98166-...' in 109 blocks
+2025-05-11 20:14:46,780 - app.services.pdf_service - INFO - Found 6 matching blocks
+2025-05-11 20:14:46,780 - app.services.pdf_service - INFO - Searching for text: 'principal place of business at 5230 Las Virgenes R...' in 899 blocks
+2025-05-11 20:14:46,783 - app.services.pdf_service - INFO - Found 42 matching blocks
+2025-05-11 20:14:46,783 - app.services.ai_service - INFO - Processed contradiction: 'Registered Address 14020 13TH ...' vs 'principal place of business at...'
+2025-05-11 20:14:57,092 - main - ERROR - Error in compare-documents: 'PDFService' object has no attribute 'highlight_contradictions'
+Traceback (most recent call last):
+  File "/workspaces/AI-Contract-Reviewer/main.py", line 111, in compare_documents
+    pdf_service.highlight_contradictions(str(main_path), analysis_result["main_highlights"], str(main_output))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'PDFService' object has no attribute 'highlight_contradictions'
+2025-05-11 20:15:13,491 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:15:13,496 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:15:19,588 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:15:19,593 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:15:21,753 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:15:21,757 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:15:26,375 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:15:26,379 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:15:32,857 - main - INFO - Files saved: temp/main_1e8a8a16_10017 MSA.pdf, temp/target_c5175059_10048 MSA.pdf
+2025-05-11 20:15:32,858 - app.services.pdf_service - INFO - Extracting text from PDF: temp/main_1e8a8a16_10017 MSA.pdf
+2025-05-11 20:15:32,880 - app.services.pdf_service - INFO - Extracted 109 text blocks from PDF
+2025-05-11 20:15:32,880 - app.services.pdf_service - INFO - Extracting text from PDF: temp/target_c5175059_10048 MSA.pdf
+2025-05-11 20:15:33,062 - app.services.pdf_service - INFO - Extracted 899 text blocks from PDF
+2025-05-11 20:15:33,062 - app.services.ai_service - INFO - Starting document analysis
+2025-05-11 20:15:43,588 - app.services.ai_service - INFO - Successfully parsed 3 contradictions
+2025-05-11 20:15:43,588 - app.services.ai_service - INFO - Found 3 potential contradictions
+2025-05-11 20:15:43,588 - app.services.pdf_service - INFO - Searching for text: 'DUKAT MANAGEMENT, LLC....' in 109 blocks
+2025-05-11 20:15:43,588 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:15:43,588 - app.services.pdf_service - INFO - Searching for text: 'by and between CEDAR HOLDINGS INTERNATIONAL INC. ,...' in 899 blocks
+2025-05-11 20:15:43,589 - app.services.pdf_service - INFO - Found 15 matching blocks
+2025-05-11 20:15:43,589 - app.services.ai_service - INFO - Processed contradiction: 'DUKAT MANAGEMENT, LLC....' vs 'by and between CEDAR HOLDINGS ...'
+2025-05-11 20:15:43,590 - app.services.pdf_service - INFO - Searching for text: 'Registered Address 14020 13TH AVE SW BURIEN 98166-...' in 109 blocks
+2025-05-11 20:15:43,590 - app.services.pdf_service - INFO - Found 6 matching blocks
+2025-05-11 20:15:43,590 - app.services.pdf_service - INFO - Searching for text: 'CEDAR HOLDINGS INTERNATIONAL INC. , a Delaware cor...' in 899 blocks
+2025-05-11 20:15:43,591 - app.services.pdf_service - INFO - Found 47 matching blocks
+2025-05-11 20:15:43,591 - app.services.ai_service - INFO - Processed contradiction: 'Registered Address 14020 13TH ...' vs 'CEDAR HOLDINGS INTERNATIONAL I...'
+2025-05-11 20:15:43,591 - app.services.pdf_service - INFO - Searching for text: 'Company Type WA LIMITED LIABILITY COMPANY Jurisdic...' in 109 blocks
+2025-05-11 20:15:43,591 - app.services.pdf_service - INFO - Found 5 matching blocks
+2025-05-11 20:15:43,591 - app.services.pdf_service - INFO - Searching for text: 'CEDAR HOLDINGS INTERNATIONAL INC. , a Delaware cor...' in 899 blocks
+2025-05-11 20:15:43,592 - app.services.pdf_service - INFO - Found 6 matching blocks
+2025-05-11 20:15:43,592 - app.services.ai_service - INFO - Processed contradiction: 'Company Type WA LIMITED LIABIL...' vs 'CEDAR HOLDINGS INTERNATIONAL I...'
+2025-05-11 20:15:53,520 - app.services.pdf_service - INFO - Highlighting 3 contradictions in temp/main_1e8a8a16_10017 MSA.pdf
+2025-05-11 20:15:53,523 - app.services.pdf_service - INFO - Added highlight on page 1 at (34.0, 223.02345275878906, 361.5390930175781, 249.83595275878906)
+2025-05-11 20:15:53,525 - app.services.pdf_service - INFO - Added highlight on page 1 at (34.0, 401.1367492675781, 138.71914672851562, 414.5429992675781)
+2025-05-11 20:15:53,527 - app.services.pdf_service - INFO - Added highlight on page 1 at (34.0, 347.1367492675781, 114.48841857910156, 360.5429992675781)
+2025-05-11 20:15:53,532 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/main_highlighted_f6310cd1.pdf
+2025-05-11 20:15:53,533 - app.services.pdf_service - INFO - Highlighting 3 contradictions in temp/target_c5175059_10048 MSA.pdf
+2025-05-11 20:15:53,535 - app.services.pdf_service - INFO - Added highlight on page 1 at (294.4100036621094, 131.77276611328125, 433.17840576171875, 141.356689453125)
+2025-05-11 20:15:53,537 - app.services.pdf_service - INFO - Added highlight on page 1 at (493.17999267578125, 111.57799530029297, 536.9775390625, 121.14103698730469)
+2025-05-11 20:15:53,539 - app.services.pdf_service - INFO - Added highlight on page 1 at (294.4100036621094, 131.77276611328125, 433.17840576171875, 141.356689453125)
+2025-05-11 20:15:53,544 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/target_highlighted_8a699561.pdf
+2025-05-11 20:15:53,544 - main - INFO - Analysis complete with 3 contradictions
+2025-05-11 20:16:18,286 - main - INFO - Files saved: temp/main_67fa51fb_10017 MSA.pdf, temp/target_3038490b_10048 MSA.pdf
+2025-05-11 20:16:18,286 - app.services.pdf_service - INFO - Extracting text from PDF: temp/main_67fa51fb_10017 MSA.pdf
+2025-05-11 20:16:18,296 - app.services.pdf_service - INFO - Extracted 109 text blocks from PDF
+2025-05-11 20:16:18,296 - app.services.pdf_service - INFO - Extracting text from PDF: temp/target_3038490b_10048 MSA.pdf
+2025-05-11 20:16:18,453 - app.services.pdf_service - INFO - Extracted 899 text blocks from PDF
+2025-05-11 20:16:18,454 - app.services.ai_service - INFO - Starting document analysis
+2025-05-11 20:16:26,695 - app.services.ai_service - INFO - Successfully parsed 0 contradictions
+2025-05-11 20:16:26,695 - app.services.ai_service - INFO - Found 0 potential contradictions
+2025-05-11 20:16:39,187 - app.services.pdf_service - WARNING - No highlights provided for temp/main_67fa51fb_10017 MSA.pdf
+2025-05-11 20:16:39,188 - app.services.pdf_service - WARNING - No highlights provided for temp/target_3038490b_10048 MSA.pdf
+2025-05-11 20:16:39,190 - main - INFO - Analysis complete with 0 contradictions
+2025-05-11 20:18:05,961 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:18:05,969 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:18:39,458 - main - INFO - Files saved: temp/main_0ffd1ea0_10017 MSA.pdf, temp/target_88109243_10048 MSA.pdf
+2025-05-11 20:18:39,459 - app.services.pdf_service - INFO - Extracting text from PDF: temp/main_0ffd1ea0_10017 MSA.pdf
+2025-05-11 20:18:39,476 - app.services.pdf_service - INFO - Extracted 109 text blocks from PDF
+2025-05-11 20:18:39,477 - app.services.pdf_service - INFO - Extracting text from PDF: temp/target_88109243_10048 MSA.pdf
+2025-05-11 20:18:39,607 - app.services.pdf_service - INFO - Extracted 899 text blocks from PDF
+2025-05-11 20:18:39,607 - app.services.ai_service - INFO - Starting document analysis
+2025-05-11 20:18:47,434 - app.services.ai_service - INFO - Successfully parsed 5 contradictions
+2025-05-11 20:18:47,435 - app.services.ai_service - INFO - Found 5 potential contradictions
+2025-05-11 20:18:47,435 - app.services.pdf_service - INFO - Searching for text: 'DUKAT MANAGEMENT, LLC....' in 109 blocks
+2025-05-11 20:18:47,435 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:18:47,435 - app.services.pdf_service - INFO - Searching for text: 'CEDAR HOLDINGS INTERNATIONAL INC....' in 899 blocks
+2025-05-11 20:18:47,436 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:18:47,436 - app.services.ai_service - INFO - Processed contradiction: 'DUKAT MANAGEMENT, LLC....' vs 'CEDAR HOLDINGS INTERNATIONAL I...'
+2025-05-11 20:18:47,436 - app.services.pdf_service - INFO - Searching for text: 'DUKAT MANAGEMENT, LLC....' in 109 blocks
+2025-05-11 20:18:47,436 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:18:47,436 - app.services.pdf_service - INFO - Searching for text: 'Ocampo Wiseman Law...' in 899 blocks
+2025-05-11 20:18:47,437 - app.services.pdf_service - INFO - Found 4 matching blocks
+2025-05-11 20:18:47,437 - app.services.ai_service - INFO - Processed contradiction: 'DUKAT MANAGEMENT, LLC....' vs 'Ocampo Wiseman Law...'
+2025-05-11 20:18:47,437 - app.services.pdf_service - INFO - Searching for text: 'Jurisdiction Washington (US)...' in 109 blocks
+2025-05-11 20:18:47,437 - app.services.pdf_service - INFO - Found 3 matching blocks
+2025-05-11 20:18:47,437 - app.services.pdf_service - INFO - Searching for text: 'CEDAR HOLDINGS INTERNATIONAL INC., a Delaware corp...' in 899 blocks
+2025-05-11 20:18:47,438 - app.services.pdf_service - INFO - Found 6 matching blocks
+2025-05-11 20:18:47,438 - app.services.ai_service - INFO - Processed contradiction: 'Jurisdiction Washington (US)...' vs 'CEDAR HOLDINGS INTERNATIONAL I...'
+2025-05-11 20:18:47,438 - app.services.pdf_service - INFO - Searching for text: 'Registered Address 14020 13TH AVE SW BURIEN 98166-...' in 109 blocks
+2025-05-11 20:18:47,438 - app.services.pdf_service - INFO - Found 6 matching blocks
+2025-05-11 20:18:47,438 - app.services.pdf_service - INFO - Searching for text: 'CEDAR HOLDINGS INTERNATIONAL INC. ... principal pl...' in 899 blocks
+2025-05-11 20:18:47,439 - app.services.pdf_service - INFO - Found 28 matching blocks
+2025-05-11 20:18:47,439 - app.services.ai_service - INFO - Processed contradiction: 'Registered Address 14020 13TH ...' vs 'CEDAR HOLDINGS INTERNATIONAL I...'
+2025-05-11 20:18:47,439 - app.services.pdf_service - INFO - Searching for text: 'Registered Address 14020 13TH AVE SW BURIEN 98166-...' in 109 blocks
+2025-05-11 20:18:47,439 - app.services.pdf_service - INFO - Found 6 matching blocks
+2025-05-11 20:18:47,439 - app.services.pdf_service - INFO - Searching for text: 'Ocampo Wiseman Law with its principal place of bus...' in 899 blocks
+2025-05-11 20:18:47,440 - app.services.pdf_service - INFO - Found 31 matching blocks
+2025-05-11 20:18:47,440 - app.services.ai_service - INFO - Processed contradiction: 'Registered Address 14020 13TH ...' vs 'Ocampo Wiseman Law with its pr...'
+2025-05-11 20:18:56,142 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp/main_0ffd1ea0_10017 MSA.pdf
+2025-05-11 20:18:56,147 - app.services.pdf_service - INFO - Added highlight on page 1 at (34.0, 223.02345275878906, 361.5390930175781, 249.83595275878906)
+2025-05-11 20:18:56,150 - app.services.pdf_service - INFO - Added highlight on page 1 at (34.0, 223.02345275878906, 361.5390930175781, 249.83595275878906)
+2025-05-11 20:18:56,155 - app.services.pdf_service - INFO - Added highlight on page 1 at (34.0, 374.1367492675781, 94.01383972167969, 387.5429992675781)
+2025-05-11 20:18:56,158 - app.services.pdf_service - INFO - Added highlight on page 1 at (34.0, 401.1367492675781, 138.71914672851562, 414.5429992675781)
+2025-05-11 20:18:56,161 - app.services.pdf_service - INFO - Added highlight on page 1 at (34.0, 401.1367492675781, 138.71914672851562, 414.5429992675781)
+2025-05-11 20:18:56,181 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/main_highlighted_4c8716e6.pdf
+2025-05-11 20:18:56,183 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp/target_88109243_10048 MSA.pdf
+2025-05-11 20:18:56,187 - app.services.pdf_service - INFO - Added highlight on page 1 at (294.4100036621094, 131.77276611328125, 433.17840576171875, 141.356689453125)
+2025-05-11 20:18:56,192 - app.services.pdf_service - INFO - Added highlight on page 1 at (77.06400299072266, 172.0927734375, 154.47486877441406, 181.67669677734375)
+2025-05-11 20:18:56,200 - app.services.pdf_service - INFO - Added highlight on page 1 at (294.4100036621094, 131.77276611328125, 433.17840576171875, 141.356689453125)
+2025-05-11 20:18:56,204 - app.services.pdf_service - INFO - Added highlight on page 1 at (294.4100036621094, 131.77276611328125, 433.17840576171875, 141.356689453125)
+2025-05-11 20:18:56,210 - app.services.pdf_service - INFO - Added highlight on page 1 at (77.06400299072266, 172.0927734375, 154.47486877441406, 181.67669677734375)
+2025-05-11 20:18:56,219 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/target_highlighted_6e7378ee.pdf
+2025-05-11 20:18:56,220 - main - INFO - Analysis complete with 5 contradictions
+2025-05-11 20:21:09,252 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:21:09,256 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:21:17,064 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:21:17,068 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:21:48,881 - main - INFO - Files saved: temp/main_b215031b_10017 MSA.pdf, temp/target_b21450da_10048 MSA.pdf
+2025-05-11 20:21:48,883 - app.services.pdf_service - INFO - Extracting text from PDF: temp/main_b215031b_10017 MSA.pdf
+2025-05-11 20:21:48,904 - app.services.pdf_service - INFO - Extracted 109 text blocks from PDF
+2025-05-11 20:21:48,905 - app.services.pdf_service - INFO - Extracting text from PDF: temp/target_b21450da_10048 MSA.pdf
+2025-05-11 20:21:49,007 - app.services.pdf_service - INFO - Extracted 899 text blocks from PDF
+2025-05-11 20:21:49,008 - app.services.ai_service - INFO - Starting document analysis
+2025-05-11 20:21:53,562 - app.services.ai_service - INFO - Successfully parsed 0 contradictions
+2025-05-11 20:21:53,562 - app.services.ai_service - INFO - Found 0 potential contradictions
+2025-05-11 20:22:07,508 - app.services.pdf_service - WARNING - No highlights provided for temp/main_b215031b_10017 MSA.pdf
+2025-05-11 20:22:07,509 - app.services.pdf_service - WARNING - No highlights provided for temp/target_b21450da_10048 MSA.pdf
+2025-05-11 20:22:07,511 - main - INFO - Analysis complete with 0 contradictions
+2025-05-11 20:27:44,345 - main - INFO - Files saved: temp/main_4eaf0c20_f1.pdf, temp/target_96a4c1c1_f2.pdf
+2025-05-11 20:27:44,345 - app.services.pdf_service - INFO - Extracting text from PDF: temp/main_4eaf0c20_f1.pdf
+2025-05-11 20:27:44,349 - app.services.pdf_service - INFO - Extracted 38 text blocks from PDF
+2025-05-11 20:27:44,349 - app.services.pdf_service - INFO - Extracting text from PDF: temp/target_96a4c1c1_f2.pdf
+2025-05-11 20:27:44,354 - app.services.pdf_service - INFO - Extracted 34 text blocks from PDF
+2025-05-11 20:27:44,354 - app.services.ai_service - INFO - Starting document analysis
+2025-05-11 20:27:55,437 - app.services.ai_service - INFO - Successfully parsed 7 contradictions
+2025-05-11 20:27:55,437 - app.services.ai_service - INFO - Found 7 potential contradictions
+2025-05-11 20:27:55,437 - app.services.pdf_service - INFO - Searching for text: 'and will remain in effect until August 20, 2025...' in 38 blocks
+2025-05-11 20:27:55,437 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:27:55,438 - app.services.pdf_service - INFO - Searching for text: 'and conclude on September 30, 2025...' in 34 blocks
+2025-05-11 20:27:55,438 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:27:55,438 - app.services.ai_service - WARNING - Could not find text blocks for contradiction: and will remain in effect unti...
+2025-05-11 20:27:55,438 - app.services.pdf_service - INFO - Searching for text: 'Company shall pay Contractor a fixed fee of $15,00...' in 38 blocks
+2025-05-11 20:27:55,438 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:27:55,438 - app.services.pdf_service - INFO - Searching for text: 'Client agrees to pay the Freelancer $18,000...' in 34 blocks
+2025-05-11 20:27:55,438 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:27:55,439 - app.services.ai_service - INFO - Processed contradiction: 'Company shall pay Contractor a...' vs 'Client agrees to pay the Freel...'
+2025-05-11 20:27:55,439 - app.services.pdf_service - INFO - Searching for text: 'Milestone 1 (June 10) – Backend API complete – $5,...' in 38 blocks
+2025-05-11 20:27:55,439 - app.services.pdf_service - INFO - Found 3 matching blocks
+2025-05-11 20:27:55,439 - app.services.pdf_service - INFO - Searching for text: 'Milestone 1 (June 10) – $4,500 Milestone 2 (July 5...' in 34 blocks
+2025-05-11 20:27:55,439 - app.services.pdf_service - INFO - Found 4 matching blocks
+2025-05-11 20:27:55,439 - app.services.ai_service - INFO - Processed contradiction: 'Milestone 1 (June 10) – Backen...' vs 'Milestone 1 (June 10) – $4,500...'
+2025-05-11 20:27:55,439 - app.services.pdf_service - INFO - Searching for text: 'All code, deliverables, and documentation produced...' in 38 blocks
+2025-05-11 20:27:55,439 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:27:55,440 - app.services.pdf_service - INFO - Searching for text: 'Freelancer retains the right to display portions o...' in 34 blocks
+2025-05-11 20:27:55,440 - app.services.pdf_service - INFO - Found 3 matching blocks
+2025-05-11 20:27:55,440 - app.services.ai_service - INFO - Processed contradiction: 'All code, deliverables, and do...' vs 'Freelancer retains the right t...'
+2025-05-11 20:27:55,440 - app.services.pdf_service - INFO - Searching for text: 'Either party may terminate this Agreement with 14 ...' in 38 blocks
+2025-05-11 20:27:55,440 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:27:55,440 - app.services.pdf_service - INFO - Searching for text: 'Either party may terminate with 30 days’ written n...' in 34 blocks
+2025-05-11 20:27:55,440 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:27:55,440 - app.services.ai_service - INFO - Processed contradiction: 'Either party may terminate thi...' vs 'Either party may terminate wit...'
+2025-05-11 20:27:55,441 - app.services.pdf_service - INFO - Searching for text: 'If terminated early, Contractor will be paid for a...' in 38 blocks
+2025-05-11 20:27:55,441 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:27:55,441 - app.services.pdf_service - INFO - Searching for text: 'Upon termination, Client will compensate Freelance...' in 34 blocks
+2025-05-11 20:27:55,441 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:27:55,441 - app.services.ai_service - INFO - Processed contradiction: 'If terminated early, Contracto...' vs 'Upon termination, Client will ...'
+2025-05-11 20:27:55,441 - app.services.pdf_service - INFO - Searching for text: 'This Agreement shall be governed by and construed ...' in 38 blocks
+2025-05-11 20:27:55,441 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:27:55,441 - app.services.pdf_service - INFO - Searching for text: 'This Agreement shall be governed by the laws of th...' in 34 blocks
+2025-05-11 20:27:55,441 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:27:55,442 - app.services.ai_service - INFO - Processed contradiction: 'This Agreement shall be govern...' vs 'This Agreement shall be govern...'
+2025-05-11 20:28:04,983 - app.services.pdf_service - INFO - Highlighting 6 contradictions in temp/main_4eaf0c20_f1.pdf
+2025-05-11 20:28:04,984 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 317.94537353515625, 533.3474731445312, 328.84466552734375)
+2025-05-11 20:28:04,985 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 356.4653625488281, 371.63592529296875, 367.3646545410156)
+2025-05-11 20:28:04,985 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 549.0653686523438, 557.4285278320312, 559.9646606445312)
+2025-05-11 20:28:04,986 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 651.7853393554688, 503.38079833984375, 662.6846313476562)
+2025-05-11 20:28:04,986 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 664.6253662109375, 515.4768676757812, 675.524658203125)
+2025-05-11 20:28:04,987 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 703.1453247070312, 557.4285278320312, 714.0446166992188)
+2025-05-11 20:28:04,988 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/main_highlighted_d6a005d1.pdf
+2025-05-11 20:28:04,989 - app.services.pdf_service - INFO - Highlighting 6 contradictions in temp/target_96a4c1c1_f2.pdf
+2025-05-11 20:28:04,994 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 382.1453552246094, 449.43994140625, 393.0446472167969)
+2025-05-11 20:28:04,997 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 407.8253479003906, 233.78732299804688, 418.7246398925781)
+2025-05-11 20:28:05,002 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 549.0653686523438, 557.4285278320312, 559.9646606445312)
+2025-05-11 20:28:05,002 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 664.6253662109375, 545.4435424804688, 675.524658203125)
+2025-05-11 20:28:05,003 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 677.46533203125, 509.484375, 688.3646240234375)
+2025-05-11 20:28:05,004 - app.services.pdf_service - INFO - Added highlight on page 2 at (54.0, 73.98535919189453, 455.54351806640625, 84.88465881347656)
+2025-05-11 20:28:05,008 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/target_highlighted_81aacc82.pdf
+2025-05-11 20:28:05,010 - main - INFO - Analysis complete with 6 contradictions
+2025-05-11 20:29:30,102 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:29:30,110 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:29:46,423 - main - INFO - Files saved: temp/main_968b2683_f1.pdf, temp/target_82129370_f2.pdf
+2025-05-11 20:29:46,423 - app.services.pdf_service - INFO - Extracting text from PDF: temp/main_968b2683_f1.pdf
+2025-05-11 20:29:46,434 - app.services.pdf_service - INFO - Extracted 38 text blocks from PDF
+2025-05-11 20:29:46,436 - app.services.pdf_service - INFO - Extracting text from PDF: temp/target_82129370_f2.pdf
+2025-05-11 20:29:46,448 - app.services.pdf_service - INFO - Extracted 34 text blocks from PDF
+2025-05-11 20:29:46,453 - app.services.ai_service - INFO - Starting document analysis
+2025-05-11 20:30:00,495 - app.services.ai_service - INFO - Successfully parsed 7 contradictions
+2025-05-11 20:30:00,495 - app.services.ai_service - INFO - Found 7 potential contradictions
+2025-05-11 20:30:00,495 - app.services.pdf_service - INFO - Searching for text: 'This Agreement will commence on May 20, 2025, and ...' in 38 blocks
+2025-05-11 20:30:00,496 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:30:00,496 - app.services.pdf_service - INFO - Searching for text: 'The term of this agreement shall begin on May 20, ...' in 34 blocks
+2025-05-11 20:30:00,497 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:30:00,497 - app.services.ai_service - INFO - Processed contradiction: 'This Agreement will commence o...' vs 'The term of this agreement sha...'
+2025-05-11 20:30:00,497 - app.services.pdf_service - INFO - Searching for text: 'Company shall pay Contractor a fixed fee of $15,00...' in 38 blocks
+2025-05-11 20:30:00,497 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:30:00,498 - app.services.pdf_service - INFO - Searching for text: 'Client agrees to pay the Freelancer $18,000...' in 34 blocks
+2025-05-11 20:30:00,498 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:30:00,498 - app.services.ai_service - INFO - Processed contradiction: 'Company shall pay Contractor a...' vs 'Client agrees to pay the Freel...'
+2025-05-11 20:30:00,499 - app.services.pdf_service - INFO - Searching for text: 'disbursed in the following milestones: Milestone 1...' in 38 blocks
+2025-05-11 20:30:00,499 - app.services.pdf_service - INFO - Found 4 matching blocks
+2025-05-11 20:30:00,499 - app.services.pdf_service - INFO - Searching for text: 'in four installments: Milestone 1 (June 10) – $4,5...' in 34 blocks
+2025-05-11 20:30:00,500 - app.services.pdf_service - INFO - Found 4 matching blocks
+2025-05-11 20:30:00,500 - app.services.ai_service - INFO - Processed contradiction: 'disbursed in the following mil...' vs 'in four installments: Mileston...'
+2025-05-11 20:30:00,500 - app.services.pdf_service - INFO - Searching for text: 'All code, deliverables, and documentation produced...' in 38 blocks
+2025-05-11 20:30:00,501 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:30:00,501 - app.services.pdf_service - INFO - Searching for text: 'Freelancer retains the right to display portions o...' in 34 blocks
+2025-05-11 20:30:00,502 - app.services.pdf_service - INFO - Found 3 matching blocks
+2025-05-11 20:30:00,502 - app.services.ai_service - INFO - Processed contradiction: 'All code, deliverables, and do...' vs 'Freelancer retains the right t...'
+2025-05-11 20:30:00,502 - app.services.pdf_service - INFO - Searching for text: 'Either party may terminate this Agreement with 14 ...' in 38 blocks
+2025-05-11 20:30:00,503 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:30:00,503 - app.services.pdf_service - INFO - Searching for text: 'Either party may terminate with 30 days’ written n...' in 34 blocks
+2025-05-11 20:30:00,503 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:30:00,503 - app.services.ai_service - INFO - Processed contradiction: 'Either party may terminate thi...' vs 'Either party may terminate wit...'
+2025-05-11 20:30:00,504 - app.services.pdf_service - INFO - Searching for text: 'If terminated early, Contractor will be paid for a...' in 38 blocks
+2025-05-11 20:30:00,504 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:30:00,504 - app.services.pdf_service - INFO - Searching for text: 'Upon termination, Client will compensate Freelance...' in 34 blocks
+2025-05-11 20:30:00,505 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:30:00,505 - app.services.ai_service - INFO - Processed contradiction: 'If terminated early, Contracto...' vs 'Upon termination, Client will ...'
+2025-05-11 20:30:00,505 - app.services.pdf_service - INFO - Searching for text: 'This Agreement shall be governed by and construed ...' in 38 blocks
+2025-05-11 20:30:00,506 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:30:00,506 - app.services.pdf_service - INFO - Searching for text: 'This Agreement shall be governed by the laws of th...' in 34 blocks
+2025-05-11 20:30:00,506 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:30:00,507 - app.services.ai_service - INFO - Processed contradiction: 'This Agreement shall be govern...' vs 'This Agreement shall be govern...'
+2025-05-11 20:30:13,633 - app.services.pdf_service - INFO - Highlighting 7 contradictions in temp/main_968b2683_f1.pdf
+2025-05-11 20:30:13,634 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 266.5853576660156, 557.4285278320312, 277.4846496582031)
+2025-05-11 20:30:13,635 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 317.94537353515625, 533.3474731445312, 328.84466552734375)
+2025-05-11 20:30:13,636 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 330.7853698730469, 119.91734313964844, 341.6846618652344)
+2025-05-11 20:30:13,636 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 549.0653686523438, 557.4285278320312, 559.9646606445312)
+2025-05-11 20:30:13,637 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 651.7853393554688, 503.38079833984375, 662.6846313476562)
+2025-05-11 20:30:13,637 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 664.6253662109375, 515.4768676757812, 675.524658203125)
+2025-05-11 20:30:13,638 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 703.1453247070312, 557.4285278320312, 714.0446166992188)
+2025-05-11 20:30:13,640 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/main_highlighted_254f64cf.pdf
+2025-05-11 20:30:13,642 - app.services.pdf_service - INFO - Highlighting 7 contradictions in temp/target_82129370_f2.pdf
+2025-05-11 20:30:13,643 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 330.7853698730469, 545.4435424804688, 341.6846618652344)
+2025-05-11 20:30:13,644 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 382.1453552246094, 449.43994140625, 393.0446472167969)
+2025-05-11 20:30:13,645 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 407.8253479003906, 233.78732299804688, 418.7246398925781)
+2025-05-11 20:30:13,646 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 549.0653686523438, 557.4285278320312, 559.9646606445312)
+2025-05-11 20:30:13,646 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 664.6253662109375, 545.4435424804688, 675.524658203125)
+2025-05-11 20:30:13,647 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 677.46533203125, 509.484375, 688.3646240234375)
+2025-05-11 20:30:13,648 - app.services.pdf_service - INFO - Added highlight on page 2 at (54.0, 73.98535919189453, 455.54351806640625, 84.88465881347656)
+2025-05-11 20:30:13,650 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/target_highlighted_50c1329e.pdf
+2025-05-11 20:30:13,652 - main - INFO - Analysis complete with 7 contradictions
+2025-05-11 20:30:35,594 - main - INFO - Files saved: temp/main_8026f281_f1.pdf, temp/target_b36b5aab_f2.pdf
+2025-05-11 20:30:35,594 - app.services.pdf_service - INFO - Extracting text from PDF: temp/main_8026f281_f1.pdf
+2025-05-11 20:30:35,603 - app.services.pdf_service - INFO - Extracted 38 text blocks from PDF
+2025-05-11 20:30:35,603 - app.services.pdf_service - INFO - Extracting text from PDF: temp/target_b36b5aab_f2.pdf
+2025-05-11 20:30:35,607 - app.services.pdf_service - INFO - Extracted 34 text blocks from PDF
+2025-05-11 20:30:35,607 - app.services.ai_service - INFO - Starting document analysis
+2025-05-11 20:30:49,226 - app.services.ai_service - INFO - Successfully parsed 7 contradictions
+2025-05-11 20:30:49,229 - app.services.ai_service - INFO - Found 7 potential contradictions
+2025-05-11 20:30:49,229 - app.services.pdf_service - INFO - Searching for text: 'will remain in effect until August 20, 2025...' in 38 blocks
+2025-05-11 20:30:49,230 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:30:49,230 - app.services.pdf_service - INFO - Searching for text: 'conclude on September 30, 2025...' in 34 blocks
+2025-05-11 20:30:49,231 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:30:49,231 - app.services.ai_service - WARNING - Could not find text blocks for contradiction: will remain in effect until Au...
+2025-05-11 20:30:49,232 - app.services.pdf_service - INFO - Searching for text: 'Company shall pay Contractor a fixed fee of $15,00...' in 38 blocks
+2025-05-11 20:30:49,233 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:30:49,233 - app.services.pdf_service - INFO - Searching for text: 'Client agrees to pay the Freelancer $18,000...' in 34 blocks
+2025-05-11 20:30:49,234 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:30:49,234 - app.services.ai_service - INFO - Processed contradiction: 'Company shall pay Contractor a...' vs 'Client agrees to pay the Freel...'
+2025-05-11 20:30:49,235 - app.services.pdf_service - INFO - Searching for text: 'disbursed in the following milestones: Milestone 1...' in 38 blocks
+2025-05-11 20:30:49,236 - app.services.pdf_service - INFO - Found 4 matching blocks
+2025-05-11 20:30:49,237 - app.services.pdf_service - INFO - Searching for text: 'in four installments: Milestone 1 (June 10) – $4,5...' in 34 blocks
+2025-05-11 20:30:49,237 - app.services.pdf_service - INFO - Found 4 matching blocks
+2025-05-11 20:30:49,237 - app.services.ai_service - INFO - Processed contradiction: 'disbursed in the following mil...' vs 'in four installments: Mileston...'
+2025-05-11 20:30:49,238 - app.services.pdf_service - INFO - Searching for text: 'All code, deliverables, and documentation produced...' in 38 blocks
+2025-05-11 20:30:49,238 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:30:49,238 - app.services.pdf_service - INFO - Searching for text: 'Freelancer retains the right to display portions o...' in 34 blocks
+2025-05-11 20:30:49,240 - app.services.pdf_service - INFO - Found 3 matching blocks
+2025-05-11 20:30:49,240 - app.services.ai_service - INFO - Processed contradiction: 'All code, deliverables, and do...' vs 'Freelancer retains the right t...'
+2025-05-11 20:30:49,240 - app.services.pdf_service - INFO - Searching for text: 'Either party may terminate this Agreement with 14 ...' in 38 blocks
+2025-05-11 20:30:49,240 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:30:49,241 - app.services.pdf_service - INFO - Searching for text: 'Either party may terminate with 30 days’ written n...' in 34 blocks
+2025-05-11 20:30:49,241 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:30:49,241 - app.services.ai_service - INFO - Processed contradiction: 'Either party may terminate thi...' vs 'Either party may terminate wit...'
+2025-05-11 20:30:49,242 - app.services.pdf_service - INFO - Searching for text: 'If terminated early, Contractor will be paid for a...' in 38 blocks
+2025-05-11 20:30:49,242 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:30:49,242 - app.services.pdf_service - INFO - Searching for text: 'Upon termination, Client will compensate Freelance...' in 34 blocks
+2025-05-11 20:30:49,242 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:30:49,244 - app.services.ai_service - INFO - Processed contradiction: 'If terminated early, Contracto...' vs 'Upon termination, Client will ...'
+2025-05-11 20:30:49,244 - app.services.pdf_service - INFO - Searching for text: 'This Agreement shall be governed by and construed ...' in 38 blocks
+2025-05-11 20:30:49,244 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:30:49,244 - app.services.pdf_service - INFO - Searching for text: 'This Agreement shall be governed by the laws of th...' in 34 blocks
+2025-05-11 20:30:49,245 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:30:49,245 - app.services.ai_service - INFO - Processed contradiction: 'This Agreement shall be govern...' vs 'This Agreement shall be govern...'
+2025-05-11 20:31:04,008 - app.services.pdf_service - INFO - Highlighting 6 contradictions in temp/main_8026f281_f1.pdf
+2025-05-11 20:31:04,009 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 317.94537353515625, 533.3474731445312, 328.84466552734375)
+2025-05-11 20:31:04,009 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 330.7853698730469, 119.91734313964844, 341.6846618652344)
+2025-05-11 20:31:04,009 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 549.0653686523438, 557.4285278320312, 559.9646606445312)
+2025-05-11 20:31:04,009 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 651.7853393554688, 503.38079833984375, 662.6846313476562)
+2025-05-11 20:31:04,010 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 664.6253662109375, 515.4768676757812, 675.524658203125)
+2025-05-11 20:31:04,010 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 703.1453247070312, 557.4285278320312, 714.0446166992188)
+2025-05-11 20:31:04,011 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/main_highlighted_07f074ee.pdf
+2025-05-11 20:31:04,011 - app.services.pdf_service - INFO - Highlighting 6 contradictions in temp/target_b36b5aab_f2.pdf
+2025-05-11 20:31:04,011 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 382.1453552246094, 449.43994140625, 393.0446472167969)
+2025-05-11 20:31:04,012 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 407.8253479003906, 233.78732299804688, 418.7246398925781)
+2025-05-11 20:31:04,012 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 549.0653686523438, 557.4285278320312, 559.9646606445312)
+2025-05-11 20:31:04,012 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 664.6253662109375, 545.4435424804688, 675.524658203125)
+2025-05-11 20:31:04,013 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 677.46533203125, 509.484375, 688.3646240234375)
+2025-05-11 20:31:04,013 - app.services.pdf_service - INFO - Added highlight on page 2 at (54.0, 73.98535919189453, 455.54351806640625, 84.88465881347656)
+2025-05-11 20:31:04,014 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/target_highlighted_aca74dcf.pdf
+2025-05-11 20:31:04,014 - main - INFO - Analysis complete with 6 contradictions
