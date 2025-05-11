@@ -139,17 +139,17 @@ async def compare_documents(
         pass
 
 
-@app.get("/download/{file_path:path}")
+@app.get("/temp/{file_path:path}")
 async def download_file(file_path: str):
     """
-    Download a processed file.
+    Download a processed file from the temp directory.
     """
     full_path = TEMP_DIR / file_path
     if not full_path.exists():
         raise HTTPException(status_code=404, detail="File not found")
         
     return FileResponse(
-        path=full_path,
+        path=str(full_path),
         filename=os.path.basename(file_path),
         media_type="application/pdf"
     )
