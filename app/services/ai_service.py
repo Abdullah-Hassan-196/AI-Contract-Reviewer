@@ -15,10 +15,30 @@ logger = logging.getLogger(__name__)
 
 load_dotenv()
 
+class Highlight(BaseModel):
+    page: int = Field(description="Page number where the highlight appears")
+    bbox: List[float] = Field(description="Bounding box coordinates [x0, y0, x1, y1]")
+    text: str = Field(description="The highlighted text")
+
+class ClauseAnalysis(BaseModel):
+    clause_text: str = Field(description="The text of the clause")
+    risk_level: str = Field(description="Risk level: Low, Medium, High")
+    risk_explanation: str = Field(description="Explanation of the risk assessment")
+    legal_implications: List[str] = Field(description="List of legal implications")
+    recommendations: List[str] = Field(description="List of recommendations")
+    industry_standards: List[str] = Field(description="Relevant industry standards")
+    highlights: List[Highlight] = Field(description="Locations of this clause in the document")
+
 class DocumentAnalysis(BaseModel):
     similarity: float = Field(description="Overall similarity percentage between documents")
     contradictions: List[str] = Field(description="List of contradictions found between documents")
     contradictory_segments: List[str] = Field(description="Specific text segments that contradict each other")
+    clause_analysis: List[ClauseAnalysis] = Field(description="Analysis of each clause")
+    missing_clauses: List[str] = Field(description="List of potentially missing clauses")
+    overall_risk_score: float = Field(description="Overall risk score (0-100)")
+    key_findings: List[str] = Field(description="Key findings and recommendations")
+    main_highlights: List[Highlight] = Field(description="Highlights for the main document")
+    target_highlights: List[Highlight] = Field(description="Highlights for the target document")
 
 class AIService:
     def __init__(self):
@@ -33,7 +53,7 @@ class AIService:
         try:
             self.llm = ChatGroq(
                 api_key=api_key,
-                model="llama-3.3-70b-versatile",  # Using mixtral model
+                model="llama-3.3-70b-versatile",
                 callback_manager=callback_manager,
                 verbose=True
             )
@@ -44,37 +64,53 @@ class AIService:
         
         self.parser = PydanticOutputParser(pydantic_object=DocumentAnalysis)
 
-    def analyze_documents(self, main_text: str, target_text: str) -> Dict:
+    def analyze_documents(self, main_text: str, target_text: str, main_blocks: List[dict], target_blocks: List[dict]) -> Dict:
         """
-        Analyze two documents for similarities and contradictions using LangChain with Groq.
+        Analyze two documents for similarities, contradictions, and legal implications using LangChain with Groq.
         """
         logger.info("Starting document analysis...")
         
         prompt = ChatPromptTemplate.from_messages([
-            ("system", """You are a document analysis expert. Analyze the given documents for similarities and contradictions.
+            ("system", """You are an expert legal document analyst. Analyze the given documents thoroughly for:
+            1. Similarities and contradictions
+            2. Risk assessment for each clause
+            3. Legal implications
+            4. Industry standard compliance
+            5. Missing clauses
+            6. Overall risk assessment
+            
+            For each contradiction or important clause, provide the exact location in the document.
             {format_instructions}"""),
-            ("user", """Analyze these two documents and provide:
-            1. Overall similarity percentage
-            2. List of contradictions found
-            3. Specific segments that contradict each other
+            ("user", """Analyze these two documents comprehensively:
 
             Main Document:
             {main_text}
 
             Target Document:
-            {target_text}""")
+            {target_text}
+
+            Consider:
+            - Legal precedents
+            - Industry best practices
+            - Potential risks and liabilities
+            - Missing or problematic clauses
+            - Recommendations for improvement
+
+            For each contradiction or important clause, identify its location in the document using the provided text blocks.
+            Main Document Blocks: {main_blocks}
+            Target Document Blocks: {target_blocks}""")
         ])
 
         try:
             logger.info("Creating analysis chain...")
-            # Create a runnable sequence using the pipe operator
             chain = prompt | self.llm | self.parser
 
             logger.info("Invoking analysis chain...")
-            # Invoke the chain with the input
             response = chain.invoke({
                 "main_text": main_text,
                 "target_text": target_text,
+                "main_blocks": main_blocks,
+                "target_blocks": target_blocks,
                 "format_instructions": self.parser.get_format_instructions()
             })
 
@@ -82,11 +118,16 @@ class AIService:
             return {
                 "similarity": response.similarity,
                 "contradictions": response.contradictions,
-                "contradictory_segments": response.contradictory_segments
+                "contradictory_segments": response.contradictory_segments,
+                "clause_analysis": [clause.dict() for clause in response.clause_analysis],
+                "missing_clauses": response.missing_clauses,
+                "overall_risk_score": response.overall_risk_score,
+                "key_findings": response.key_findings,
+                "main_highlights": [highlight.dict() for highlight in response.main_highlights],
+                "target_highlights": [highlight.dict() for highlight in response.target_highlights]
             }
         except Exception as e:
             logger.error(f"Error in document analysis: {str(e)}")
-            # Fallback parsing if the structured output fails
             return self._fallback_parse(str(e))
 
     def _fallback_parse(self, response: str) -> Dict:
@@ -98,10 +139,21 @@ class AIService:
         result = {
             "similarity": 0.0,
             "contradictions": [],
-            "contradictory_segments": []
+            "contradictory_segments": [],
+            "clause_analysis": [],
+            "missing_clauses": [],
+            "overall_risk_score": 0.0,
+            "key_findings": [],
+            "main_highlights": [],
+            "target_highlights": []
         }
 
+        current_section = None
         for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+
             if "similarity" in line.lower():
                 try:
                     result["similarity"] = float(line.split(":")[1].strip().replace("%", ""))
@@ -111,5 +163,14 @@ class AIService:
                 result["contradictions"].append(line.split(":")[1].strip())
             elif "segment" in line.lower():
                 result["contradictory_segments"].append(line.split(":")[1].strip())
+            elif "risk score" in line.lower():
+                try:
+                    result["overall_risk_score"] = float(line.split(":")[1].strip().replace("%", ""))
+                except:
+                    pass
+            elif "finding" in line.lower():
+                result["key_findings"].append(line.split(":")[1].strip())
+            elif "missing clause" in line.lower():
+                result["missing_clauses"].append(line.split(":")[1].strip())
 
         return result 

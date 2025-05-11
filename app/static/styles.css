@@ -1,11 +1,12 @@
 :root {
     --primary-color: #2563eb;
-    --secondary-color: #1e40af;
-    --background-color: #f8fafc;
-    --text-color: #1e293b;
-    --border-color: #e2e8f0;
-    --success-color: #22c55e;
+    --secondary-color: #1d4ed8;
+    --text-color: #1f2937;
+    --border-color: #e5e7eb;
     --error-color: #ef4444;
+    --success-color: #22c55e;
+    --warning-color: #f59e0b;
+    --background-color: #f8fafc;
 }
 
 * {
@@ -15,8 +16,8 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
     color: var(--text-color);
     background-color: var(--background-color);
 }
@@ -35,7 +36,12 @@ header {
 header h1 {
     font-size: 2.5rem;
     color: var(--primary-color);
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #64748b;
 }
 
 .upload-section {
@@ -73,17 +79,23 @@ header h1 {
 .file-label {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background-color: var(--primary-color);
-    color: white;
+    justify-content: center;
+    padding: 1rem;
+    background-color: var(--background-color);
+    border: 2px dashed var(--border-color);
     border-radius: 0.5rem;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.2s;
 }
 
 .file-label:hover {
-    background-color: var(--secondary-color);
+    border-color: var(--primary-color);
+    background-color: #f1f5f9;
+}
+
+.file-icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
 }
 
 .file-name {
@@ -133,13 +145,8 @@ header h1 {
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .results {
@@ -153,6 +160,38 @@ header h1 {
     margin-bottom: 2rem;
 }
 
+/* Risk Score Box */
+.risk-score-box {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 2rem;
+    background-color: #f8fafc;
+    border-radius: 0.5rem;
+}
+
+.risk-score-value {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 1rem 0;
+}
+
+.risk-score-gauge {
+    width: 200px;
+    height: 10px;
+    background-color: #e5e7eb;
+    border-radius: 5px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.gauge-fill {
+    height: 100%;
+    background-color: var(--primary-color);
+    transition: width 0.5s ease-in-out;
+}
+
+/* Similarity Box */
 .similarity-box {
     text-align: center;
     margin: 2rem 0;
@@ -167,23 +206,120 @@ header h1 {
     color: var(--primary-color);
 }
 
-.contradictions-box,
-.segments-box {
+/* Findings Box */
+.findings-box {
     margin: 2rem 0;
+    padding: 1.5rem;
+    background-color: #f8fafc;
+    border-radius: 0.5rem;
 }
 
-.contradictions-box h4,
-.segments-box h4 {
+.findings-box h4 {
     margin-bottom: 1rem;
     color: var(--text-color);
 }
 
-.contradictions-box ul,
+.findings-box ul {
+    list-style: none;
+}
+
+.findings-box li {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Clause Analysis Box */
+.clause-analysis-box {
+    margin: 2rem 0;
+}
+
+.clause-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.clause-item {
+    background-color: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid var(--primary-color);
+}
+
+.clause-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.risk-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.risk-badge.high {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.risk-badge.medium {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.risk-badge.low {
+    background-color: #dcfce7;
+    color: #16a34a;
+}
+
+/* Missing Clauses Box */
+.missing-clauses-box {
+    margin: 2rem 0;
+}
+
+.missing-clauses-box ul {
+    list-style: none;
+}
+
+.missing-clauses-box li {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    background-color: #f8fafc;
+    border-radius: 0.5rem;
+    border-left: 4px solid var(--warning-color);
+}
+
+/* Contradictions Box */
+.contradictions-box {
+    margin: 2rem 0;
+}
+
+.contradictions-box ul {
+    list-style: none;
+}
+
+.contradictions-box li {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    background-color: #f8fafc;
+    border-radius: 0.5rem;
+    border-left: 4px solid var(--error-color);
+}
+
+/* Segments Box */
+.segments-box {
+    margin: 2rem 0;
+}
+
 .segments-box ul {
     list-style: none;
 }
 
-.contradictions-box li,
 .segments-box li {
     padding: 1rem;
     margin-bottom: 0.5rem;
@@ -192,6 +328,7 @@ header h1 {
     border-left: 4px solid var(--error-color);
 }
 
+/* Download Section */
 .download-section {
     text-align: center;
     margin-top: 2rem;
@@ -203,10 +340,11 @@ header h1 {
     display: flex;
     gap: 1rem;
     justify-content: center;
-    margin-top: 1rem;
+    flex-wrap: wrap;
 }
 
 .download-btn {
+    display: inline-block;
     padding: 0.75rem 1.5rem;
     background-color: var(--primary-color);
     color: white;
@@ -221,4 +359,66 @@ header h1 {
 
 .hidden {
     display: none;
+}
+
+/* PDF Viewer Section */
+.pdf-viewer-section {
+    margin: 2rem 0;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.pdf-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.pdf-viewer {
+    background-color: #f8fafc;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.pdf-viewer h4 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.pdf-viewer-canvas {
+    width: 100%;
+    height: 800px;
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+}
+
+.pdf-viewer-canvas canvas {
+    width: 100%;
+    height: auto;
+}
+
+/* Highlight styles for contradictions */
+.highlight-contradiction {
+    background-color: rgba(239, 68, 68, 0.2);
+    border: 1px solid var(--error-color);
+    border-radius: 2px;
+    padding: 2px;
+}
+
+/* Responsive design for PDF viewer */
+@media (max-width: 1024px) {
+    .pdf-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .pdf-viewer-canvas {
+        height: 600px;
+    }
 }

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Contract Reviewer</title>
     <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </head>
 
 <body>
@@ -50,18 +51,64 @@
             </div>
 
             <div id="results" class="results hidden">
+                <!-- PDF Viewer Section -->
+                <div class="pdf-viewer-section">
+                    <h3>Document Comparison</h3>
+                    <div class="pdf-container">
+                        <div class="pdf-viewer">
+                            <h4>Main Document</h4>
+                            <div id="mainPdfViewer" class="pdf-viewer-canvas"></div>
+                        </div>
+                        <div class="pdf-viewer">
+                            <h4>Target Document</h4>
+                            <div id="targetPdfViewer" class="pdf-viewer-canvas"></div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="result-section">
                     <h3>Analysis Results</h3>
+                    
+                    <!-- Overall Risk Score -->
+                    <div class="risk-score-box">
+                        <h4>Overall Risk Score</h4>
+                        <div class="risk-score-value" id="riskScoreValue">0%</div>
+                        <div class="risk-score-gauge">
+                            <div class="gauge-fill" id="riskScoreGauge"></div>
+                        </div>
+                    </div>
+
+                    <!-- Similarity Section -->
                     <div class="similarity-box">
                         <h4>Similarity</h4>
                         <div class="similarity-value" id="similarityValue">0%</div>
                     </div>
 
+                    <!-- Key Findings -->
+                    <div class="findings-box">
+                        <h4>Key Findings</h4>
+                        <ul id="findingsList"></ul>
+                    </div>
+
+                    <!-- Clause Analysis -->
+                    <div class="clause-analysis-box">
+                        <h4>Clause Analysis</h4>
+                        <div id="clauseAnalysisList" class="clause-list"></div>
+                    </div>
+
+                    <!-- Missing Clauses -->
+                    <div class="missing-clauses-box">
+                        <h4>Missing Clauses</h4>
+                        <ul id="missingClausesList"></ul>
+                    </div>
+
+                    <!-- Contradictions -->
                     <div class="contradictions-box">
                         <h4>Contradictions Found</h4>
                         <ul id="contradictionsList"></ul>
                     </div>
 
+                    <!-- Contradictory Segments -->
                     <div class="segments-box">
                         <h4>Contradictory Segments</h4>
                         <ul id="segmentsList"></ul>
@@ -69,10 +116,11 @@
                 </div>
 
                 <div class="download-section">
-                    <h3>Download Highlighted Documents</h3>
+                    <h3>Download Analysis</h3>
                     <div class="download-buttons">
                         <a id="mainDownload" class="download-btn" download>Download Main Document</a>
                         <a id="targetDownload" class="download-btn" download>Download Target Document</a>
+                        <a id="analysisDownload" class="download-btn" download>Download Full Analysis</a>
                     </div>
                 </div>
             </div>

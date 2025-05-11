@@ -71,27 +71,15 @@ async def compare_documents(
         target_text, target_blocks = pdf_service.extract_text_from_pdf(str(target_path))
 
         # Analyze documents using AI
-        analysis_result = ai_service.analyze_documents(main_text, target_text)
+        analysis_result = ai_service.analyze_documents(main_text, target_text, main_blocks, target_blocks)
 
         # Highlight contradictions in both documents
         main_output = TEMP_DIR / "main_highlighted.pdf"
         target_output = TEMP_DIR / "target_highlighted.pdf"
 
-        # Find blocks that contain contradictory segments
-        main_contradictions = []
-        target_contradictions = []
-
-        for segment in analysis_result["contradictory_segments"]:
-            for block in main_blocks:
-                if segment.lower() in block["text"].lower():
-                    main_contradictions.append(block)
-            for block in target_blocks:
-                if segment.lower() in block["text"].lower():
-                    target_contradictions.append(block)
-
         # Create highlighted versions
-        pdf_service.highlight_contradictions(str(main_path), main_contradictions, str(main_output))
-        pdf_service.highlight_contradictions(str(target_path), target_contradictions, str(target_output))
+        pdf_service.highlight_contradictions(str(main_path), analysis_result["main_highlights"], str(main_output))
+        pdf_service.highlight_contradictions(str(target_path), analysis_result["target_highlights"], str(target_output))
 
         return {
             "analysis": analysis_result,
