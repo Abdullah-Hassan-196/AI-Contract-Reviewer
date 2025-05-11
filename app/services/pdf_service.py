@@ -36,21 +36,26 @@ class PDFService:
         return full_text.strip(), text_blocks
 
     @staticmethod
-    def highlight_contradictions(pdf_path: str, contradictions: List[dict], output_path: str):
+    def highlight_contradictions(pdf_path: str, highlights: List[dict], output_path: str):
         """
-        Highlight contradictions in the PDF file.
-        contradictions: List of dicts containing text and coordinates to highlight
+        Highlight contradictions in a PDF file.
         """
         doc = fitz.open(pdf_path)
         
-        for contradiction in contradictions:
-            page_num = contradiction["page"] - 1
-            page = doc[page_num]
-            
-            # Create highlight annotation
-            highlight = page.add_highlight_annot(contradiction["bbox"])
-            highlight.set_colors(stroke=(1, 0, 0))  # Red color
-            highlight.update()
+        for highlight in highlights:
+            page_num = highlight["page"] - 1  # Convert to 0-based index
+            if page_num < len(doc):
+                page = doc[page_num]
+                bbox = highlight["bbox"]
+                
+                # Create a highlight annotation
+                annot = page.add_highlight_annot(bbox)
+                if annot:
+                    # Set highlight properties
+                    annot.set_colors(stroke=(1, 0, 0))  # Red color
+                    annot.set_opacity(0.3)  # Semi-transparent
+                    annot.update()
         
+        # Save the modified PDF
         doc.save(output_path)
         doc.close() 
