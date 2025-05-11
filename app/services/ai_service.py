@@ -68,6 +68,20 @@ class AIService:
         """
         Analyze two documents for similarities, contradictions, and legal implications using LangChain with Groq.
         """
+        # Literal check for identical content
+        if main_text.strip() == target_text.strip():
+            return {
+                "similarity": 100.0,
+                "contradictions": [],
+                "contradictory_segments": [],
+                "clause_analysis": [],
+                "missing_clauses": [],
+                "overall_risk_score": 0.0,
+                "key_findings": ["The documents are identical."],
+                "main_highlights": [],
+                "target_highlights": []
+            }
+        
         logger.info("Starting document analysis...")
         
         prompt = ChatPromptTemplate.from_messages([
