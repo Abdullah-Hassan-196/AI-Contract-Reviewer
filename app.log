@@ -364,3 +364,518 @@ AttributeError: 'PDFService' object has no attribute 'highlight_contradictions'
 2025-05-11 20:31:04,013 - app.services.pdf_service - INFO - Added highlight on page 2 at (54.0, 73.98535919189453, 455.54351806640625, 84.88465881347656)
 2025-05-11 20:31:04,014 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/target_highlighted_aca74dcf.pdf
 2025-05-11 20:31:04,014 - main - INFO - Analysis complete with 6 contradictions
+2025-05-11 20:36:43,917 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:36:43,922 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:37:02,312 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:37:02,319 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:37:20,663 - main - INFO - Files saved: temp/main_c1e5dc90_f1.pdf, temp/target_c951b64e_f2.pdf
+2025-05-11 20:37:20,664 - app.services.pdf_service - INFO - Extracting text from PDF: temp/main_c1e5dc90_f1.pdf
+2025-05-11 20:37:20,675 - app.services.pdf_service - INFO - Extracted 38 text blocks from PDF
+2025-05-11 20:37:20,676 - app.services.pdf_service - INFO - Extracting text from PDF: temp/target_c951b64e_f2.pdf
+2025-05-11 20:37:20,682 - app.services.pdf_service - INFO - Extracted 34 text blocks from PDF
+2025-05-11 20:37:20,684 - app.services.ai_service - INFO - Starting document analysis
+2025-05-11 20:37:32,206 - app.services.ai_service - INFO - Successfully parsed 7 contradictions
+2025-05-11 20:37:32,206 - app.services.ai_service - INFO - Found 7 potential contradictions
+2025-05-11 20:37:32,206 - app.services.pdf_service - INFO - Searching for text: 'will remain in effect until August 20, 2025...' in 38 blocks
+2025-05-11 20:37:32,207 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:37:32,207 - app.services.pdf_service - INFO - Searching for text: 'conclude on September 30, 2025...' in 34 blocks
+2025-05-11 20:37:32,207 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:37:32,207 - app.services.ai_service - WARNING - Could not find text blocks for contradiction: will remain in effect until Au...
+2025-05-11 20:37:32,207 - app.services.pdf_service - INFO - Searching for text: 'a fixed fee of $15,000...' in 38 blocks
+2025-05-11 20:37:32,207 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:37:32,207 - app.services.pdf_service - INFO - Searching for text: 'pay the Freelancer $18,000...' in 34 blocks
+2025-05-11 20:37:32,207 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:37:32,208 - app.services.ai_service - INFO - Processed contradiction: 'a fixed fee of $15,000...' vs 'pay the Freelancer $18,000...'
+2025-05-11 20:37:32,208 - app.services.pdf_service - INFO - Searching for text: 'Milestone 2 (July 10) – $5,000 Milestone 3 (August...' in 38 blocks
+2025-05-11 20:37:32,208 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:37:32,208 - app.services.pdf_service - INFO - Searching for text: 'Milestone 2 (July 5) – $4,500 Milestone 3 (August ...' in 34 blocks
+2025-05-11 20:37:32,208 - app.services.pdf_service - INFO - Found 3 matching blocks
+2025-05-11 20:37:32,208 - app.services.ai_service - WARNING - Could not find text blocks for contradiction: Milestone 2 (July 10) – $5,000...
+2025-05-11 20:37:32,208 - app.services.pdf_service - INFO - Searching for text: 'All code, deliverables, and documentation produced...' in 38 blocks
+2025-05-11 20:37:32,208 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:37:32,209 - app.services.pdf_service - INFO - Searching for text: 'Freelancer retains the right to display portions o...' in 34 blocks
+2025-05-11 20:37:32,209 - app.services.pdf_service - INFO - Found 3 matching blocks
+2025-05-11 20:37:32,209 - app.services.ai_service - INFO - Processed contradiction: 'All code, deliverables, and do...' vs 'Freelancer retains the right t...'
+2025-05-11 20:37:32,209 - app.services.pdf_service - INFO - Searching for text: 'Either party may terminate this Agreement with 14 ...' in 38 blocks
+2025-05-11 20:37:32,209 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:37:32,209 - app.services.pdf_service - INFO - Searching for text: 'Either party may terminate with 30 days’ written n...' in 34 blocks
+2025-05-11 20:37:32,209 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:37:32,209 - app.services.ai_service - INFO - Processed contradiction: 'Either party may terminate thi...' vs 'Either party may terminate wit...'
+2025-05-11 20:37:32,209 - app.services.pdf_service - INFO - Searching for text: 'If terminated early, Contractor will be paid for a...' in 38 blocks
+2025-05-11 20:37:32,210 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:37:32,210 - app.services.pdf_service - INFO - Searching for text: 'Upon termination, Client will compensate Freelance...' in 34 blocks
+2025-05-11 20:37:32,210 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:37:32,210 - app.services.ai_service - INFO - Processed contradiction: 'If terminated early, Contracto...' vs 'Upon termination, Client will ...'
+2025-05-11 20:37:32,210 - app.services.pdf_service - INFO - Searching for text: 'This Agreement shall be governed by and construed ...' in 38 blocks
+2025-05-11 20:37:32,210 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:37:32,210 - app.services.pdf_service - INFO - Searching for text: 'This Agreement shall be governed by the laws of th...' in 34 blocks
+2025-05-11 20:37:32,210 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:37:32,211 - app.services.ai_service - INFO - Processed contradiction: 'This Agreement shall be govern...' vs 'This Agreement shall be govern...'
+2025-05-11 20:37:45,987 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp/main_c1e5dc90_f1.pdf
+2025-05-11 20:37:45,990 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 317.94537353515625, 533.3474731445312, 328.84466552734375)
+2025-05-11 20:37:45,991 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 549.0653686523438, 557.4285278320312, 559.9646606445312)
+2025-05-11 20:37:45,993 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 651.7853393554688, 503.38079833984375, 662.6846313476562)
+2025-05-11 20:37:45,996 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 664.6253662109375, 515.4768676757812, 675.524658203125)
+2025-05-11 20:37:45,998 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 703.1453247070312, 557.4285278320312, 714.0446166992188)
+2025-05-11 20:37:45,999 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/main_highlighted_a0967b57.pdf
+2025-05-11 20:37:45,999 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp/target_c951b64e_f2.pdf
+2025-05-11 20:37:46,002 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 382.1453552246094, 449.43994140625, 393.0446472167969)
+2025-05-11 20:37:46,004 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 549.0653686523438, 557.4285278320312, 559.9646606445312)
+2025-05-11 20:37:46,005 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 664.6253662109375, 545.4435424804688, 675.524658203125)
+2025-05-11 20:37:46,008 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 677.46533203125, 509.484375, 688.3646240234375)
+2025-05-11 20:37:46,010 - app.services.pdf_service - INFO - Added highlight on page 2 at (54.0, 73.98535919189453, 455.54351806640625, 84.88465881347656)
+2025-05-11 20:37:46,011 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/target_highlighted_74cb16ef.pdf
+2025-05-11 20:37:46,011 - main - INFO - Analysis complete with 5 contradictions
+2025-05-11 20:39:30,667 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:39:30,671 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:39:48,303 - main - INFO - Files saved: temp/main_39a38dac_f1.pdf, temp/target_277ea4ce_f2.pdf
+2025-05-11 20:39:48,303 - app.services.pdf_service - INFO - Extracting text from PDF: temp/main_39a38dac_f1.pdf
+2025-05-11 20:39:48,312 - app.services.pdf_service - INFO - Extracted 38 text blocks from PDF
+2025-05-11 20:39:48,312 - app.services.pdf_service - INFO - Extracting text from PDF: temp/target_277ea4ce_f2.pdf
+2025-05-11 20:39:48,318 - app.services.pdf_service - INFO - Extracted 34 text blocks from PDF
+2025-05-11 20:39:48,319 - app.services.ai_service - INFO - Starting document analysis
+2025-05-11 20:39:59,809 - app.services.ai_service - INFO - Successfully parsed 9 contradictions
+2025-05-11 20:39:59,809 - app.services.ai_service - INFO - Found 9 potential contradictions
+2025-05-11 20:39:59,809 - app.services.pdf_service - INFO - Searching for text: 'will remain in effect until August 20, 2025...' in 38 blocks
+2025-05-11 20:39:59,809 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:39:59,810 - app.services.pdf_service - INFO - Searching for text: 'conclude on September 30, 2025...' in 34 blocks
+2025-05-11 20:39:59,810 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:39:59,810 - app.services.ai_service - WARNING - Could not find text blocks for contradiction: will remain in effect until Au...
+2025-05-11 20:39:59,810 - app.services.pdf_service - INFO - Searching for text: 'a fixed fee of $15,000...' in 38 blocks
+2025-05-11 20:39:59,810 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:39:59,810 - app.services.pdf_service - INFO - Searching for text: 'pay the Freelancer $18,000...' in 34 blocks
+2025-05-11 20:39:59,810 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:39:59,811 - app.services.ai_service - INFO - Processed contradiction: 'a fixed fee of $15,000...' vs 'pay the Freelancer $18,000...'
+2025-05-11 20:39:59,811 - app.services.pdf_service - INFO - Searching for text: 'Milestone 2 (July 10) – $5,000...' in 38 blocks
+2025-05-11 20:39:59,811 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:39:59,811 - app.services.pdf_service - INFO - Searching for text: 'Milestone 2 (July 5) – $4,500...' in 34 blocks
+2025-05-11 20:39:59,811 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:39:59,811 - app.services.ai_service - WARNING - Could not find text blocks for contradiction: Milestone 2 (July 10) – $5,000...
+2025-05-11 20:39:59,811 - app.services.pdf_service - INFO - Searching for text: 'Milestone 3 (August 10) – $5,000...' in 38 blocks
+2025-05-11 20:39:59,811 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:39:59,812 - app.services.pdf_service - INFO - Searching for text: 'Milestone 3 (August 5) – $4,500...' in 34 blocks
+2025-05-11 20:39:59,812 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:39:59,812 - app.services.ai_service - WARNING - Could not find text blocks for contradiction: Milestone 3 (August 10) – $5,0...
+2025-05-11 20:39:59,812 - app.services.pdf_service - INFO - Searching for text: 'Milestone 3 (August 10) – Testing, handover, docum...' in 38 blocks
+2025-05-11 20:39:59,812 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:39:59,812 - app.services.pdf_service - INFO - Searching for text: 'Final Delivery (September 5) – $4,500...' in 34 blocks
+2025-05-11 20:39:59,812 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:39:59,812 - app.services.ai_service - INFO - Processed contradiction: 'Milestone 3 (August 10) – Test...' vs 'Final Delivery (September 5) –...'
+2025-05-11 20:39:59,813 - app.services.pdf_service - INFO - Searching for text: 'All code, deliverables, and documentation produced...' in 38 blocks
+2025-05-11 20:39:59,813 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:39:59,813 - app.services.pdf_service - INFO - Searching for text: 'Freelancer retains the right to display portions o...' in 34 blocks
+2025-05-11 20:39:59,813 - app.services.pdf_service - INFO - Found 3 matching blocks
+2025-05-11 20:39:59,813 - app.services.ai_service - INFO - Processed contradiction: 'All code, deliverables, and do...' vs 'Freelancer retains the right t...'
+2025-05-11 20:39:59,813 - app.services.pdf_service - INFO - Searching for text: 'Either party may terminate this Agreement with 14 ...' in 38 blocks
+2025-05-11 20:39:59,813 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:39:59,813 - app.services.pdf_service - INFO - Searching for text: 'Either party may terminate with 30 days’ written n...' in 34 blocks
+2025-05-11 20:39:59,814 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:39:59,814 - app.services.ai_service - INFO - Processed contradiction: 'Either party may terminate thi...' vs 'Either party may terminate wit...'
+2025-05-11 20:39:59,814 - app.services.pdf_service - INFO - Searching for text: 'If terminated early, Contractor will be paid for a...' in 38 blocks
+2025-05-11 20:39:59,814 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:39:59,814 - app.services.pdf_service - INFO - Searching for text: 'Upon termination, Client will compensate Freelance...' in 34 blocks
+2025-05-11 20:39:59,814 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:39:59,814 - app.services.ai_service - INFO - Processed contradiction: 'If terminated early, Contracto...' vs 'Upon termination, Client will ...'
+2025-05-11 20:39:59,814 - app.services.pdf_service - INFO - Searching for text: 'This Agreement shall be governed by and construed ...' in 38 blocks
+2025-05-11 20:39:59,814 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:39:59,815 - app.services.pdf_service - INFO - Searching for text: 'This Agreement shall be governed by the laws of th...' in 34 blocks
+2025-05-11 20:39:59,815 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:39:59,815 - app.services.ai_service - INFO - Processed contradiction: 'This Agreement shall be govern...' vs 'This Agreement shall be govern...'
+2025-05-11 20:40:11,284 - app.services.pdf_service - INFO - Highlighting 6 contradictions in temp/main_39a38dac_f1.pdf
+2025-05-11 20:40:11,287 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 317.94537353515625, 533.3474731445312, 328.84466552734375)
+2025-05-11 20:40:11,289 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 407.8253479003906, 455.54351806640625, 418.7246398925781)
+2025-05-11 20:40:11,291 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 549.0653686523438, 557.4285278320312, 559.9646606445312)
+2025-05-11 20:40:11,293 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 651.7853393554688, 503.38079833984375, 662.6846313476562)
+2025-05-11 20:40:11,294 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 664.6253662109375, 515.4768676757812, 675.524658203125)
+2025-05-11 20:40:11,296 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 703.1453247070312, 557.4285278320312, 714.0446166992188)
+2025-05-11 20:40:11,297 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/main_highlighted_c43c8890.pdf
+2025-05-11 20:40:11,297 - app.services.pdf_service - INFO - Highlighting 6 contradictions in temp/target_277ea4ce_f2.pdf
+2025-05-11 20:40:11,299 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 382.1453552246094, 449.43994140625, 393.0446472167969)
+2025-05-11 20:40:11,301 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 484.8653869628906, 275.6321716308594, 495.7646789550781)
+2025-05-11 20:40:11,304 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 549.0653686523438, 557.4285278320312, 559.9646606445312)
+2025-05-11 20:40:11,307 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 664.6253662109375, 545.4435424804688, 675.524658203125)
+2025-05-11 20:40:11,309 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 677.46533203125, 509.484375, 688.3646240234375)
+2025-05-11 20:40:11,312 - app.services.pdf_service - INFO - Added highlight on page 2 at (54.0, 73.98535919189453, 455.54351806640625, 84.88465881347656)
+2025-05-11 20:40:11,313 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/target_highlighted_4370fac7.pdf
+2025-05-11 20:40:11,313 - main - INFO - Analysis complete with 6 contradictions
+2025-05-11 20:43:01,963 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:43:01,968 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:43:23,315 - main - INFO - Files saved: temp/main_addf196b_f1.pdf, temp/target_b7d6e76b_f2.pdf
+2025-05-11 20:43:23,316 - app.services.pdf_service - INFO - Extracting text from PDF: temp/main_addf196b_f1.pdf
+2025-05-11 20:43:23,320 - app.services.pdf_service - INFO - Extracted 38 text blocks from PDF
+2025-05-11 20:43:23,320 - app.services.pdf_service - INFO - Extracting text from PDF: temp/target_b7d6e76b_f2.pdf
+2025-05-11 20:43:23,325 - app.services.pdf_service - INFO - Extracted 34 text blocks from PDF
+2025-05-11 20:43:23,325 - app.services.ai_service - INFO - Starting document analysis
+2025-05-11 20:43:40,209 - app.services.ai_service - INFO - Successfully parsed 10 contradictions
+2025-05-11 20:43:40,209 - app.services.ai_service - INFO - Found 10 potential contradictions
+2025-05-11 20:43:40,209 - app.services.pdf_service - INFO - Searching for text: 'This Agreement will commence on May 20, 2025, and ...' in 38 blocks
+2025-05-11 20:43:40,209 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:43:40,209 - app.services.pdf_service - INFO - Searching for text: 'The term of this agreement shall begin on May 20, ...' in 34 blocks
+2025-05-11 20:43:40,210 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:43:40,210 - app.services.ai_service - INFO - Processed contradiction: 'This Agreement will commence o...' vs 'The term of this agreement sha...'
+2025-05-11 20:43:40,210 - app.services.pdf_service - INFO - Searching for text: 'Company shall pay Contractor a fixed fee of $15,00...' in 38 blocks
+2025-05-11 20:43:40,210 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:43:40,211 - app.services.pdf_service - INFO - Searching for text: 'Client agrees to pay the Freelancer $18,000...' in 34 blocks
+2025-05-11 20:43:40,211 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:43:40,211 - app.services.ai_service - INFO - Processed contradiction: 'Company shall pay Contractor a...' vs 'Client agrees to pay the Freel...'
+2025-05-11 20:43:40,211 - app.services.pdf_service - INFO - Searching for text: 'disbursed in the following milestones: Milestone 1...' in 38 blocks
+2025-05-11 20:43:40,212 - app.services.pdf_service - INFO - Found 4 matching blocks
+2025-05-11 20:43:40,212 - app.services.pdf_service - INFO - Searching for text: 'in four installments: Milestone 1 (June 10) – $4,5...' in 34 blocks
+2025-05-11 20:43:40,212 - app.services.pdf_service - INFO - Found 4 matching blocks
+2025-05-11 20:43:40,212 - app.services.ai_service - INFO - Processed contradiction: 'disbursed in the following mil...' vs 'in four installments: Mileston...'
+2025-05-11 20:43:40,212 - app.services.pdf_service - INFO - Searching for text: 'Milestone 2 (July 10) – Frontend integration and d...' in 38 blocks
+2025-05-11 20:43:40,213 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:43:40,213 - app.services.pdf_service - INFO - Searching for text: 'Milestone 2 (July 5) – $4,500...' in 34 blocks
+2025-05-11 20:43:40,213 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:43:40,213 - app.services.ai_service - INFO - Processed contradiction: 'Milestone 2 (July 10) – Fronte...' vs 'Milestone 2 (July 5) – $4,500...'
+2025-05-11 20:43:40,213 - app.services.pdf_service - INFO - Searching for text: 'Milestone 3 (August 10) – Testing, handover, docum...' in 38 blocks
+2025-05-11 20:43:40,214 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:43:40,214 - app.services.pdf_service - INFO - Searching for text: 'Milestone 3 (August 5) – $4,500...' in 34 blocks
+2025-05-11 20:43:40,214 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:43:40,214 - app.services.ai_service - INFO - Processed contradiction: 'Milestone 3 (August 10) – Test...' vs 'Milestone 3 (August 5) – $4,50...'
+2025-05-11 20:43:40,214 - app.services.pdf_service - INFO - Searching for text: 'Payments shall be made via ACH transfer to the ban...' in 38 blocks
+2025-05-11 20:43:40,215 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:43:40,215 - app.services.pdf_service - INFO - Searching for text: 'Invoices are due within 7 business days from submi...' in 34 blocks
+2025-05-11 20:43:40,215 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:43:40,215 - app.services.ai_service - INFO - Processed contradiction: 'Payments shall be made via ACH...' vs 'Invoices are due within 7 busi...'
+2025-05-11 20:43:40,216 - app.services.pdf_service - INFO - Searching for text: 'All code, deliverables, and documentation produced...' in 38 blocks
+2025-05-11 20:43:40,216 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:43:40,216 - app.services.pdf_service - INFO - Searching for text: 'Freelancer retains the right to display portions o...' in 34 blocks
+2025-05-11 20:43:40,216 - app.services.pdf_service - INFO - Found 3 matching blocks
+2025-05-11 20:43:40,216 - app.services.ai_service - INFO - Processed contradiction: 'All code, deliverables, and do...' vs 'Freelancer retains the right t...'
+2025-05-11 20:43:40,217 - app.services.pdf_service - INFO - Searching for text: 'Either party may terminate this Agreement with 14 ...' in 38 blocks
+2025-05-11 20:43:40,219 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:43:40,222 - app.services.pdf_service - INFO - Searching for text: 'Either party may terminate with 30 days’ written n...' in 34 blocks
+2025-05-11 20:43:40,224 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:43:40,224 - app.services.ai_service - INFO - Processed contradiction: 'Either party may terminate thi...' vs 'Either party may terminate wit...'
+2025-05-11 20:43:40,225 - app.services.pdf_service - INFO - Searching for text: 'If terminated early, Contractor will be paid for a...' in 38 blocks
+2025-05-11 20:43:40,225 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:43:40,226 - app.services.pdf_service - INFO - Searching for text: 'Upon termination, Client will compensate Freelance...' in 34 blocks
+2025-05-11 20:43:40,228 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:43:40,229 - app.services.ai_service - INFO - Processed contradiction: 'If terminated early, Contracto...' vs 'Upon termination, Client will ...'
+2025-05-11 20:43:40,229 - app.services.pdf_service - INFO - Searching for text: 'This Agreement shall be governed by and construed ...' in 38 blocks
+2025-05-11 20:43:40,230 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:43:40,230 - app.services.pdf_service - INFO - Searching for text: 'This Agreement shall be governed by the laws of th...' in 34 blocks
+2025-05-11 20:43:40,231 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:43:40,233 - app.services.ai_service - INFO - Processed contradiction: 'This Agreement shall be govern...' vs 'This Agreement shall be govern...'
+2025-05-11 20:43:57,082 - app.services.pdf_service - INFO - Highlighting 10 contradictions in temp/main_addf196b_f1.pdf
+2025-05-11 20:43:57,086 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 266.5853576660156, 557.4285278320312, 277.4846496582031)
+2025-05-11 20:43:57,092 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 317.94537353515625, 533.3474731445312, 328.84466552734375)
+2025-05-11 20:43:57,095 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 330.7853698730469, 119.91734313964844, 341.6846618652344)
+2025-05-11 20:43:57,098 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 382.1453552246094, 461.5360107421875, 393.0446472167969)
+2025-05-11 20:43:57,102 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 407.8253479003906, 455.54351806640625, 418.7246398925781)
+2025-05-11 20:43:57,108 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 433.5053405761719, 509.484375, 444.4046325683594)
+2025-05-11 20:43:57,111 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 549.0653686523438, 557.4285278320312, 559.9646606445312)
+2025-05-11 20:43:57,112 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 651.7853393554688, 503.38079833984375, 662.6846313476562)
+2025-05-11 20:43:57,114 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 664.6253662109375, 515.4768676757812, 675.524658203125)
+2025-05-11 20:43:57,116 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 703.1453247070312, 557.4285278320312, 714.0446166992188)
+2025-05-11 20:43:57,117 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/main_highlighted_0bde2ead.pdf
+2025-05-11 20:43:57,118 - app.services.pdf_service - INFO - Highlighting 10 contradictions in temp/target_b7d6e76b_f2.pdf
+2025-05-11 20:43:57,119 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 330.7853698730469, 545.4435424804688, 341.6846618652344)
+2025-05-11 20:43:57,121 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 382.1453552246094, 449.43994140625, 393.0446472167969)
+2025-05-11 20:43:57,123 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 407.8253479003906, 233.78732299804688, 418.7246398925781)
+2025-05-11 20:43:57,125 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 433.5053405761719, 227.79483032226562, 444.4046325683594)
+2025-05-11 20:43:57,127 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 459.1853332519531, 239.77981567382812, 470.0846252441406)
+2025-05-11 20:43:57,129 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 510.5453796386719, 389.5065612792969, 521.4446411132812)
+2025-05-11 20:43:57,131 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 549.0653686523438, 557.4285278320312, 559.9646606445312)
+2025-05-11 20:43:57,132 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 664.6253662109375, 545.4435424804688, 675.524658203125)
+2025-05-11 20:43:57,135 - app.services.pdf_service - INFO - Added highlight on page 1 at (54.0, 677.46533203125, 509.484375, 688.3646240234375)
+2025-05-11 20:43:57,138 - app.services.pdf_service - INFO - Added highlight on page 2 at (54.0, 73.98535919189453, 455.54351806640625, 84.88465881347656)
+2025-05-11 20:43:57,139 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/target_highlighted_e1994c5d.pdf
+2025-05-11 20:43:57,141 - main - INFO - Analysis complete with 10 contradictions
+2025-05-11 20:46:28,477 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:46:28,483 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:46:32,156 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:46:32,162 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:46:55,553 - main - INFO - Files saved: temp/main_7ba2fd8e_f1.pdf, temp/target_3e664ae9_f2.pdf
+2025-05-11 20:46:55,553 - app.services.pdf_service - INFO - Extracting text from PDF: temp/main_7ba2fd8e_f1.pdf
+2025-05-11 20:46:55,558 - app.services.pdf_service - INFO - Extracted 38 text blocks from PDF
+2025-05-11 20:46:55,558 - app.services.pdf_service - INFO - Extracting text from PDF: temp/target_3e664ae9_f2.pdf
+2025-05-11 20:46:55,562 - app.services.pdf_service - INFO - Extracted 34 text blocks from PDF
+2025-05-11 20:46:55,562 - app.services.ai_service - INFO - Starting document analysis
+2025-05-11 20:47:15,324 - app.services.ai_service - INFO - Successfully parsed 9 contradictions
+2025-05-11 20:47:15,324 - app.services.ai_service - INFO - Found 9 potential contradictions
+2025-05-11 20:47:15,325 - app.services.pdf_service - INFO - Searching for text: 'will remain in effect until August 20, 2025...' in 38 blocks
+2025-05-11 20:47:15,325 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:47:15,325 - app.services.pdf_service - INFO - Searching for text: 'conclude on September 30, 2025...' in 34 blocks
+2025-05-11 20:47:15,325 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:47:15,326 - app.services.ai_service - WARNING - Could not find text blocks for contradiction: will remain in effect until Au...
+2025-05-11 20:47:15,326 - app.services.pdf_service - INFO - Searching for text: 'pay Contractor a fixed fee of $15,000...' in 38 blocks
+2025-05-11 20:47:15,326 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:47:15,327 - app.services.pdf_service - INFO - Searching for text: 'pay the Freelancer $18,000...' in 34 blocks
+2025-05-11 20:47:15,327 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:47:15,327 - app.services.ai_service - INFO - Processed contradiction: 'pay Contractor a fixed fee of ...' vs 'pay the Freelancer $18,000...'
+2025-05-11 20:47:15,328 - app.services.pdf_service - INFO - Searching for text: 'Milestone 2 (July 10) – $5,000...' in 38 blocks
+2025-05-11 20:47:15,328 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:47:15,328 - app.services.pdf_service - INFO - Searching for text: 'Milestone 2 (July 5) – $4,500...' in 34 blocks
+2025-05-11 20:47:15,328 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:47:15,329 - app.services.ai_service - WARNING - Could not find text blocks for contradiction: Milestone 2 (July 10) – $5,000...
+2025-05-11 20:47:15,329 - app.services.pdf_service - INFO - Searching for text: 'Milestone 3 (August 10) – $5,000...' in 38 blocks
+2025-05-11 20:47:15,329 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:47:15,330 - app.services.pdf_service - INFO - Searching for text: 'Milestone 3 (August 5) – $4,500...' in 34 blocks
+2025-05-11 20:47:15,330 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:47:15,331 - app.services.ai_service - WARNING - Could not find text blocks for contradiction: Milestone 3 (August 10) – $5,0...
+2025-05-11 20:47:15,331 - app.services.pdf_service - INFO - Searching for text: 'Milestone 3 (August 10) – $5,000...' in 38 blocks
+2025-05-11 20:47:15,331 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:47:15,332 - app.services.pdf_service - INFO - Searching for text: 'Final Delivery (September 5) – $4,500...' in 34 blocks
+2025-05-11 20:47:15,332 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:47:15,334 - app.services.ai_service - WARNING - Could not find text blocks for contradiction: Milestone 3 (August 10) – $5,0...
+2025-05-11 20:47:15,334 - app.services.pdf_service - INFO - Searching for text: 'All code, deliverables, and documentation produced...' in 38 blocks
+2025-05-11 20:47:15,335 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:47:15,335 - app.services.pdf_service - INFO - Searching for text: 'Freelancer retains the right to display portions o...' in 34 blocks
+2025-05-11 20:47:15,335 - app.services.pdf_service - INFO - Found 3 matching blocks
+2025-05-11 20:47:15,336 - app.services.ai_service - INFO - Processed contradiction: 'All code, deliverables, and do...' vs 'Freelancer retains the right t...'
+2025-05-11 20:47:15,336 - app.services.pdf_service - INFO - Searching for text: 'terminate this Agreement with 14 days’ written not...' in 38 blocks
+2025-05-11 20:47:15,337 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:47:15,338 - app.services.pdf_service - INFO - Searching for text: 'terminate with 30 days’ written notice....' in 34 blocks
+2025-05-11 20:47:15,338 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:47:15,339 - app.services.ai_service - INFO - Processed contradiction: 'terminate this Agreement with ...' vs 'terminate with 30 days’ writte...'
+2025-05-11 20:47:15,340 - app.services.pdf_service - INFO - Searching for text: 'If terminated early, Contractor will be paid for a...' in 38 blocks
+2025-05-11 20:47:15,341 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:47:15,341 - app.services.pdf_service - INFO - Searching for text: 'Upon termination, Client will compensate Freelance...' in 34 blocks
+2025-05-11 20:47:15,341 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:47:15,342 - app.services.ai_service - INFO - Processed contradiction: 'If terminated early, Contracto...' vs 'Upon termination, Client will ...'
+2025-05-11 20:47:15,342 - app.services.pdf_service - INFO - Searching for text: 'governed by and construed in accordance with the l...' in 38 blocks
+2025-05-11 20:47:15,344 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:47:15,344 - app.services.pdf_service - INFO - Searching for text: 'governed by the laws of the State of Texas....' in 34 blocks
+2025-05-11 20:47:15,344 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:47:15,345 - app.services.ai_service - INFO - Processed contradiction: 'governed by and construed in a...' vs 'governed by the laws of the St...'
+2025-05-11 20:47:27,930 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp/main_7ba2fd8e_f1.pdf
+2025-05-11 20:47:27,935 - app.services.pdf_service - INFO - Highlighted 'Company shall pay Contractor a fixed fee of $15,000, disbursed in the following' on page 1 at Rect(54.0, 317.94537353515625, 527.4618530273438, 328.84466552734375)
+2025-05-11 20:47:27,940 - app.services.pdf_service - INFO - Highlighted 'All code, deliverables, and documentation produced under this Agreement shall be the' on page 1 at Rect(54.0, 549.0653686523438, 557.4285278320312, 559.9646606445312)
+2025-05-11 20:47:27,944 - app.services.pdf_service - INFO - Highlighted 'Either party may terminate this Agreement with 14 days’ written notice. If' on page 1 at Rect(54.0, 651.7853393554688, 497.49517822265625, 662.6846313476562)
+2025-05-11 20:47:27,948 - app.services.pdf_service - INFO - Highlighted 'terminated early, Contractor will be paid for approved, completed milestones.' on page 1 at Rect(54.0, 664.6253662109375, 515.4768676757812, 675.524658203125)
+2025-05-11 20:47:27,949 - app.services.pdf_service - INFO - Highlighted 'State of California.' on page 2 at Rect(54.0, 73.98535919189453, 173.85394287109375, 84.88465881347656)
+2025-05-11 20:47:27,950 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/main_highlighted_cd69a9d8.pdf
+2025-05-11 20:47:27,950 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp/target_3e664ae9_f2.pdf
+2025-05-11 20:47:27,955 - app.services.pdf_service - INFO - Highlighted 'Client agrees to pay the Freelancer $18,000, in four installments:' on page 1 at Rect(54.0, 382.1453552246094, 449.43994140625, 393.0446472167969)
+2025-05-11 20:47:27,959 - app.services.pdf_service - INFO - Highlighted 'Freelancer retains the right to display portions of the work (excluding confidential' on page 1 at Rect(54.0, 549.0653686523438, 557.4285278320312, 559.9646606445312)
+2025-05-11 20:47:27,962 - app.services.pdf_service - INFO - Highlighted 'Either party may terminate with 30 days’ written notice. Upon termination, Client' on page 1 at Rect(54.0, 664.6253662109375, 539.4510498046875, 675.524658203125)
+2025-05-11 20:47:27,965 - app.services.pdf_service - INFO - Highlighted 'will compensate Freelancer for work completed and any non-recoverable costs.' on page 1 at Rect(54.0, 677.46533203125, 509.484375, 688.3646240234375)
+2025-05-11 20:47:27,968 - app.services.pdf_service - INFO - Highlighted 'This Agreement shall be governed by the laws of the State of Texas.' on page 2 at Rect(54.0, 73.98535919189453, 455.54351806640625, 84.88465881347656)
+2025-05-11 20:47:27,969 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/target_highlighted_5926f479.pdf
+2025-05-11 20:47:27,969 - main - INFO - Analysis complete with 5 contradictions
+2025-05-11 20:49:36,149 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:49:36,154 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:50:08,544 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:50:08,548 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:50:11,002 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:50:11,007 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:50:31,055 - main - INFO - Files saved: temp/main_5350edc3_f1.pdf, temp/target_5b11273f_f2.pdf
+2025-05-11 20:50:31,055 - app.services.pdf_service - INFO - Extracting text from PDF: temp/main_5350edc3_f1.pdf
+2025-05-11 20:50:31,066 - app.services.pdf_service - INFO - Extracted 38 text blocks from PDF
+2025-05-11 20:50:31,066 - app.services.pdf_service - INFO - Extracting text from PDF: temp/target_5b11273f_f2.pdf
+2025-05-11 20:50:31,075 - app.services.pdf_service - INFO - Extracted 34 text blocks from PDF
+2025-05-11 20:50:31,075 - app.services.ai_service - INFO - Starting document analysis
+2025-05-11 20:50:52,982 - app.services.ai_service - INFO - Successfully parsed 10 contradictions
+2025-05-11 20:50:52,982 - app.services.ai_service - INFO - Found 10 potential contradictions
+2025-05-11 20:50:52,982 - app.services.pdf_service - INFO - Searching for text: 'will remain in effect until August 20, 2025...' in 38 blocks
+2025-05-11 20:50:52,982 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:50:52,983 - app.services.pdf_service - INFO - Searching for text: 'conclude on September 30, 2025...' in 34 blocks
+2025-05-11 20:50:52,983 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:50:52,983 - app.services.ai_service - WARNING - Could not find text blocks for contradiction: will remain in effect until Au...
+2025-05-11 20:50:52,983 - app.services.pdf_service - INFO - Searching for text: 'a fixed fee of $15,000...' in 38 blocks
+2025-05-11 20:50:52,983 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:50:52,983 - app.services.pdf_service - INFO - Searching for text: '$18,000...' in 34 blocks
+2025-05-11 20:50:52,983 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:50:52,984 - app.services.ai_service - INFO - Processed contradiction: 'a fixed fee of $15,000...' vs '$18,000...'
+2025-05-11 20:50:52,984 - app.services.pdf_service - INFO - Searching for text: 'Milestone 1 (June 10) – Backend API complete – $5,...' in 38 blocks
+2025-05-11 20:50:52,984 - app.services.pdf_service - INFO - Found 3 matching blocks
+2025-05-11 20:50:52,984 - app.services.pdf_service - INFO - Searching for text: 'four installments: Milestone 1 (June 10) – $4,500 ...' in 34 blocks
+2025-05-11 20:50:52,984 - app.services.pdf_service - INFO - Found 4 matching blocks
+2025-05-11 20:50:52,984 - app.services.ai_service - INFO - Processed contradiction: 'Milestone 1 (June 10) – Backen...' vs 'four installments: Milestone 1...'
+2025-05-11 20:50:52,984 - app.services.pdf_service - INFO - Searching for text: 'Milestone 2 (July 10) – $5,000...' in 38 blocks
+2025-05-11 20:50:52,984 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:50:52,985 - app.services.pdf_service - INFO - Searching for text: 'Milestone 2 (July 5) – $4,500...' in 34 blocks
+2025-05-11 20:50:52,985 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:50:52,985 - app.services.ai_service - WARNING - Could not find text blocks for contradiction: Milestone 2 (July 10) – $5,000...
+2025-05-11 20:50:52,985 - app.services.pdf_service - INFO - Searching for text: 'Milestone 3 (August 10) – $5,000...' in 38 blocks
+2025-05-11 20:50:52,985 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:50:52,985 - app.services.pdf_service - INFO - Searching for text: 'Milestone 3 (August 5) – $4,500...' in 34 blocks
+2025-05-11 20:50:52,985 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:50:52,985 - app.services.ai_service - WARNING - Could not find text blocks for contradiction: Milestone 3 (August 10) – $5,0...
+2025-05-11 20:50:52,985 - app.services.pdf_service - INFO - Searching for text: 'Milestone 3 (August 10) – $5,000...' in 38 blocks
+2025-05-11 20:50:52,986 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:50:52,986 - app.services.pdf_service - INFO - Searching for text: 'Final Delivery (September 5) – $4,500...' in 34 blocks
+2025-05-11 20:50:52,986 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:50:52,986 - app.services.ai_service - WARNING - Could not find text blocks for contradiction: Milestone 3 (August 10) – $5,0...
+2025-05-11 20:50:52,986 - app.services.pdf_service - INFO - Searching for text: 'All code, deliverables, and documentation produced...' in 38 blocks
+2025-05-11 20:50:52,986 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:50:52,986 - app.services.pdf_service - INFO - Searching for text: 'Freelancer retains the right to display portions o...' in 34 blocks
+2025-05-11 20:50:52,986 - app.services.pdf_service - INFO - Found 3 matching blocks
+2025-05-11 20:50:52,986 - app.services.ai_service - INFO - Processed contradiction: 'All code, deliverables, and do...' vs 'Freelancer retains the right t...'
+2025-05-11 20:50:52,987 - app.services.pdf_service - INFO - Searching for text: 'terminate this Agreement with 14 days’ written not...' in 38 blocks
+2025-05-11 20:50:52,987 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:50:52,987 - app.services.pdf_service - INFO - Searching for text: 'terminate with 30 days’ written notice...' in 34 blocks
+2025-05-11 20:50:52,987 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:50:52,987 - app.services.ai_service - INFO - Processed contradiction: 'terminate this Agreement with ...' vs 'terminate with 30 days’ writte...'
+2025-05-11 20:50:52,987 - app.services.pdf_service - INFO - Searching for text: 'paid for approved, completed milestones...' in 38 blocks
+2025-05-11 20:50:52,987 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:50:52,987 - app.services.pdf_service - INFO - Searching for text: 'compensate Freelancer for work completed and any n...' in 34 blocks
+2025-05-11 20:50:52,987 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:50:52,987 - app.services.ai_service - INFO - Processed contradiction: 'paid for approved, completed m...' vs 'compensate Freelancer for work...'
+2025-05-11 20:50:52,988 - app.services.pdf_service - INFO - Searching for text: 'laws of the State of California...' in 38 blocks
+2025-05-11 20:50:52,988 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:50:52,988 - app.services.pdf_service - INFO - Searching for text: 'laws of the State of Texas...' in 34 blocks
+2025-05-11 20:50:52,988 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:50:52,988 - app.services.ai_service - WARNING - Could not find text blocks for contradiction: laws of the State of Californi...
+2025-05-11 20:51:06,343 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp/main_5350edc3_f1.pdf
+2025-05-11 20:51:06,348 - app.services.pdf_service - INFO - Highlighted 'Company shall pay Contractor a fixed fee of $15,000, disbursed in the following' on page 1 at Rect(54.0, 317.94537353515625, 527.4618530273438, 328.84466552734375)
+2025-05-11 20:51:06,352 - app.services.pdf_service - INFO - Highlighted 'Milestone 1 (June 10) – Backend API complete – $5,000' on page 1 at Rect(54.0, 356.4653625488281, 371.63592529296875, 367.3646545410156)
+2025-05-11 20:51:06,357 - app.services.pdf_service - INFO - Highlighted 'All code, deliverables, and documentation produced under this Agreement shall be the' on page 1 at Rect(54.0, 549.0653686523438, 557.4285278320312, 559.9646606445312)
+2025-05-11 20:51:06,360 - app.services.pdf_service - INFO - Highlighted 'Either party may terminate this Agreement with 14 days’ written notice. If' on page 1 at Rect(54.0, 651.7853393554688, 497.49517822265625, 662.6846313476562)
+2025-05-11 20:51:06,365 - app.services.pdf_service - INFO - Highlighted 'terminated early, Contractor will be paid for approved, completed milestones.' on page 1 at Rect(54.0, 664.6253662109375, 515.4768676757812, 675.524658203125)
+2025-05-11 20:51:06,365 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/main_highlighted_59a35fec.pdf
+2025-05-11 20:51:06,366 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp/target_5b11273f_f2.pdf
+2025-05-11 20:51:06,370 - app.services.pdf_service - INFO - Highlighted 'Client agrees to pay the Freelancer $18,000, in four installments:' on page 1 at Rect(54.0, 382.1453552246094, 449.43994140625, 393.0446472167969)
+2025-05-11 20:51:06,374 - app.services.pdf_service - INFO - Highlighted 'Milestone 1 (June 10) – $4,500' on page 1 at Rect(54.0, 407.8253479003906, 233.78732299804688, 418.7246398925781)
+2025-05-11 20:51:06,378 - app.services.pdf_service - INFO - Highlighted 'Freelancer retains the right to display portions of the work (excluding confidential' on page 1 at Rect(54.0, 549.0653686523438, 557.4285278320312, 559.9646606445312)
+2025-05-11 20:51:06,381 - app.services.pdf_service - INFO - Highlighted 'Either party may terminate with 30 days’ written notice. Upon termination, Client' on page 1 at Rect(54.0, 664.6253662109375, 539.4510498046875, 675.524658203125)
+2025-05-11 20:51:06,384 - app.services.pdf_service - INFO - Highlighted 'will compensate Freelancer for work completed and any non-recoverable costs.' on page 1 at Rect(54.0, 677.46533203125, 509.484375, 688.3646240234375)
+2025-05-11 20:51:06,385 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/target_highlighted_6f8e0c40.pdf
+2025-05-11 20:51:06,385 - main - INFO - Analysis complete with 5 contradictions
+2025-05-11 20:53:48,732 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:53:48,737 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:53:52,024 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:53:52,029 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:54:51,497 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:54:51,502 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:55:16,845 - main - INFO - Files saved: temp/main_f362be20_f1.pdf, temp/target_cc0a23ea_f2.pdf
+2025-05-11 20:55:16,845 - app.services.pdf_service - INFO - Extracting text from PDF: temp/main_f362be20_f1.pdf
+2025-05-11 20:55:16,849 - app.services.pdf_service - INFO - Extracted 38 text blocks from PDF
+2025-05-11 20:55:16,850 - app.services.pdf_service - INFO - Extracting text from PDF: temp/target_cc0a23ea_f2.pdf
+2025-05-11 20:55:16,854 - app.services.pdf_service - INFO - Extracted 34 text blocks from PDF
+2025-05-11 20:55:16,854 - app.services.ai_service - INFO - Starting document analysis
+2025-05-11 20:55:40,985 - app.services.ai_service - INFO - Successfully parsed 10 contradictions
+2025-05-11 20:55:40,985 - app.services.ai_service - INFO - Found 10 potential contradictions
+2025-05-11 20:55:40,985 - app.services.pdf_service - INFO - Searching for text: 'Contractor agrees to provide software development ...' in 38 blocks
+2025-05-11 20:55:40,985 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:55:40,985 - app.services.pdf_service - INFO - Searching for text: 'Freelancer shall provide full-stack web developmen...' in 34 blocks
+2025-05-11 20:55:40,985 - app.services.pdf_service - INFO - Found 5 matching blocks
+2025-05-11 20:55:40,986 - app.services.ai_service - INFO - Processed contradiction: 'Contractor agrees to provide s...' vs 'Freelancer shall provide full-...'
+2025-05-11 20:55:40,986 - app.services.pdf_service - INFO - Searching for text: 'will remain in effect until August 20, 2025...' in 38 blocks
+2025-05-11 20:55:40,986 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:55:40,986 - app.services.pdf_service - INFO - Searching for text: 'conclude on September 30, 2025...' in 34 blocks
+2025-05-11 20:55:40,986 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:55:40,986 - app.services.ai_service - WARNING - Could not find text blocks for contradiction: will remain in effect until Au...
+2025-05-11 20:55:40,986 - app.services.pdf_service - INFO - Searching for text: 'a fixed fee of $15,000...' in 38 blocks
+2025-05-11 20:55:40,986 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:55:40,987 - app.services.pdf_service - INFO - Searching for text: 'pay the Freelancer $18,000...' in 34 blocks
+2025-05-11 20:55:40,987 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:55:40,987 - app.services.ai_service - INFO - Processed contradiction: 'a fixed fee of $15,000...' vs 'pay the Freelancer $18,000...'
+2025-05-11 20:55:40,987 - app.services.pdf_service - INFO - Searching for text: '$15,000, disbursed in the following milestones:...' in 38 blocks
+2025-05-11 20:55:40,987 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:55:40,987 - app.services.pdf_service - INFO - Searching for text: '$18,000, in four installments:...' in 34 blocks
+2025-05-11 20:55:40,987 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:55:40,987 - app.services.ai_service - INFO - Processed contradiction: '$15,000, disbursed in the foll...' vs '$18,000, in four installments:...'
+2025-05-11 20:55:40,987 - app.services.pdf_service - INFO - Searching for text: 'Milestone 1 (June 10) – $5,000 Milestone 2 (July 1...' in 38 blocks
+2025-05-11 20:55:40,988 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:55:40,988 - app.services.pdf_service - INFO - Searching for text: 'Milestone 1 (June 10) – $4,500 Milestone 2 (July 5...' in 34 blocks
+2025-05-11 20:55:40,988 - app.services.pdf_service - INFO - Found 4 matching blocks
+2025-05-11 20:55:40,988 - app.services.ai_service - WARNING - Could not find text blocks for contradiction: Milestone 1 (June 10) – $5,000...
+2025-05-11 20:55:40,988 - app.services.pdf_service - INFO - Searching for text: 'Payments shall be made via ACH transfer to the ban...' in 38 blocks
+2025-05-11 20:55:40,988 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:55:40,988 - app.services.pdf_service - INFO - Searching for text: 'Invoices are due within 7 business days from submi...' in 34 blocks
+2025-05-11 20:55:40,988 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:55:40,989 - app.services.ai_service - INFO - Processed contradiction: 'Payments shall be made via ACH...' vs 'Invoices are due within 7 busi...'
+2025-05-11 20:55:40,989 - app.services.pdf_service - INFO - Searching for text: 'All code, deliverables, and documentation produced...' in 38 blocks
+2025-05-11 20:55:40,989 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:55:40,989 - app.services.pdf_service - INFO - Searching for text: 'Freelancer retains the right to display portions o...' in 34 blocks
+2025-05-11 20:55:40,989 - app.services.pdf_service - INFO - Found 3 matching blocks
+2025-05-11 20:55:40,989 - app.services.ai_service - INFO - Processed contradiction: 'All code, deliverables, and do...' vs 'Freelancer retains the right t...'
+2025-05-11 20:55:40,989 - app.services.pdf_service - INFO - Searching for text: 'terminate this Agreement with 14 days’ written not...' in 38 blocks
+2025-05-11 20:55:40,989 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:55:40,990 - app.services.pdf_service - INFO - Searching for text: 'terminate with 30 days’ written notice....' in 34 blocks
+2025-05-11 20:55:40,990 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:55:40,990 - app.services.ai_service - INFO - Processed contradiction: 'terminate this Agreement with ...' vs 'terminate with 30 days’ writte...'
+2025-05-11 20:55:40,990 - app.services.pdf_service - INFO - Searching for text: 'If terminated early, Contractor will be paid for a...' in 38 blocks
+2025-05-11 20:55:40,990 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:55:40,990 - app.services.pdf_service - INFO - Searching for text: 'Upon termination, Client will compensate Freelance...' in 34 blocks
+2025-05-11 20:55:40,990 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:55:40,990 - app.services.ai_service - INFO - Processed contradiction: 'If terminated early, Contracto...' vs 'Upon termination, Client will ...'
+2025-05-11 20:55:40,990 - app.services.pdf_service - INFO - Searching for text: 'This Agreement shall be governed by and construed ...' in 38 blocks
+2025-05-11 20:55:40,991 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:55:40,991 - app.services.pdf_service - INFO - Searching for text: 'This Agreement shall be governed by the laws of th...' in 34 blocks
+2025-05-11 20:55:40,991 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:55:40,991 - app.services.ai_service - INFO - Processed contradiction: 'This Agreement shall be govern...' vs 'This Agreement shall be govern...'
+2025-05-11 20:55:52,917 - app.services.pdf_service - INFO - Highlighting 8 contradictions in temp/main_f362be20_f1.pdf
+2025-05-11 20:55:52,917 - main - ERROR - Error in compare-documents: 'Document' object has no attribute 'search_for'
+Traceback (most recent call last):
+  File "/workspaces/AI-Contract-Reviewer/main.py", line 111, in compare_documents
+    pdf_service.highlight_contradictions(str(main_path), analysis_result["main_highlights"], str(main_output))
+  File "/workspaces/AI-Contract-Reviewer/app/services/pdf_service.py", line 91, in highlight_contradictions
+    matches = doc.search_for(text)  # Search the entire document for the text
+              ^^^^^^^^^^^^^^
+AttributeError: 'Document' object has no attribute 'search_for'
+2025-05-11 20:57:16,006 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:57:16,011 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:57:18,256 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-11 20:57:18,261 - main - INFO - Starting AI Contract Reviewer API
+2025-05-11 20:57:43,200 - main - INFO - Files saved: temp/main_ab5782b3_f1.pdf, temp/target_bcf25c88_f2.pdf
+2025-05-11 20:57:43,200 - app.services.pdf_service - INFO - Extracting text from PDF: temp/main_ab5782b3_f1.pdf
+2025-05-11 20:57:43,205 - app.services.pdf_service - INFO - Extracted 38 text blocks from PDF
+2025-05-11 20:57:43,205 - app.services.pdf_service - INFO - Extracting text from PDF: temp/target_bcf25c88_f2.pdf
+2025-05-11 20:57:43,209 - app.services.pdf_service - INFO - Extracted 34 text blocks from PDF
+2025-05-11 20:57:43,209 - app.services.ai_service - INFO - Starting document analysis
+2025-05-11 20:57:55,872 - app.services.ai_service - INFO - Successfully parsed 7 contradictions
+2025-05-11 20:57:55,872 - app.services.ai_service - INFO - Found 7 potential contradictions
+2025-05-11 20:57:55,872 - app.services.pdf_service - INFO - Searching for text: 'will remain in effect until August 20, 2025...' in 38 blocks
+2025-05-11 20:57:55,873 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:57:55,873 - app.services.pdf_service - INFO - Searching for text: 'conclude on September 30, 2025...' in 34 blocks
+2025-05-11 20:57:55,874 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:57:55,874 - app.services.ai_service - WARNING - Could not find text blocks for contradiction: will remain in effect until Au...
+2025-05-11 20:57:55,875 - app.services.pdf_service - INFO - Searching for text: 'fixed fee of $15,000...' in 38 blocks
+2025-05-11 20:57:55,875 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:57:55,876 - app.services.pdf_service - INFO - Searching for text: '$18,000...' in 34 blocks
+2025-05-11 20:57:55,876 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:57:55,876 - app.services.ai_service - INFO - Processed contradiction: 'fixed fee of $15,000...' vs '$18,000...'
+2025-05-11 20:57:55,876 - app.services.pdf_service - INFO - Searching for text: 'disbursed in the following milestones: Milestone 1...' in 38 blocks
+2025-05-11 20:57:55,877 - app.services.pdf_service - INFO - Found 4 matching blocks
+2025-05-11 20:57:55,877 - app.services.pdf_service - INFO - Searching for text: 'in four installments: Milestone 1 (June 10) – $4,5...' in 34 blocks
+2025-05-11 20:57:55,878 - app.services.pdf_service - INFO - Found 4 matching blocks
+2025-05-11 20:57:55,878 - app.services.ai_service - INFO - Processed contradiction: 'disbursed in the following mil...' vs 'in four installments: Mileston...'
+2025-05-11 20:57:55,878 - app.services.pdf_service - INFO - Searching for text: 'All code, deliverables, and documentation produced...' in 38 blocks
+2025-05-11 20:57:55,879 - app.services.pdf_service - INFO - Found 2 matching blocks
+2025-05-11 20:57:55,881 - app.services.pdf_service - INFO - Searching for text: 'Freelancer retains the right to display portions o...' in 34 blocks
+2025-05-11 20:57:55,881 - app.services.pdf_service - INFO - Found 0 matching blocks
+2025-05-11 20:57:55,881 - app.services.ai_service - WARNING - Could not find text blocks for contradiction: All code, deliverables, and do...
+2025-05-11 20:57:55,881 - app.services.pdf_service - INFO - Searching for text: 'terminate this Agreement with 14 days’ written not...' in 38 blocks
+2025-05-11 20:57:55,882 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:57:55,882 - app.services.pdf_service - INFO - Searching for text: 'terminate with 30 days’ written notice....' in 34 blocks
+2025-05-11 20:57:55,882 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:57:55,883 - app.services.ai_service - INFO - Processed contradiction: 'terminate this Agreement with ...' vs 'terminate with 30 days’ writte...'
+2025-05-11 20:57:55,883 - app.services.pdf_service - INFO - Searching for text: 'If terminated early, Contractor will be paid for a...' in 38 blocks
+2025-05-11 20:57:55,883 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:57:55,885 - app.services.pdf_service - INFO - Searching for text: 'Upon termination, Client will compensate Freelance...' in 34 blocks
+2025-05-11 20:57:55,885 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:57:55,886 - app.services.ai_service - INFO - Processed contradiction: 'If terminated early, Contracto...' vs 'Upon termination, Client will ...'
+2025-05-11 20:57:55,887 - app.services.pdf_service - INFO - Searching for text: 'governed by and construed in accordance with the l...' in 38 blocks
+2025-05-11 20:57:55,888 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:57:55,890 - app.services.pdf_service - INFO - Searching for text: 'governed by the laws of the State of Texas....' in 34 blocks
+2025-05-11 20:57:55,891 - app.services.pdf_service - INFO - Found 1 matching blocks
+2025-05-11 20:57:55,891 - app.services.ai_service - INFO - Processed contradiction: 'governed by and construed in a...' vs 'governed by the laws of the St...'
+2025-05-11 20:58:09,798 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp/main_ab5782b3_f1.pdf
+2025-05-11 20:58:09,804 - app.services.pdf_service - INFO - Highlighted 'Company shall pay Contractor a fixed fee of $15,000, disbursed in the following' on page 1 at Rect(54.0, 317.94537353515625, 527.4618530273438, 328.84466552734375)
+2025-05-11 20:58:09,804 - app.services.pdf_service - WARNING - Text 'Company shall pay Contractor a fixed fee of $15,000, disbursed in the following' not found on page 2
+2025-05-11 20:58:09,808 - app.services.pdf_service - INFO - Highlighted 'milestones:' on page 1 at Rect(54.0, 330.7853698730469, 119.91734313964844, 341.6846618652344)
+2025-05-11 20:58:09,808 - app.services.pdf_service - WARNING - Text 'milestones:' not found on page 2
+2025-05-11 20:58:09,813 - app.services.pdf_service - INFO - Highlighted 'Either party may terminate this Agreement with 14 days’ written notice. If' on page 1 at Rect(54.0, 651.7853393554688, 497.49517822265625, 662.6846313476562)
+2025-05-11 20:58:09,813 - app.services.pdf_service - WARNING - Text 'Either party may terminate this Agreement with 14 days’ written notice. If' not found on page 2
+2025-05-11 20:58:09,816 - app.services.pdf_service - INFO - Highlighted 'terminated early, Contractor will be paid for approved, completed milestones.' on page 1 at Rect(54.0, 664.6253662109375, 515.4768676757812, 675.524658203125)
+2025-05-11 20:58:09,816 - app.services.pdf_service - WARNING - Text 'terminated early, Contractor will be paid for approved, completed milestones.' not found on page 2
+2025-05-11 20:58:09,818 - app.services.pdf_service - WARNING - Text 'State of California.' not found on page 1
+2025-05-11 20:58:09,821 - app.services.pdf_service - INFO - Highlighted 'State of California.' on page 2 at Rect(54.0, 73.98535919189453, 173.85394287109375, 84.88465881347656)
+2025-05-11 20:58:09,821 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/main_highlighted_d94b9366.pdf
+2025-05-11 20:58:09,822 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp/target_bcf25c88_f2.pdf
+2025-05-11 20:58:09,827 - app.services.pdf_service - INFO - Highlighted 'Client agrees to pay the Freelancer $18,000, in four installments:' on page 1 at Rect(54.0, 382.1453552246094, 449.43994140625, 393.0446472167969)
+2025-05-11 20:58:09,828 - app.services.pdf_service - WARNING - Text 'Client agrees to pay the Freelancer $18,000, in four installments:' not found on page 2
+2025-05-11 20:58:09,830 - app.services.pdf_service - INFO - Highlighted 'Milestone 1 (June 10) – $4,500' on page 1 at Rect(54.0, 407.8253479003906, 233.78732299804688, 418.7246398925781)
+2025-05-11 20:58:09,831 - app.services.pdf_service - WARNING - Text 'Milestone 1 (June 10) – $4,500' not found on page 2
+2025-05-11 20:58:09,834 - app.services.pdf_service - INFO - Highlighted 'Either party may terminate with 30 days’ written notice. Upon termination, Client' on page 1 at Rect(54.0, 664.6253662109375, 539.4510498046875, 675.524658203125)
+2025-05-11 20:58:09,834 - app.services.pdf_service - WARNING - Text 'Either party may terminate with 30 days’ written notice. Upon termination, Client' not found on page 2
+2025-05-11 20:58:09,838 - app.services.pdf_service - INFO - Highlighted 'will compensate Freelancer for work completed and any non-recoverable costs.' on page 1 at Rect(54.0, 677.46533203125, 509.484375, 688.3646240234375)
+2025-05-11 20:58:09,838 - app.services.pdf_service - WARNING - Text 'will compensate Freelancer for work completed and any non-recoverable costs.' not found on page 2
+2025-05-11 20:58:09,840 - app.services.pdf_service - WARNING - Text 'This Agreement shall be governed by the laws of the State of Texas.' not found on page 1
+2025-05-11 20:58:09,843 - app.services.pdf_service - INFO - Highlighted 'This Agreement shall be governed by the laws of the State of Texas.' on page 2 at Rect(54.0, 73.98535919189453, 455.54351806640625, 84.88465881347656)
+2025-05-11 20:58:09,844 - app.services.pdf_service - INFO - Saved highlighted PDF to temp/target_highlighted_928191ae.pdf
+2025-05-11 20:58:09,844 - main - INFO - Analysis complete with 5 contradictions
