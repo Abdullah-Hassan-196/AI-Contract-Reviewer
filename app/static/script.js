@@ -152,9 +152,19 @@ document.addEventListener('DOMContentLoaded', () => {
         mainPdfViewer.innerHTML = '';
         targetPdfViewer.innerHTML = '';
 
-        // Render PDFs with highlights
-        await renderPdf(mainPdfData, mainPdfViewer, data.analysis.main_highlights);
-        await renderPdf(targetPdfData, targetPdfViewer, data.analysis.target_highlights);
+        // Instead of using mainPdfData, fetch the highlighted PDF
+        const mainHighlightedUrl = '/' + data.highlighted_documents.main;
+        const targetHighlightedUrl = '/' + data.highlighted_documents.target;
+
+        const mainHighlightedResponse = await fetch(mainHighlightedUrl);
+        const mainHighlightedBuffer = await mainHighlightedResponse.arrayBuffer();
+
+        const targetHighlightedResponse = await fetch(targetHighlightedUrl);
+        const targetHighlightedBuffer = await targetHighlightedResponse.arrayBuffer();
+
+        // Now render these with PDF.js
+        await renderPdf(mainHighlightedBuffer, mainPdfViewer);
+        await renderPdf(targetHighlightedBuffer, targetPdfViewer);
 
         // Update risk score
         riskScoreValue.textContent = `${data.analysis.overall_risk_score.toFixed(1)}%`;
