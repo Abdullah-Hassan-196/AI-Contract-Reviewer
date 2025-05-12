@@ -1079,3 +1079,247 @@ AttributeError: 'Document' object has no attribute 'search_for'
 2025-05-12 03:00:06,981 - app.services.pdf_service - INFO - Highlighting 9 contradictions in temp\target_fa7b7ba1_f2.pdf
 2025-05-12 03:00:07,106 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_59452141.pdf
 2025-05-12 03:00:07,108 - main - INFO - Analysis complete with 9 contradictions
+2025-05-12 22:26:18,818 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-12 22:26:18,833 - main - INFO - Starting AI Contract Reviewer API
+2025-05-12 22:26:39,150 - main - INFO - Files saved: temp\main_6667314f_Doc_match.pdf, temp\target_08e879e5_Doc_Matching.pdf
+2025-05-12 22:26:39,156 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_6667314f_Doc_match.pdf
+2025-05-12 22:26:39,250 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-12 22:26:39,250 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_08e879e5_Doc_Matching.pdf
+2025-05-12 22:26:39,350 - app.services.pdf_service - INFO - Extracted text from 2 pages
+2025-05-12 22:26:39,350 - app.services.ai_service - INFO - Starting document analysis
+2025-05-12 22:26:47,155 - app.services.ai_service - INFO - Successfully parsed 0 contradictions
+2025-05-12 22:26:47,156 - app.services.ai_service - INFO - Found 0 potential contradictions
+2025-05-12 22:27:00,326 - app.services.pdf_service - WARNING - No highlights provided for temp\main_6667314f_Doc_match.pdf
+2025-05-12 22:27:00,330 - app.services.pdf_service - WARNING - No highlights provided for temp\target_08e879e5_Doc_Matching.pdf
+2025-05-12 22:27:00,335 - main - INFO - Analysis complete with 0 contradictions
+2025-05-12 22:36:24,477 - main - INFO - Files saved: temp\main_1716dcb0_MSA - 1.pdf, temp\target_5b314fda_SampleContract-Shuttle.pdf
+2025-05-12 22:36:24,478 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_1716dcb0_MSA - 1.pdf
+2025-05-12 22:36:25,033 - app.services.pdf_service - INFO - Extracted text from 28 pages
+2025-05-12 22:36:25,033 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_5b314fda_SampleContract-Shuttle.pdf
+2025-05-12 22:36:25,167 - app.services.pdf_service - INFO - Extracted text from 10 pages
+2025-05-12 22:36:25,167 - app.services.ai_service - INFO - Starting document analysis
+2025-05-12 22:36:45,187 - app.services.ai_service - INFO - Successfully parsed 6 contradictions
+2025-05-12 22:36:45,187 - app.services.ai_service - INFO - Found 6 potential contradictions
+2025-05-12 22:36:59,972 - app.services.pdf_service - INFO - Highlighting 6 contradictions in temp\main_1716dcb0_MSA - 1.pdf
+2025-05-12 22:37:07,849 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_a8d80c19.pdf
+2025-05-12 22:37:07,859 - app.services.pdf_service - INFO - Highlighting 6 contradictions in temp\target_5b314fda_SampleContract-Shuttle.pdf
+2025-05-12 22:37:09,825 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_7505d2f6.pdf
+2025-05-12 22:37:09,879 - main - INFO - Analysis complete with 6 contradictions
+2025-05-12 23:35:39,425 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-12 23:35:39,455 - main - INFO - Starting AI Contract Reviewer API
+2025-05-12 23:36:00,573 - main - INFO - Files saved: temp\main_8a72f705_Doc_match.pdf, temp\target_72266b5a_Doc_Matching.pdf
+2025-05-12 23:36:00,581 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_8a72f705_Doc_match.pdf
+2025-05-12 23:36:00,650 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-12 23:36:00,653 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_72266b5a_Doc_Matching.pdf
+2025-05-12 23:36:00,714 - app.services.pdf_service - INFO - Extracted text from 2 pages
+2025-05-12 23:36:00,722 - app.services.ai_service - INFO - Starting document analysis
+2025-05-12 23:36:00,723 - main - ERROR - Error in compare-documents: Invalid format specifier ' "...",
+            "target_text": "...",
+            "explanation": "..."
+        ' for object of type 'str'
+Traceback (most recent call last):
+  File "C:\Users\Sohaib\AI-Contract-Reviewer\main.py", line 100, in compare_documents
+    analysis_result = ai_service.analyze_documents(main_text, target_text, main_blocks, target_blocks)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sohaib\AI-Contract-Reviewer\app\services\ai_service.py", line 46, in analyze_documents
+    contradictions = self._extract_contradictions(main_text, target_text)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sohaib\AI-Contract-Reviewer\app\services\ai_service.py", line 76, in _extract_contradictions
+    prompt = f"""
+             ^^^^
+ValueError: Invalid format specifier ' "...",
+            "target_text": "...",
+            "explanation": "..."
+        ' for object of type 'str'
+2025-05-12 23:36:37,790 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-12 23:36:37,803 - main - INFO - Starting AI Contract Reviewer API
+2025-05-12 23:36:57,592 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-12 23:36:57,659 - main - INFO - Starting AI Contract Reviewer API
+2025-05-12 23:37:48,046 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-12 23:37:48,061 - main - INFO - Starting AI Contract Reviewer API
+2025-05-12 23:42:00,833 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-12 23:42:00,858 - main - INFO - Starting AI Contract Reviewer API
+2025-05-12 23:42:11,971 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-12 23:42:11,983 - main - INFO - Starting AI Contract Reviewer API
+2025-05-12 23:51:59,203 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-12 23:51:59,218 - main - INFO - Starting AI Contract Reviewer API
+2025-05-12 23:52:59,934 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-12 23:52:59,969 - main - INFO - Starting AI Contract Reviewer API
+2025-05-12 23:53:12,213 - main - INFO - Files saved: temp\main_e513712e_Doc_Matching.pdf, temp\target_5d34340b_Doc_match.pdf
+2025-05-12 23:53:12,216 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_e513712e_Doc_Matching.pdf
+2025-05-12 23:53:12,316 - app.services.pdf_service - INFO - Extracted text from 2 pages
+2025-05-12 23:53:12,317 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_5d34340b_Doc_match.pdf
+2025-05-12 23:53:12,379 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-12 23:53:12,382 - app.services.ai_service - INFO - Starting document analysis
+2025-05-12 23:53:18,106 - app.services.ai_service - INFO - Successfully parsed 5 contradictions
+2025-05-12 23:53:18,106 - app.services.ai_service - INFO - Found 5 potential contradictions
+2025-05-12 23:53:28,815 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\main_e513712e_Doc_Matching.pdf
+2025-05-12 23:53:29,005 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_a3aa9fec.pdf
+2025-05-12 23:53:29,009 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\target_5d34340b_Doc_match.pdf
+2025-05-12 23:53:29,036 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_0807116f.pdf
+2025-05-12 23:53:29,038 - main - INFO - Analysis complete with 5 contradictions
+2025-05-12 23:57:46,388 - main - INFO - Files saved: temp\main_c9c1247c_Doc_Matching.pdf, temp\target_cae55130_Doc_match.pdf
+2025-05-12 23:57:46,403 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_c9c1247c_Doc_Matching.pdf
+2025-05-12 23:57:46,546 - app.services.pdf_service - INFO - Extracted text from 2 pages
+2025-05-12 23:57:46,546 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_cae55130_Doc_match.pdf
+2025-05-12 23:57:46,594 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-12 23:57:46,594 - app.services.ai_service - INFO - Starting document analysis
+2025-05-12 23:58:03,921 - app.services.ai_service - INFO - Successfully parsed 4 contradictions
+2025-05-12 23:58:03,922 - app.services.ai_service - INFO - Found 4 potential contradictions
+2025-05-12 23:58:23,892 - app.services.pdf_service - INFO - Highlighting 4 contradictions in temp\main_c9c1247c_Doc_Matching.pdf
+2025-05-12 23:58:24,104 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_7ca2a62c.pdf
+2025-05-12 23:58:24,108 - app.services.pdf_service - INFO - Highlighting 4 contradictions in temp\target_cae55130_Doc_match.pdf
+2025-05-12 23:58:24,148 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_41cddda9.pdf
+2025-05-12 23:58:24,149 - main - INFO - Analysis complete with 4 contradictions
+2025-05-13 00:03:15,761 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-13 00:03:15,776 - main - INFO - Starting AI Contract Reviewer API
+2025-05-13 00:03:28,274 - main - INFO - Files saved: temp\main_b3c3ef25_Doc_match.pdf, temp\target_cbfb997f_Doc_Matching.pdf
+2025-05-13 00:03:28,278 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_b3c3ef25_Doc_match.pdf
+2025-05-13 00:03:28,363 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-13 00:03:28,363 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_cbfb997f_Doc_Matching.pdf
+2025-05-13 00:03:28,457 - app.services.pdf_service - INFO - Extracted text from 2 pages
+2025-05-13 00:03:28,458 - app.services.ai_service - INFO - Starting document analysis
+2025-05-13 00:03:39,848 - app.services.ai_service - INFO - Found 4 contradictions or inconsistencies
+2025-05-13 00:03:50,884 - app.services.pdf_service - INFO - Highlighting 4 contradictions in temp\main_b3c3ef25_Doc_match.pdf
+2025-05-13 00:03:50,928 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_8f3c156a.pdf
+2025-05-13 00:03:50,942 - app.services.pdf_service - INFO - Highlighting 4 contradictions in temp\target_cbfb997f_Doc_Matching.pdf
+2025-05-13 00:03:51,070 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_21f27055.pdf
+2025-05-13 00:03:51,075 - main - INFO - Analysis complete with 4 contradictions
+2025-05-13 00:07:38,473 - main - INFO - Files saved: temp\main_76759156_Doc_Matching.pdf, temp\target_56192bf0_Doc_Matching.pdf
+2025-05-13 00:07:38,476 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_76759156_Doc_Matching.pdf
+2025-05-13 00:07:38,553 - app.services.pdf_service - INFO - Extracted text from 2 pages
+2025-05-13 00:07:38,558 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_56192bf0_Doc_Matching.pdf
+2025-05-13 00:07:38,641 - app.services.pdf_service - INFO - Extracted text from 2 pages
+2025-05-13 00:07:38,642 - app.services.ai_service - INFO - Starting document analysis
+2025-05-13 00:07:38,642 - app.services.ai_service - INFO - Documents are identical
+2025-05-13 00:07:38,642 - app.services.pdf_service - WARNING - No highlights provided for temp\main_76759156_Doc_Matching.pdf
+2025-05-13 00:07:38,649 - app.services.pdf_service - WARNING - No highlights provided for temp\target_56192bf0_Doc_Matching.pdf
+2025-05-13 00:07:38,653 - main - INFO - Analysis complete with 0 contradictions
+2025-05-13 00:36:49,935 - main - INFO - Files saved: temp\main_3d21b262_Doc_match.pdf, temp\target_505c0247_Doc_Matching.pdf
+2025-05-13 00:36:49,935 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_3d21b262_Doc_match.pdf
+2025-05-13 00:36:49,973 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-13 00:36:49,973 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_505c0247_Doc_Matching.pdf
+2025-05-13 00:36:50,005 - app.services.pdf_service - INFO - Extracted text from 2 pages
+2025-05-13 00:36:50,005 - app.services.ai_service - INFO - Starting document analysis
+2025-05-13 00:37:04,510 - app.services.ai_service - INFO - Found 6 contradictions or inconsistencies
+2025-05-13 00:37:13,471 - app.services.pdf_service - INFO - Highlighting 6 contradictions in temp\main_3d21b262_Doc_match.pdf
+2025-05-13 00:37:13,498 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_e39b54fe.pdf
+2025-05-13 00:37:13,498 - app.services.pdf_service - INFO - Highlighting 6 contradictions in temp\target_505c0247_Doc_Matching.pdf
+2025-05-13 00:37:13,549 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_fe13b501.pdf
+2025-05-13 00:37:13,549 - main - INFO - Analysis complete with 6 contradictions
+2025-05-13 00:42:34,964 - main - INFO - Files saved: temp\main_8453cef2_Doc_Matching.pdf, temp\target_1c402741_Doc_match.pdf
+2025-05-13 00:42:34,964 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_8453cef2_Doc_Matching.pdf
+2025-05-13 00:42:35,015 - app.services.pdf_service - INFO - Extracted text from 2 pages
+2025-05-13 00:42:35,015 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_1c402741_Doc_match.pdf
+2025-05-13 00:42:35,049 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-13 00:42:35,049 - app.services.ai_service - INFO - Starting document analysis
+2025-05-13 00:42:46,684 - app.services.ai_service - INFO - Found 4 contradictions or inconsistencies
+2025-05-13 00:42:57,753 - app.services.pdf_service - INFO - Highlighting 4 contradictions in temp\main_8453cef2_Doc_Matching.pdf
+2025-05-13 00:42:57,803 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_132284e3.pdf
+2025-05-13 00:42:57,803 - app.services.pdf_service - INFO - Highlighting 4 contradictions in temp\target_1c402741_Doc_match.pdf
+2025-05-13 00:42:57,823 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_d546bc4a.pdf
+2025-05-13 00:42:57,823 - main - INFO - Analysis complete with 4 contradictions
+2025-05-13 00:44:58,460 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-13 00:44:58,485 - main - INFO - Starting AI Contract Reviewer API
+2025-05-13 00:45:03,167 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-13 00:45:03,181 - main - INFO - Starting AI Contract Reviewer API
+2025-05-13 00:45:07,102 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-13 00:45:07,124 - main - INFO - Starting AI Contract Reviewer API
+2025-05-13 00:45:16,862 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-13 00:45:16,879 - main - INFO - Starting AI Contract Reviewer API
+2025-05-13 00:45:22,239 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-13 00:45:22,258 - main - INFO - Starting AI Contract Reviewer API
+2025-05-13 00:45:28,771 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-13 00:45:28,779 - main - INFO - Starting AI Contract Reviewer API
+2025-05-13 00:45:42,053 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-13 00:45:42,073 - main - INFO - Starting AI Contract Reviewer API
+2025-05-13 00:45:46,185 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-13 00:45:46,211 - main - INFO - Starting AI Contract Reviewer API
+2025-05-13 00:45:51,298 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-13 00:45:51,319 - main - INFO - Starting AI Contract Reviewer API
+2025-05-13 00:45:58,526 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-13 00:45:58,536 - main - INFO - Starting AI Contract Reviewer API
+2025-05-13 00:46:03,355 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-13 00:46:03,365 - main - INFO - Starting AI Contract Reviewer API
+2025-05-13 00:46:04,934 - main - INFO - Files saved: temp\main_c4167995_Doc_Matching.pdf, temp\target_41cfe75f_Doc_match.pdf
+2025-05-13 00:46:04,935 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_c4167995_Doc_Matching.pdf
+2025-05-13 00:46:05,004 - app.services.pdf_service - INFO - Extracted text from 2 pages
+2025-05-13 00:46:05,005 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_41cfe75f_Doc_match.pdf
+2025-05-13 00:46:05,042 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-13 00:46:05,042 - app.services.ai_service - INFO - Starting document analysis
+2025-05-13 00:46:12,777 - app.services.ai_service - INFO - Found 5 contradictions or inconsistencies
+2025-05-13 00:46:22,234 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\main_c4167995_Doc_Matching.pdf
+2025-05-13 00:46:22,286 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_46f8121f.pdf
+2025-05-13 00:46:22,287 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\target_41cfe75f_Doc_match.pdf
+2025-05-13 00:46:22,310 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_f20790d8.pdf
+2025-05-13 00:46:22,310 - main - INFO - Analysis complete with 5 contradictions
+2025-05-13 00:46:55,626 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-13 00:46:55,634 - main - INFO - Starting AI Contract Reviewer API
+2025-05-13 00:47:01,664 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-13 00:47:01,805 - main - INFO - Starting AI Contract Reviewer API
+2025-05-13 00:47:06,592 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-13 00:47:06,616 - main - INFO - Starting AI Contract Reviewer API
+2025-05-13 00:47:06,792 - main - INFO - Files saved: temp\main_7a802e9d_Doc_Matching.pdf, temp\target_b201d736_Doc_match.pdf
+2025-05-13 00:47:06,792 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_7a802e9d_Doc_Matching.pdf
+2025-05-13 00:47:06,845 - app.services.pdf_service - INFO - Extracted text from 2 pages
+2025-05-13 00:47:06,845 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_b201d736_Doc_match.pdf
+2025-05-13 00:47:06,878 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-13 00:47:06,878 - app.services.ai_service - INFO - Starting document analysis
+2025-05-13 00:47:16,783 - app.services.ai_service - INFO - Found 4 contradictions or inconsistencies
+2025-05-13 00:47:22,883 - app.services.pdf_service - INFO - Highlighting 4 contradictions in temp\main_7a802e9d_Doc_Matching.pdf
+2025-05-13 00:47:22,929 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_95bbe0bb.pdf
+2025-05-13 00:47:22,930 - app.services.pdf_service - INFO - Highlighting 4 contradictions in temp\target_b201d736_Doc_match.pdf
+2025-05-13 00:47:22,949 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_174a2c13.pdf
+2025-05-13 00:47:22,951 - main - INFO - Analysis complete with 4 contradictions
+2025-05-13 00:52:27,945 - main - INFO - Files saved: temp\main_48670473_Doc_Matching.pdf, temp\target_1e272d44_Doc_match.pdf
+2025-05-13 00:52:27,945 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_48670473_Doc_Matching.pdf
+2025-05-13 00:52:27,995 - app.services.pdf_service - INFO - Extracted text from 2 pages
+2025-05-13 00:52:27,995 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_1e272d44_Doc_match.pdf
+2025-05-13 00:52:28,034 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-13 00:52:28,034 - app.services.ai_service - INFO - Starting document analysis
+2025-05-13 00:52:39,850 - app.services.ai_service - INFO - Found 5 contradictions or inconsistencies
+2025-05-13 00:52:49,295 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\main_48670473_Doc_Matching.pdf
+2025-05-13 00:52:49,335 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_b7b6a20c.pdf
+2025-05-13 00:52:49,336 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\target_1e272d44_Doc_match.pdf
+2025-05-13 00:52:49,352 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_587cbeea.pdf
+2025-05-13 00:52:49,353 - main - INFO - Analysis complete with 5 contradictions
+2025-05-13 00:52:54,704 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-13 00:52:54,723 - main - INFO - Starting AI Contract Reviewer API
+2025-05-13 00:56:02,849 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-13 00:56:02,861 - main - INFO - Starting AI Contract Reviewer API
+2025-05-13 00:56:02,932 - main - INFO - Files saved: temp\main_fe0f7b93_Doc_Matching.pdf, temp\target_8ab615cb_Doc_match.pdf
+2025-05-13 00:56:03,018 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_fe0f7b93_Doc_Matching.pdf
+2025-05-13 00:56:03,112 - app.services.pdf_service - INFO - Extracted text from 2 pages
+2025-05-13 00:56:03,114 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_8ab615cb_Doc_match.pdf
+2025-05-13 00:56:03,165 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-13 00:56:03,166 - app.services.ai_service - INFO - Starting document analysis
+2025-05-13 00:56:11,029 - app.services.ai_service - INFO - Found 5 contradictions or inconsistencies
+2025-05-13 00:56:22,557 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\main_fe0f7b93_Doc_Matching.pdf
+2025-05-13 00:56:22,609 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_1c644d10.pdf
+2025-05-13 00:56:22,609 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\target_8ab615cb_Doc_match.pdf
+2025-05-13 00:56:22,630 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_fd04900c.pdf
+2025-05-13 00:56:22,630 - main - INFO - Analysis complete with 5 contradictions
+2025-05-13 01:01:41,841 - main - INFO - Files saved: temp\main_913e546e_MSA - 1.pdf, temp\target_3ad980b2_SampleContract-Shuttle.pdf
+2025-05-13 01:01:41,842 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_913e546e_MSA - 1.pdf
+2025-05-13 01:01:42,025 - app.services.pdf_service - INFO - Extracted text from 28 pages
+2025-05-13 01:01:42,025 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_3ad980b2_SampleContract-Shuttle.pdf
+2025-05-13 01:01:42,075 - app.services.pdf_service - INFO - Extracted text from 10 pages
+2025-05-13 01:01:42,075 - app.services.ai_service - INFO - Starting document analysis
+2025-05-13 01:02:24,091 - app.services.ai_service - INFO - Found 15 contradictions or inconsistencies
+2025-05-13 01:02:42,236 - app.services.pdf_service - INFO - Highlighting 15 contradictions in temp\main_913e546e_MSA - 1.pdf
+2025-05-13 01:02:44,340 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_b119155b.pdf
+2025-05-13 01:02:44,343 - app.services.pdf_service - INFO - Highlighting 15 contradictions in temp\target_3ad980b2_SampleContract-Shuttle.pdf
+2025-05-13 01:02:44,835 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_70b727a5.pdf
+2025-05-13 01:02:44,837 - main - INFO - Analysis complete with 15 contradictions
+2025-05-13 01:27:47,449 - main - INFO - Files saved: temp\main_758ad04b_Doc_Matching.pdf, temp\target_3d9ce660_Doc_match.pdf
+2025-05-13 01:27:47,462 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_758ad04b_Doc_Matching.pdf
+2025-05-13 01:27:47,514 - app.services.pdf_service - INFO - Extracted text from 2 pages
+2025-05-13 01:27:47,514 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_3d9ce660_Doc_match.pdf
+2025-05-13 01:27:47,556 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-13 01:27:47,565 - app.services.ai_service - INFO - Starting document analysis
+2025-05-13 01:27:58,152 - app.services.ai_service - INFO - Found 7 contradictions or inconsistencies
+2025-05-13 01:28:06,545 - app.services.pdf_service - INFO - Highlighting 7 contradictions in temp\main_758ad04b_Doc_Matching.pdf
+2025-05-13 01:28:06,605 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_f85f5a49.pdf
+2025-05-13 01:28:06,606 - app.services.pdf_service - INFO - Highlighting 7 contradictions in temp\target_3d9ce660_Doc_match.pdf
+2025-05-13 01:28:06,633 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_7cf271a0.pdf
+2025-05-13 01:28:06,633 - main - INFO - Analysis complete with 7 contradictions
