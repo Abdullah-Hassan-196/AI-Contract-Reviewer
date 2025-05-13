@@ -1397,3 +1397,31 @@ ValueError: Invalid format specifier ' "...",
 2025-05-13 14:40:24,916 - app.services.pdf_service - INFO - Highlighting 6 contradictions in temp\target_450c6ef3_Doc_Matching.pdf
 2025-05-13 14:40:25,021 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_b2aac190.pdf
 2025-05-13 14:40:25,023 - main - INFO - Analysis complete with 6 contradictions
+2025-05-14 01:06:49,909 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-14 01:06:49,922 - main - INFO - Starting AI Contract Reviewer API
+2025-05-14 01:07:34,040 - main - INFO - Files saved: temp\main_d0818641_main_contract.pdf, temp\target_118b70b1_target_contract.pdf
+2025-05-14 01:07:34,040 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_d0818641_main_contract.pdf
+2025-05-14 01:07:34,057 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-14 01:07:34,073 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_118b70b1_target_contract.pdf
+2025-05-14 01:07:34,087 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-14 01:07:34,088 - app.services.ai_service - INFO - Starting document analysis
+2025-05-14 01:07:40,034 - app.services.ai_service - INFO - Found 6 contradictions or inconsistencies
+2025-05-14 01:07:45,928 - app.services.pdf_service - INFO - Highlighting 6 contradictions in temp\main_d0818641_main_contract.pdf
+2025-05-14 01:07:45,945 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_3d3bc34b.pdf
+2025-05-14 01:07:45,945 - app.services.pdf_service - INFO - Highlighting 6 contradictions in temp\target_118b70b1_target_contract.pdf
+2025-05-14 01:07:45,966 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_bb21fa2d.pdf
+2025-05-14 01:07:45,972 - main - INFO - Analysis complete with 6 contradictions
+2025-05-14 01:08:12,372 - main - INFO - Files saved: temp\main_a2b7b371_main_contract.pdf, temp\target_b5375260_target_contract.pdf
+2025-05-14 01:08:12,372 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_a2b7b371_main_contract.pdf
+2025-05-14 01:08:12,389 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-14 01:08:12,391 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_b5375260_target_contract.pdf
+2025-05-14 01:08:12,393 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-14 01:08:12,393 - app.services.ai_service - INFO - Starting document analysis
+2025-05-14 01:08:18,943 - app.services.ai_service - INFO - Found 6 contradictions or inconsistencies
+2025-05-14 01:08:26,675 - app.services.pdf_service - INFO - Highlighting 6 contradictions in temp\main_a2b7b371_main_contract.pdf
+2025-05-14 01:08:26,675 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_80d6c565.pdf
+2025-05-14 01:08:26,675 - app.services.pdf_service - INFO - Highlighting 6 contradictions in temp\target_b5375260_target_contract.pdf
+2025-05-14 01:08:26,691 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_d7b05161.pdf
+2025-05-14 01:08:26,691 - main - INFO - Analysis complete with 6 contradictions
+2025-05-14 01:08:48,051 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-14 01:08:48,073 - main - INFO - Starting AI Contract Reviewer API
