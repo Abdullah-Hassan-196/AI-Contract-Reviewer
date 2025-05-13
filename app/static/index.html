@@ -30,6 +30,10 @@
                     </div>
                 </div>
 
+                <div class="vs-container">
+                    <span class="vs-text">VS</span>
+                </div>
+
                 <div class="upload-box">
                     <h3>Target Document</h3>
                     <div class="file-upload">
@@ -43,7 +47,10 @@
                 </div>
             </div>
 
-            <button id="compareBtn" class="compare-btn" disabled>Compare Documents</button>
+            <button id="compareBtn" class="compare-btn" disabled>
+                <span class="btn-text">Compare Documents</span>
+                <span class="btn-icon">⚖️</span>
+            </button>
 
             <div id="loading" class="loading hidden">
                 <div class="spinner"></div>
@@ -68,20 +75,26 @@
 
                 <div class="result-section">
                     <h3>Analysis Results</h3>
-                    
-                    <!-- Overall Risk Score -->
-                    <div class="risk-score-box">
-                        <h4>Overall Risk Score</h4>
-                        <div class="risk-score-value" id="riskScoreValue">0%</div>
-                        <div class="risk-score-gauge">
-                            <div class="gauge-fill" id="riskScoreGauge"></div>
-                        </div>
-                    </div>
 
-                    <!-- Similarity Section -->
-                    <div class="similarity-box">
-                        <h4>Similarity</h4>
-                        <div class="similarity-value" id="similarityValue">0%</div>
+                    <!-- Score Cards Container -->
+                    <div class="score-cards-container">
+                        <!-- Overall Risk Score -->
+                        <div class="score-card risk-score">
+                            <h4>Risk Level</h4>
+                            <div class="score-value" id="riskScoreValue">0%</div>
+                            <div class="score-gauge">
+                                <div class="gauge-fill" id="riskScoreGauge"></div>
+                            </div>
+                        </div>
+
+                        <!-- Similarity Score -->
+                        <div class="score-card similarity-score">
+                            <h4>Document Match</h4>
+                            <div class="score-value" id="similarityValue">0%</div>
+                            <div class="score-gauge">
+                                <div class="gauge-fill" id="similarityGauge"></div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Key Findings -->
