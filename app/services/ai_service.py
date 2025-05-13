@@ -1,13 +1,12 @@
 import os
-from typing import List, Dict, Any, Tuple
-import logging
 import json
+import logging
+from typing import List, Dict, Any, Tuple
 from dotenv import load_dotenv
 import google.generativeai as genai
 
 from .pdf_service import PDFService
 
-# Configure logging
 logger = logging.getLogger(__name__)
 
 class AIService:
@@ -28,9 +27,6 @@ class AIService:
         main_blocks: List[Dict], 
         target_blocks: List[Dict]
     ) -> Dict:
-        """
-        Analyze two documents for contradictions and insights.
-        """
         logger.info("Starting document analysis")
 
         if main_text.strip() == target_text.strip():
@@ -70,33 +66,33 @@ class AIService:
         }
 
     def _extract_contradictions(self, main_text: str, target_text: str) -> List[Dict]:
-        """
-        Identify all contradictions and inconsistencies critical to contract integrity.
-        """
         prompt = f"""
-        You are an expert contract reviewer and legal document analyst. Carefully analyze and compare the following two documents.
+        You are a legal contract reviewer and AI trained to analyze and compare legal documents thoroughly.
 
-        Your goal is to detect and list ALL contradictions, inconsistencies, or missing information that are legally or functionally significant in a contractual context.
+        Compare the two documents and identify ALL critical contradictions, discrepancies, or semantic differences that could lead to misunderstanding, legal risk, or breach. Consider both explicit and subtle inconsistencies.
 
-        Focus on, but do not limit yourself to, the following areas:
-        - Delivery terms and Estimated Time of Arrival (ETA)
+        Key areas to evaluate include but are not limited to:
+        - Delivery terms, deadlines, ETA
         - Functional and non-functional requirements
-        - Roles, responsibilities, and obligations of each party
-        - Deadlines, durations, and timelines
-        - Evaluation metrics and performance standards
-        - Payment terms, percentages, penalties, or bonuses
-        - Clauses that exist in one document but are completely missing in the other
-        - Any clause that is rephrased in a way that changes its meaning
-        - Definitions or critical terms being added, removed, or altered
-        - Security, confidentiality, and intellectual property rights
-        - Dispute resolution or termination clauses
+        - Responsibilities, roles, obligations of each party
+        - Payment terms, penalties, bonuses
+        - Timeline and project durations
+        - Evaluation criteria or acceptance standards
+        - Confidentiality, IP rights, security clauses
+        - Dispute resolution or termination procedures
+        - Jurisdiction or governing law
+        - Scope creep prevention, change control mechanisms
+        - Definitions and terminology differences
+        - Cross-references or clause dependencies
+        - Any clause that appears in one doc but not the other
+        - Reworded clauses with potentially altered intent
 
-        Output a JSON array of contradictions. Each object should include:
-        - main_text: a concise excerpt from the main document (or "MISSING" if not present)
-        - target_text: a concise excerpt from the target document (or "MISSING" if not present)
-        - explanation: a brief but clear reason why this represents a contradiction or legal inconsistency
+        Return a JSON array where each item includes:
+        - main_text: Excerpt from main document (or "MISSING" if absent)
+        - target_text: Corresponding excerpt from target document (or "MISSING")
+        - explanation: Short explanation of why this difference matters
 
-        Return ONLY the JSON array. Do NOT include introductory or explanatory text outside the JSON.
+        Format your response as a raw JSON array only, with no surrounding explanation.
 
         Main Document:
         {main_text[:10000]}
@@ -108,7 +104,6 @@ class AIService:
         try:
             response = self.model.generate_content(prompt)
             response_text = response.text
-
             start_idx = response_text.find("[")
             end_idx = response_text.rfind("]") + 1
 
@@ -116,37 +111,27 @@ class AIService:
                 logger.warning("No JSON array detected")
                 return []
 
-            json_str = response_text[start_idx:end_idx]
-            try:
-                return json.loads(json_str)
-            except json.JSONDecodeError as e:
-                logger.error(f"JSON parse error: {e}")
-                return []
+            return json.loads(response_text[start_idx:end_idx])
 
         except Exception as e:
             logger.error(f"Model error: {e}")
             return []
 
     def _get_overall_analysis(self, main_text: str, target_text: str) -> Tuple[float, float, List[str], List[str]]:
-        """
-        Get similarity score, risk, findings, and missing clauses.
-        """
         prompt = f"""
-        You are an expert legal analyst. Review and compare these two contract documents.
+        You are an advanced legal analyst AI.
 
-        Return a JSON object that includes:
-        - similarity: overall similarity percentage (0-100)
-        - risk_score: overall risk score (0-100), based on the importance of differences
-        - key_findings: 3–5 brief, important findings or concerns
-        - missing_clauses: a list of important clauses that exist in one document but are absent in the other
+        Compare the following two contract documents and return a structured assessment of overall risk and similarities.
 
-        Output format:
+        Respond strictly with a JSON object containing:
         {{
-          "similarity": number,
-          "risk_score": number,
-          "key_findings": [string],
-          "missing_clauses": [string]
+          "similarity": number (0–100),  // Overall textual and semantic similarity
+          "risk_score": number (0–100),  // Risk posed by differences in clauses
+          "key_findings": [string],      // 3-5 insightful findings or risks
+          "missing_clauses": [string]    // Important clauses missing in either document
         }}
+
+        Do not include explanatory text. Return only valid JSON.
 
         Main Document:
         {main_text[:5000]}
@@ -158,7 +143,6 @@ class AIService:
         try:
             response = self.model.generate_content(prompt)
             response_text = response.text
-
             start_idx = response_text.find("{")
             end_idx = response_text.rfind("}") + 1
 
@@ -166,9 +150,7 @@ class AIService:
                 logger.warning("No JSON object detected in analysis response")
                 return 50.0, 50.0, ["Unable to extract findings"], []
 
-            json_str = response_text[start_idx:end_idx]
-            data = json.loads(json_str)
-
+            data = json.loads(response_text[start_idx:end_idx])
             return (
                 data.get("similarity", 50.0),
                 data.get("risk_score", 50.0),
