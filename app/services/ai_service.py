@@ -1,6 +1,7 @@
 import os
 import json
 import logging
+import fitz  # PyMuPDF
 from typing import List, Dict, Any, Tuple
 from dotenv import load_dotenv
 import google.generativeai as genai
@@ -20,6 +21,76 @@ class AIService:
         self.pdf_service = PDFService()
         logger.info("AIService initialized with Gemini model")
 
+    def process_pdf_documents(self, main_pdf_path: str, target_pdf_path: str, output_path: str) -> Dict:
+        """
+        Process two PDFs for comparison, handling scanned PDFs if necessary.
+        
+        Parameters:
+            main_pdf_path (str): Path to the main PDF document
+            target_pdf_path (str): Path to the target PDF document
+            output_path (str): Directory where output files will be saved
+            
+        Returns:
+            Dict: Analysis results
+        """
+        # Create output directory if it doesn't exist
+        os.makedirs(output_path, exist_ok=True)
+        
+        # Process main document
+        main_searchable_path = os.path.join(output_path, "main_searchable.pdf")
+        main_needs_ocr = self.pdf_service.check_if_scanned(main_pdf_path)
+        
+        if main_needs_ocr:
+            logger.info(f"Main document appears to be scanned. Converting to searchable PDF.")
+            self.pdf_service.convert_scanned_pdf(main_pdf_path, main_searchable_path)
+            main_path_to_use = main_searchable_path
+        else:
+            main_path_to_use = main_pdf_path
+            
+        # Process target document
+        target_searchable_path = os.path.join(output_path, "target_searchable.pdf")
+        target_needs_ocr = self.pdf_service.check_if_scanned(target_pdf_path)
+        
+        if target_needs_ocr:
+            logger.info(f"Target document appears to be scanned. Converting to searchable PDF.")
+            self.pdf_service.convert_scanned_pdf(target_pdf_path, target_searchable_path)
+            target_path_to_use = target_searchable_path
+        else:
+            target_path_to_use = target_pdf_path
+        
+        # Extract text from processed PDFs
+        main_text, main_blocks = self.pdf_service.extract_text_from_pdf(main_path_to_use)
+        target_text, target_blocks = self.pdf_service.extract_text_from_pdf(target_path_to_use)
+        
+        # Analyze documents
+        analysis_result = self.analyze_documents(main_text, target_text, main_blocks, target_blocks)
+        
+        # Create highlighted versions
+        main_highlighted_path = os.path.join(output_path, "main_highlighted.pdf")
+        target_highlighted_path = os.path.join(output_path, "target_highlighted.pdf")
+        
+        self.pdf_service.highlight_contradictions(
+            main_path_to_use, 
+            analysis_result.get("main_highlights", []), 
+            main_highlighted_path
+        )
+        
+        self.pdf_service.highlight_contradictions(
+            target_path_to_use,
+            analysis_result.get("target_highlights", []),
+            target_highlighted_path
+        )
+        
+        # Add paths to the result
+        analysis_result["main_highlighted_pdf"] = main_highlighted_path
+        analysis_result["target_highlighted_pdf"] = target_highlighted_path
+        
+        # For display purposes, also add paths to the searchable PDFs 
+        analysis_result["main_searchable_pdf"] = main_path_to_use
+        analysis_result["target_searchable_pdf"] = target_path_to_use
+        
+        return analysis_result
+    
     def analyze_documents(
         self, 
         main_text: str, 
