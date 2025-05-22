@@ -2065,3 +2065,84 @@ AttributeError: 'PDFService' object has no attribute 'extract_text_from_pdf'
 2025-05-22 02:55:23,791 - main - INFO - Analysis complete with 21 contradictions
 2025-05-22 02:55:29,166 - app.services.ai_service - INFO - AIService initialized with Gemini model
 2025-05-22 02:55:29,175 - main - INFO - Starting AI Contract Reviewer API
+2025-05-22 20:06:57,712 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-22 20:06:57,735 - main - INFO - Starting AI Contract Reviewer API
+2025-05-22 20:09:08,161 - main - INFO - Files saved: temp\main_d5f63c85_MSA - 1.pdf, temp\target_1f21ed52_782 MSA.pdf
+2025-05-22 20:09:08,163 - main - ERROR - Error in compare-documents: 'PDFService' object has no attribute 'check_if_scanned'
+Traceback (most recent call last):
+  File "C:\Users\Sohaib\AI-Contract-Reviewer\main.py", line 86, in compare_documents
+    analysis_result = ai_service.process_pdf_documents(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sohaib\AI-Contract-Reviewer\app\services\ai_service.py", line 41, in process_pdf_documents
+    main_needs_ocr = self.pdf_service.check_if_scanned(main_pdf_path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'PDFService' object has no attribute 'check_if_scanned'
+2025-05-22 20:12:31,378 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-22 20:12:31,391 - main - INFO - Starting AI Contract Reviewer API
+2025-05-22 20:14:23,602 - main - INFO - Files saved: temp\main_4130b022_MSA - 1.pdf, temp\target_1e1794a2_782 MSA.pdf
+2025-05-22 20:14:23,603 - main - ERROR - Error in compare-documents: 'PDFService' object has no attribute 'check_if_scanned'
+Traceback (most recent call last):
+  File "C:\Users\Sohaib\AI-Contract-Reviewer\main.py", line 86, in compare_documents
+    analysis_result = ai_service.process_pdf_documents(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sohaib\AI-Contract-Reviewer\app\services\ai_service.py", line 41, in process_pdf_documents
+    main_needs_ocr = self.pdf_service.check_if_scanned(main_pdf_path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'PDFService' object has no attribute 'check_if_scanned'
+2025-05-22 20:15:18,693 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-22 20:15:18,709 - main - INFO - Starting AI Contract Reviewer API
+2025-05-22 20:15:32,871 - main - INFO - Files saved: temp\main_a28b36f7_MSA - 1.pdf, temp\target_d8963e38_782 MSA.pdf
+2025-05-22 20:15:33,047 - app.services.ai_service - INFO - Target document appears to be scanned. Converting to searchable PDF.
+2025-05-22 20:15:33,049 - main - ERROR - Error in compare-documents: 'PDFService' object has no attribute 'convert_scanned_pdf'
+Traceback (most recent call last):
+  File "C:\Users\Sohaib\AI-Contract-Reviewer\main.py", line 86, in compare_documents
+    analysis_result = ai_service.process_pdf_documents(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Sohaib\AI-Contract-Reviewer\app\services\ai_service.py", line 56, in process_pdf_documents
+    self.pdf_service.convert_scanned_pdf(target_pdf_path, target_searchable_path)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'PDFService' object has no attribute 'convert_scanned_pdf'
+2025-05-22 20:19:43,989 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-22 20:19:44,070 - main - INFO - Starting AI Contract Reviewer API
+2025-05-22 20:20:18,725 - main - INFO - Files saved: temp\main_a09f99fb_MSA - 1.pdf, temp\target_5383e5fa_782 MSA.pdf
+2025-05-22 20:20:18,854 - app.services.ai_service - INFO - Target document appears to be scanned. Converting to searchable PDF.
+2025-05-22 20:20:18,857 - app.services.pdf_service - INFO - Converting scanned PDF to searchable PDF with layout preservation: temp\target_5383e5fa_782 MSA.pdf
+2025-05-22 20:20:18,867 - app.services.pdf_service - INFO - Processing page 1/1 with layout-aware OCR
+2025-05-22 20:20:30,987 - app.services.pdf_service - INFO - Successfully converted PDF with layout preservation: temp\target_searchable.pdf
+2025-05-22 20:20:30,993 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_a09f99fb_MSA - 1.pdf
+2025-05-22 20:20:31,475 - app.services.pdf_service - INFO - Extracted text from 28 pages
+2025-05-22 20:20:31,479 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_searchable.pdf
+2025-05-22 20:20:31,750 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-22 20:20:31,751 - app.services.ai_service - INFO - Starting document analysis
+2025-05-22 20:21:20,496 - app.services.ai_service - INFO - Found 17 contradictions or inconsistencies
+2025-05-22 20:21:40,971 - app.services.pdf_service - INFO - Highlighting 17 contradictions in temp\main_a09f99fb_MSA - 1.pdf
+2025-05-22 20:21:43,329 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted.pdf with 67 highlights applied
+2025-05-22 20:21:43,330 - app.services.pdf_service - INFO - Highlighting 17 contradictions in temp\target_searchable.pdf
+2025-05-22 20:21:43,593 - app.services.pdf_service - WARNING - Could not find text to highlight: 3. Collection activity... Agency
+also charges debt...
+2025-05-22 20:21:43,806 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted.pdf with 23 highlights applied
+2025-05-22 20:21:43,808 - main - INFO - Analysis complete with 17 contradictions
+2025-05-22 20:28:37,056 - main - ERROR - Error in compare-documents: [Errno 2] No such file or directory: 'temp\\main_2aec08f5_MSA - 1.pdf'
+Traceback (most recent call last):
+  File "C:\Users\Sohaib\AI-Contract-Reviewer\main.py", line 78, in compare_documents
+    with open(main_path, "wb") as buffer:
+         ^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'temp\\main_2aec08f5_MSA - 1.pdf'
+2025-05-22 20:29:06,062 - main - INFO - Files saved: temp\main_b27187ea_MSA - 1.pdf, temp\target_4134d442_782 MSA.pdf
+2025-05-22 20:29:06,179 - app.services.ai_service - INFO - Target document appears to be scanned. Converting to searchable PDF.
+2025-05-22 20:29:06,182 - app.services.pdf_service - INFO - Converting scanned PDF to searchable PDF with layout preservation: temp\target_4134d442_782 MSA.pdf
+2025-05-22 20:29:06,190 - app.services.pdf_service - INFO - Processing page 1/1 with layout-aware OCR
+2025-05-22 20:29:16,896 - app.services.pdf_service - INFO - Successfully converted PDF with layout preservation: temp\target_searchable.pdf
+2025-05-22 20:29:16,903 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_b27187ea_MSA - 1.pdf
+2025-05-22 20:29:17,880 - app.services.pdf_service - INFO - Extracted text from 28 pages
+2025-05-22 20:29:17,880 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_searchable.pdf
+2025-05-22 20:29:18,395 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-22 20:29:18,395 - app.services.ai_service - INFO - Starting document analysis
+2025-05-22 20:29:58,531 - app.services.ai_service - INFO - Found 11 contradictions or inconsistencies
+2025-05-22 20:30:14,804 - app.services.pdf_service - INFO - Highlighting 11 contradictions in temp\main_b27187ea_MSA - 1.pdf
+2025-05-22 20:30:24,216 - app.services.pdf_service - WARNING - Could not find text to highlight: MISSING (SOW defines 'Direct Payments' but does no...
+2025-05-22 20:30:26,329 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted.pdf with 35 highlights applied
+2025-05-22 20:30:26,330 - app.services.pdf_service - INFO - Highlighting 11 contradictions in temp\target_searchable.pdf
+2025-05-22 20:30:26,751 - app.services.pdf_service - WARNING - Could not find text to highlight: Services Agreement (No dedicated definitions secti...
+2025-05-22 20:30:26,799 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted.pdf with 24 highlights applied
+2025-05-22 20:30:26,803 - main - INFO - Analysis complete with 11 contradictions

@@ -116,7 +116,7 @@ class PDFService:
                 page = doc[page_num]
                 
                 # Get the page as a high-quality image
-                pix = page.get_pixmap(alpha=False, matrix=fitz.Matrix(2, 2))  # 2x scaling for better quality
+                pix = page.get_pixmap(alpha=False, matrix=fitz.Matrix(3, 3))  # better quality ~300 DPI
                 img_path = os.path.join(temp_dir, f"page_{page_num}.png")
                 pix.save(img_path)
                 
@@ -143,30 +143,32 @@ class PDFService:
     
     def _preprocess_image_for_ocr(self, img_path: str, temp_dir: str, page_num: int) -> str:
         """
-        Preprocess image to improve OCR accuracy.
+        Preprocess image to improve OCR accuracy using CLAHE, denoising, and thresholding.
         """
-        # Load image with OpenCV
+        # Load image
         img = cv2.imread(img_path)
-        
+
         # Convert to grayscale
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        
-        # Apply denoising
-        denoised = cv2.fastNlMeansDenoising(gray)
-        
-        # Apply adaptive thresholding to handle varying lighting
-        thresh = cv2.adaptiveThreshold(
-            denoised, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2
-        )
-        
-        # Optional: Apply morphological operations to clean up the image
+
+        # Increase contrast using CLAHE
+        clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+        contrast = clahe.apply(gray)
+
+        # Denoise
+        denoised = cv2.fastNlMeansDenoising(contrast, h=30)
+
+        # Thresholding with Otsu
+        _, thresh = cv2.threshold(denoised, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+
+        # Morphological cleanup
         kernel = np.ones((1, 1), np.uint8)
         cleaned = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel)
-        
-        # Save processed image
+
+        # Save the processed image
         processed_path = os.path.join(temp_dir, f"processed_page_{page_num}.png")
         cv2.imwrite(processed_path, cleaned)
-        
+
         return processed_path
     
     def _extract_text_with_layout(self, img_path: str) -> str:
@@ -323,6 +325,26 @@ class PDFService:
                 original_doc.close()
             if 'result_doc' in locals():
                 result_doc.close()
+    
+    def check_if_scanned(self, pdf_path: str) -> bool:
+        """
+        Check if a PDF is likely scanned (image-based) by testing for lack of extractable text.
+        """
+        try:
+            doc = fitz.open(pdf_path)
+            for page in doc:
+                text = page.get_text().strip()
+                if len(text) > 30:
+                    doc.close()
+                    return False  # Text found, not scanned
+            doc.close()
+            return True  # No real text found, likely scanned
+        except Exception as e:
+            logger.error(f"Error checking if PDF is scanned: {e}")
+            return True  # Assume scanned if there's an error
+        
+    def convert_scanned_pdf(self, input_pdf_path: str, output_pdf_path: str, dpi: int = 300):
+        return self.convert_scanned_pdf_with_layout(input_pdf_path, output_pdf_path, dpi)
     
     def _add_invisible_text_layer(self, page: fitz.Page, ocr_data: dict, page_rect: fitz.Rect, img_size: tuple):
         """
