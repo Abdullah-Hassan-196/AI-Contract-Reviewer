@@ -2284,3 +2284,10 @@ FileNotFoundError: [Errno 2] No such file or directory: 'temp\\main_2aec08f5_MSA
 2025-05-23 18:50:48,526 - app.services.pdf_service - INFO - Extracting text from PDF: /workspaces/AI-Contract-Reviewer/temp/target_searchable.pdf
 2025-05-23 18:50:48,679 - app.services.pdf_service - INFO - Extracted text from 1 pages
 2025-05-23 18:50:48,680 - app.services.ai_service - INFO - Starting document analysis
+2025-05-23 18:51:19,190 - app.services.ai_service - INFO - Found 16 contradictions or inconsistencies
+2025-05-23 18:51:30,083 - app.services.pdf_service - INFO - Highlighting 16 contradictions in /workspaces/AI-Contract-Reviewer/temp/main_270cd997_MSA - 1.pdf
+2025-05-23 18:51:31,877 - app.services.pdf_service - WARNING - Could not find text to highlight: MISSING (Likely covered in the Master Service Agre...
+2025-05-23 18:51:32,412 - app.services.pdf_service - INFO - Saved highlighted PDF to /workspaces/AI-Contract-Reviewer/temp/main_highlighted.pdf with 20 highlights applied
+2025-05-23 18:51:32,413 - app.services.pdf_service - INFO - Highlighting 16 contradictions in /workspaces/AI-Contract-Reviewer/temp/target_searchable.pdf
+2025-05-23 18:51:32,597 - app.services.pdf_service - INFO - Saved highlighted PDF to /workspaces/AI-Contract-Reviewer/temp/target_highlighted.pdf with 32 highlights applied
+2025-05-23 18:51:32,597 - main - INFO - Analysis complete with 16 contradictions

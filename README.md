@@ -31,3 +31,5 @@ The API will be available at:
 
 - `GET /`: Welcome message
 - `GET /health`: Health check endpoint
+### OCR 
+- `sudo apt install tesseract-ocr poppler-utils`
