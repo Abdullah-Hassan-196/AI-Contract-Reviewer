@@ -133,14 +133,24 @@ async def compare_documents(
 
         # Prepare the API response
         response_data = {
-            "analysis": analysis_result,
+            "analysis": {
+                "similarity": analysis_result.get("similarity"),
+                "contradictions": analysis_result.get("contradictions"),
+                "contradictory_segments": analysis_result.get("contradictory_segments"),
+                "clause_analysis": analysis_result.get("clause_analysis"),
+                "missing_clauses": analysis_result.get("missing_clauses"),
+                "overall_risk_score": analysis_result.get("overall_risk_score"),
+                "key_findings": analysis_result.get("key_findings"),
+                "main_highlights": analysis_result.get("main_highlights"),
+                "target_highlights": analysis_result.get("target_highlights")
+            },
             "highlighted_documents": {
-                "main": analysis_result.get("main_highlighted_pdf"),
-                "target": analysis_result.get("target_highlighted_pdf")
+                "main": f"temp/{os.path.basename(analysis_result.get('main_highlighted_pdf'))}",
+                "target": f"temp/{os.path.basename(analysis_result.get('target_highlighted_pdf'))}"
             },
             "debug": {
-                "main_searchable_pdf": analysis_result.get("main_searchable_pdf"),
-                "target_searchable_pdf": analysis_result.get("target_searchable_pdf"),
+                "main_searchable_pdf": f"temp/{os.path.basename(analysis_result.get('main_searchable_pdf'))}",
+                "target_searchable_pdf": f"temp/{os.path.basename(analysis_result.get('target_searchable_pdf'))}",
                 "contradiction_count": len(analysis_result.get("contradictions", [])),
                 "main_highlights_count": len(analysis_result.get("main_highlights", [])),
                 "target_highlights_count": len(analysis_result.get("target_highlights", []))

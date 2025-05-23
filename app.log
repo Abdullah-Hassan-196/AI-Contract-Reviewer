@@ -2146,3 +2146,116 @@ FileNotFoundError: [Errno 2] No such file or directory: 'temp\\main_2aec08f5_MSA
 2025-05-22 20:30:26,751 - app.services.pdf_service - WARNING - Could not find text to highlight: Services Agreement (No dedicated definitions secti...
 2025-05-22 20:30:26,799 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted.pdf with 24 highlights applied
 2025-05-22 20:30:26,803 - main - INFO - Analysis complete with 11 contradictions
+2025-05-23 22:24:33,289 - main - INFO - Running on platform: posix
+2025-05-23 22:24:33,289 - main - INFO - Current working directory: /home/linked/AI-Contract-Reviewer
+2025-05-23 22:24:33,289 - main - INFO - Python version: 3.9.19 (main, Nov 18 2024, 17:44:38) 
+[GCC 11.4.0]
+2025-05-23 22:24:33,290 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-23 22:24:33,291 - main - INFO - Using temporary directory: /home/linked/AI-Contract-Reviewer/temp
+2025-05-23 22:24:33,297 - main - INFO - Starting AI Contract Reviewer API
+2025-05-23 22:26:44,722 - main - INFO - Received files - Main: MSA - 1.pdf, Target: 782 MSA.pdf
+2025-05-23 22:26:44,722 - main - INFO - Main document content type: application/pdf
+2025-05-23 22:26:44,722 - main - INFO - Target document content type: application/pdf
+2025-05-23 22:26:44,728 - main - INFO - Files saved: /home/linked/AI-Contract-Reviewer/temp/main_e83a4efd_MSA - 1.pdf, /home/linked/AI-Contract-Reviewer/temp/target_2a6e7443_782 MSA.pdf
+2025-05-23 22:26:44,757 - app.services.ai_service - INFO - Target document appears to be scanned. Converting to searchable PDF.
+2025-05-23 22:26:44,758 - app.services.pdf_service - INFO - Converting scanned PDF to searchable PDF with layout preservation: /home/linked/AI-Contract-Reviewer/temp/target_2a6e7443_782 MSA.pdf
+2025-05-23 22:26:44,760 - app.services.pdf_service - INFO - Processing page 1/1 with layout-aware OCR
+2025-05-23 22:26:45,635 - app.services.pdf_service - ERROR - Error processing page 1: tesseract is not installed or it's not in your PATH. See README file for more information.
+2025-05-23 22:26:45,642 - app.services.pdf_service - INFO - Successfully converted PDF with layout preservation: /home/linked/AI-Contract-Reviewer/temp/target_searchable.pdf
+2025-05-23 22:26:45,644 - app.services.pdf_service - INFO - Extracting text from PDF: /home/linked/AI-Contract-Reviewer/temp/main_e83a4efd_MSA - 1.pdf
+2025-05-23 22:26:45,940 - app.services.pdf_service - INFO - Extracted text from 28 pages
+2025-05-23 22:26:45,941 - app.services.pdf_service - INFO - Extracting text from PDF: /home/linked/AI-Contract-Reviewer/temp/target_searchable.pdf
+2025-05-23 22:26:45,943 - app.services.pdf_service - INFO - PDF appears to be scanned or OCR was requested. Applying enhanced OCR...
+2025-05-23 22:26:45,944 - app.services.pdf_service - INFO - Processing page 1 with enhanced OCR
+2025-05-23 22:26:47,878 - app.services.pdf_service - ERROR - Error in layout-aware OCR: tesseract is not installed or it's not in your PATH. See README file for more information.
+2025-05-23 22:26:48,024 - app.services.pdf_service - ERROR - Enhanced OCR error on page 1: tesseract is not installed or it's not in your PATH. See README file for more information.
+2025-05-23 22:26:48,027 - app.services.pdf_service - INFO - Extracted text from 0 pages
+2025-05-23 22:26:48,027 - app.services.ai_service - INFO - Starting document analysis
+2025-05-23 22:27:09,568 - app.services.ai_service - INFO - Found 12 contradictions or inconsistencies
+2025-05-23 22:27:12,797 - app.services.pdf_service - INFO - Highlighting 12 contradictions in /home/linked/AI-Contract-Reviewer/temp/main_e83a4efd_MSA - 1.pdf
+2025-05-23 22:27:14,565 - app.services.pdf_service - INFO - Saved highlighted PDF to /home/linked/AI-Contract-Reviewer/temp/main_highlighted.pdf with 74 highlights applied
+2025-05-23 22:27:14,566 - app.services.pdf_service - INFO - Highlighting 12 contradictions in /home/linked/AI-Contract-Reviewer/temp/target_searchable.pdf
+2025-05-23 22:27:14,568 - app.services.pdf_service - INFO - Saved highlighted PDF to /home/linked/AI-Contract-Reviewer/temp/target_highlighted.pdf with 0 highlights applied
+2025-05-23 22:27:14,568 - main - INFO - Analysis complete with 12 contradictions
+2025-05-23 22:31:35,317 - main - INFO - Running on platform: posix
+2025-05-23 22:31:35,317 - main - INFO - Current working directory: /home/linked/AI-Contract-Reviewer
+2025-05-23 22:31:35,317 - main - INFO - Python version: 3.9.19 (main, Nov 18 2024, 17:44:38) 
+[GCC 11.4.0]
+2025-05-23 22:31:35,318 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-23 22:31:35,318 - main - INFO - Using temporary directory: /home/linked/AI-Contract-Reviewer/temp
+2025-05-23 22:31:35,325 - main - INFO - Starting AI Contract Reviewer API
+2025-05-23 22:31:52,571 - main - INFO - Received files - Main: MSA - 1.pdf, Target: 782 MSA.pdf
+2025-05-23 22:31:52,571 - main - INFO - Main document content type: application/pdf
+2025-05-23 22:31:52,571 - main - INFO - Target document content type: application/pdf
+2025-05-23 22:31:52,575 - main - INFO - Files saved: /home/linked/AI-Contract-Reviewer/temp/main_0e2bba00_MSA - 1.pdf, /home/linked/AI-Contract-Reviewer/temp/target_e6ba4e08_782 MSA.pdf
+2025-05-23 22:31:52,594 - app.services.ai_service - INFO - Target document appears to be scanned. Converting to searchable PDF.
+2025-05-23 22:31:52,594 - app.services.pdf_service - INFO - Converting scanned PDF to searchable PDF with layout preservation: /home/linked/AI-Contract-Reviewer/temp/target_e6ba4e08_782 MSA.pdf
+2025-05-23 22:31:52,595 - app.services.pdf_service - INFO - Processing page 1/1 with layout-aware OCR
+2025-05-23 22:31:58,273 - app.services.pdf_service - INFO - Successfully converted PDF with layout preservation: /home/linked/AI-Contract-Reviewer/temp/target_searchable.pdf
+2025-05-23 22:31:58,275 - app.services.pdf_service - INFO - Extracting text from PDF: /home/linked/AI-Contract-Reviewer/temp/main_0e2bba00_MSA - 1.pdf
+2025-05-23 22:31:58,538 - app.services.pdf_service - INFO - Extracted text from 28 pages
+2025-05-23 22:31:58,538 - app.services.pdf_service - INFO - Extracting text from PDF: /home/linked/AI-Contract-Reviewer/temp/target_searchable.pdf
+2025-05-23 22:31:58,717 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-23 22:31:58,717 - app.services.ai_service - INFO - Starting document analysis
+2025-05-23 22:32:26,265 - app.services.ai_service - INFO - Found 14 contradictions or inconsistencies
+2025-05-23 22:32:41,355 - app.services.pdf_service - INFO - Highlighting 14 contradictions in /home/linked/AI-Contract-Reviewer/temp/main_0e2bba00_MSA - 1.pdf
+2025-05-23 22:32:42,346 - app.services.pdf_service - INFO - Saved highlighted PDF to /home/linked/AI-Contract-Reviewer/temp/main_highlighted.pdf with 58 highlights applied
+2025-05-23 22:32:42,347 - app.services.pdf_service - INFO - Highlighting 14 contradictions in /home/linked/AI-Contract-Reviewer/temp/target_searchable.pdf
+2025-05-23 22:32:42,521 - app.services.pdf_service - INFO - Saved highlighted PDF to /home/linked/AI-Contract-Reviewer/temp/target_highlighted.pdf with 26 highlights applied
+2025-05-23 22:32:42,521 - main - INFO - Analysis complete with 14 contradictions
+2025-05-23 22:35:39,853 - main - INFO - Running on platform: posix
+2025-05-23 22:35:39,853 - main - INFO - Current working directory: /home/linked/AI-Contract-Reviewer
+2025-05-23 22:35:39,853 - main - INFO - Python version: 3.9.19 (main, Nov 18 2024, 17:44:38) 
+[GCC 11.4.0]
+2025-05-23 22:35:39,854 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-23 22:35:39,855 - main - INFO - Using temporary directory: /home/linked/AI-Contract-Reviewer/temp
+2025-05-23 22:35:39,861 - main - INFO - Starting AI Contract Reviewer API
+2025-05-23 22:36:20,015 - main - INFO - Running on platform: posix
+2025-05-23 22:36:20,015 - main - INFO - Current working directory: /home/linked/AI-Contract-Reviewer
+2025-05-23 22:36:20,015 - main - INFO - Python version: 3.9.19 (main, Nov 18 2024, 17:44:38) 
+[GCC 11.4.0]
+2025-05-23 22:36:20,017 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-23 22:36:20,017 - main - INFO - Using temporary directory: /home/linked/AI-Contract-Reviewer/temp
+2025-05-23 22:36:20,023 - main - INFO - Starting AI Contract Reviewer API
+2025-05-23 22:37:42,267 - main - INFO - Received files - Main: MSA - 1.pdf, Target: 782 MSA.pdf
+2025-05-23 22:37:42,268 - main - INFO - Main document content type: application/pdf
+2025-05-23 22:37:42,268 - main - INFO - Target document content type: application/pdf
+2025-05-23 22:37:42,271 - main - INFO - Files saved: /home/linked/AI-Contract-Reviewer/temp/main_a5e9d780_MSA - 1.pdf, /home/linked/AI-Contract-Reviewer/temp/target_09c212ad_782 MSA.pdf
+2025-05-23 22:37:42,291 - app.services.ai_service - INFO - Target document appears to be scanned. Converting to searchable PDF.
+2025-05-23 22:37:42,291 - app.services.pdf_service - INFO - Converting scanned PDF to searchable PDF with layout preservation: /home/linked/AI-Contract-Reviewer/temp/target_09c212ad_782 MSA.pdf
+2025-05-23 22:37:42,292 - app.services.pdf_service - INFO - Processing page 1/1 with layout-aware OCR
+2025-05-23 22:37:47,624 - app.services.pdf_service - INFO - Successfully converted PDF with layout preservation: /home/linked/AI-Contract-Reviewer/temp/target_searchable.pdf
+2025-05-23 22:37:47,626 - app.services.pdf_service - INFO - Extracting text from PDF: /home/linked/AI-Contract-Reviewer/temp/main_a5e9d780_MSA - 1.pdf
+2025-05-23 22:37:47,936 - app.services.pdf_service - INFO - Extracted text from 28 pages
+2025-05-23 22:37:47,937 - app.services.pdf_service - INFO - Extracting text from PDF: /home/linked/AI-Contract-Reviewer/temp/target_searchable.pdf
+2025-05-23 22:37:48,137 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-23 22:37:48,137 - app.services.ai_service - INFO - Starting document analysis
+2025-05-23 22:38:20,701 - app.services.ai_service - INFO - Found 23 contradictions or inconsistencies
+2025-05-23 22:38:33,226 - app.services.pdf_service - INFO - Highlighting 23 contradictions in /home/linked/AI-Contract-Reviewer/temp/main_a5e9d780_MSA - 1.pdf
+2025-05-23 22:38:35,127 - app.services.pdf_service - INFO - Saved highlighted PDF to /home/linked/AI-Contract-Reviewer/temp/main_highlighted.pdf with 87 highlights applied
+2025-05-23 22:38:35,127 - app.services.pdf_service - INFO - Highlighting 23 contradictions in /home/linked/AI-Contract-Reviewer/temp/target_searchable.pdf
+2025-05-23 22:38:35,261 - app.services.pdf_service - WARNING - Could not find text to highlight: The Client shall provide the Agency with Accounts ...
+2025-05-23 22:38:35,381 - app.services.pdf_service - INFO - Saved highlighted PDF to /home/linked/AI-Contract-Reviewer/temp/target_highlighted.pdf with 36 highlights applied
+2025-05-23 22:38:35,382 - main - INFO - Analysis complete with 23 contradictions
+2025-05-23 22:45:02,334 - main - INFO - Received files - Main: MSA - 1.pdf, Target: 782 MSA.pdf
+2025-05-23 22:45:02,335 - main - INFO - Main document content type: application/pdf
+2025-05-23 22:45:02,335 - main - INFO - Target document content type: application/pdf
+2025-05-23 22:45:02,338 - main - INFO - Files saved: /home/linked/AI-Contract-Reviewer/temp/main_4bf73ad0_MSA - 1.pdf, /home/linked/AI-Contract-Reviewer/temp/target_5fbc2dcd_782 MSA.pdf
+2025-05-23 22:45:02,354 - app.services.ai_service - INFO - Target document appears to be scanned. Converting to searchable PDF.
+2025-05-23 22:45:02,354 - app.services.pdf_service - INFO - Converting scanned PDF to searchable PDF with layout preservation: /home/linked/AI-Contract-Reviewer/temp/target_5fbc2dcd_782 MSA.pdf
+2025-05-23 22:45:02,355 - app.services.pdf_service - INFO - Processing page 1/1 with layout-aware OCR
+2025-05-23 22:45:07,877 - app.services.pdf_service - INFO - Successfully converted PDF with layout preservation: /home/linked/AI-Contract-Reviewer/temp/target_searchable.pdf
+2025-05-23 22:45:07,879 - app.services.pdf_service - INFO - Extracting text from PDF: /home/linked/AI-Contract-Reviewer/temp/main_4bf73ad0_MSA - 1.pdf
+2025-05-23 22:45:08,141 - app.services.pdf_service - INFO - Extracted text from 28 pages
+2025-05-23 22:45:08,142 - app.services.pdf_service - INFO - Extracting text from PDF: /home/linked/AI-Contract-Reviewer/temp/target_searchable.pdf
+2025-05-23 22:45:08,308 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-23 22:45:08,308 - app.services.ai_service - INFO - Starting document analysis
+2025-05-23 22:45:37,505 - app.services.ai_service - INFO - Found 17 contradictions or inconsistencies
+2025-05-23 22:45:55,303 - app.services.pdf_service - INFO - Highlighting 17 contradictions in /home/linked/AI-Contract-Reviewer/temp/main_4bf73ad0_MSA - 1.pdf
+2025-05-23 22:45:57,732 - app.services.pdf_service - WARNING - Could not find text to highlight: MISSING (No explicit clause on governing law or ju...
+2025-05-23 22:45:57,744 - app.services.pdf_service - INFO - Saved highlighted PDF to /home/linked/AI-Contract-Reviewer/temp/main_highlighted.pdf with 77 highlights applied
+2025-05-23 22:45:57,744 - app.services.pdf_service - INFO - Highlighting 17 contradictions in /home/linked/AI-Contract-Reviewer/temp/target_searchable.pdf
+2025-05-23 22:45:57,849 - app.services.pdf_service - WARNING - Could not find text to highlight: MISSING (except implicit rejection of accounts und...
+2025-05-23 22:45:57,974 - app.services.pdf_service - WARNING - Could not find text to highlight: MISSING (No explicit clause on governing law or ju...
+2025-05-23 22:45:57,977 - app.services.pdf_service - INFO - Saved highlighted PDF to /home/linked/AI-Contract-Reviewer/temp/target_highlighted.pdf with 34 highlights applied
+2025-05-23 22:45:57,978 - main - INFO - Analysis complete with 17 contradictions
