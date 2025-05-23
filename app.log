@@ -2259,3 +2259,28 @@ FileNotFoundError: [Errno 2] No such file or directory: 'temp\\main_2aec08f5_MSA
 2025-05-23 22:45:57,974 - app.services.pdf_service - WARNING - Could not find text to highlight: MISSING (No explicit clause on governing law or ju...
 2025-05-23 22:45:57,977 - app.services.pdf_service - INFO - Saved highlighted PDF to /home/linked/AI-Contract-Reviewer/temp/target_highlighted.pdf with 34 highlights applied
 2025-05-23 22:45:57,978 - main - INFO - Analysis complete with 17 contradictions
+2025-05-23 18:48:49,590 - main - INFO - Running on platform: posix
+2025-05-23 18:48:49,590 - main - INFO - Current working directory: /workspaces/AI-Contract-Reviewer
+2025-05-23 18:48:49,591 - main - INFO - Python version: 3.12.1 (main, Mar 17 2025, 17:13:06) [GCC 9.4.0]
+2025-05-23 18:48:49,591 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-23 18:48:49,592 - main - INFO - Using temporary directory: /workspaces/AI-Contract-Reviewer/temp
+2025-05-23 18:48:49,596 - main - INFO - Starting AI Contract Reviewer API
+2025-05-23 18:50:17,619 - main - INFO - Running on platform: posix
+2025-05-23 18:50:17,620 - main - INFO - Current working directory: /workspaces/AI-Contract-Reviewer
+2025-05-23 18:50:17,620 - main - INFO - Python version: 3.12.1 (main, Mar 17 2025, 17:13:06) [GCC 9.4.0]
+2025-05-23 18:50:17,621 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-23 18:50:17,621 - main - INFO - Using temporary directory: /workspaces/AI-Contract-Reviewer/temp
+2025-05-23 18:50:17,625 - main - INFO - Starting AI Contract Reviewer API
+2025-05-23 18:50:28,574 - main - INFO - Received files - Main: MSA - 1.pdf, Target: 782 MSA.pdf
+2025-05-23 18:50:28,574 - main - INFO - Main document content type: application/pdf
+2025-05-23 18:50:28,575 - main - INFO - Target document content type: application/pdf
+2025-05-23 18:50:28,578 - main - INFO - Files saved: /workspaces/AI-Contract-Reviewer/temp/main_270cd997_MSA - 1.pdf, /workspaces/AI-Contract-Reviewer/temp/target_89604b59_782 MSA.pdf
+2025-05-23 18:50:28,593 - app.services.ai_service - INFO - Target document appears to be scanned. Converting to searchable PDF.
+2025-05-23 18:50:28,593 - app.services.pdf_service - INFO - Converting scanned PDF to searchable PDF with layout preservation: /workspaces/AI-Contract-Reviewer/temp/target_89604b59_782 MSA.pdf
+2025-05-23 18:50:28,594 - app.services.pdf_service - INFO - Processing page 1/1 with layout-aware OCR
+2025-05-23 18:50:48,239 - app.services.pdf_service - INFO - Successfully converted PDF with layout preservation: /workspaces/AI-Contract-Reviewer/temp/target_searchable.pdf
+2025-05-23 18:50:48,241 - app.services.pdf_service - INFO - Extracting text from PDF: /workspaces/AI-Contract-Reviewer/temp/main_270cd997_MSA - 1.pdf
+2025-05-23 18:50:48,525 - app.services.pdf_service - INFO - Extracted text from 28 pages
+2025-05-23 18:50:48,526 - app.services.pdf_service - INFO - Extracting text from PDF: /workspaces/AI-Contract-Reviewer/temp/target_searchable.pdf
+2025-05-23 18:50:48,679 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-23 18:50:48,680 - app.services.ai_service - INFO - Starting document analysis
