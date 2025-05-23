@@ -67,6 +67,10 @@ async def compare_documents(
     Returns an analysis of the documents along with links to highlighted versions.
     """
     try:
+        logger.info(f"Received files - Main: {main_document.filename}, Target: {target_document.filename}")
+        logger.info(f"Main document content type: {main_document.content_type}")
+        logger.info(f"Target document content type: {target_document.content_type}")
+        
         # Generate unique filenames to prevent collisions
         main_filename = f"main_{os.urandom(4).hex()}_{main_document.filename}"
         target_filename = f"target_{os.urandom(4).hex()}_{target_document.filename}"

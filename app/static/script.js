@@ -59,6 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('main_document', mainDocument.files[0]);
         formData.append('target_document', targetDocument.files[0]);
 
+        // Log file information
+        console.log('Main document:', mainDocument.files[0]);
+        console.log('Target document:', targetDocument.files[0]);
+
         // Show loading state
         loading.classList.remove('hidden');
         results.classList.add('hidden');
@@ -71,14 +75,16 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (!response.ok) {
-                throw new Error('Failed to compare documents');
+                const errorData = await response.text();
+                console.error('Server response:', errorData);
+                throw new Error(`Failed to compare documents: ${response.status} ${response.statusText}`);
             }
 
             const data = await response.json();
             await displayResults(data);
         } catch (error) {
-            console.error('Error:', error);
-            alert('An error occurred while comparing documents. Please try again.');
+            console.error('Error details:', error);
+            alert(`An error occurred while comparing documents: ${error.message}`);
         } finally {
             loading.classList.add('hidden');
             compareBtn.disabled = false;
@@ -89,24 +95,24 @@ document.addEventListener('DOMContentLoaded', () => {
     async function renderPdf(pdfData, container, highlights = []) {
         const pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
         const numPages = pdf.numPages;
-        
+
         for (let pageNum = 1; pageNum <= numPages; pageNum++) {
             const page = await pdf.getPage(pageNum);
             // Increase scale for better readability
             const viewport = page.getViewport({ scale: 2.0 });
-            
+
             const canvas = document.createElement('canvas');
             const context = canvas.getContext('2d');
             canvas.height = viewport.height;
             canvas.width = viewport.width;
-            
+
             const renderContext = {
                 canvasContext: context,
                 viewport: viewport
             };
-            
+
             await page.render(renderContext).promise;
-            
+
             // Add highlights if any
             if (highlights.length > 0) {
                 const pageHighlights = highlights.filter(h => h.page === pageNum);
@@ -119,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     highlightLayer.style.width = '100%';
                     highlightLayer.style.height = '100%';
                     highlightLayer.style.pointerEvents = 'none'; // Allow clicking through highlights
-                    
+
                     pageHighlights.forEach(highlight => {
                         const highlightElement = document.createElement('div');
                         highlightElement.className = 'highlight-contradiction';
@@ -131,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         highlightElement.style.height = `${(highlight.bbox[3] - highlight.bbox[1]) * 2}px`;
                         highlightLayer.appendChild(highlightElement);
                     });
-                    
+
                     const wrapper = document.createElement('div');
                     wrapper.style.position = 'relative';
                     wrapper.appendChild(canvas);
@@ -186,26 +192,26 @@ document.addEventListener('DOMContentLoaded', () => {
         data.analysis.clause_analysis.forEach(clause => {
             const clauseElement = document.createElement('div');
             clauseElement.className = 'clause-item';
-            
+
             const header = document.createElement('div');
             header.className = 'clause-header';
-            
+
             const title = document.createElement('h5');
             title.textContent = 'Clause Analysis';
-            
+
             const riskBadge = document.createElement('span');
             riskBadge.className = `risk-badge ${clause.risk_level.toLowerCase()}`;
             riskBadge.textContent = clause.risk_level;
-            
+
             header.appendChild(title);
             header.appendChild(riskBadge);
-            
+
             const content = document.createElement('div');
             content.className = 'clause-content';
-            
+
             const text = document.createElement('p');
             text.textContent = clause.clause_text;
-            
+
             const implications = document.createElement('div');
             implications.className = 'implications';
             implications.innerHTML = `
@@ -214,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${clause.legal_implications.map(imp => `<li>${imp}</li>`).join('')}
                 </ul>
             `;
-            
+
             const recommendations = document.createElement('div');
             recommendations.className = 'recommendations';
             recommendations.innerHTML = `
@@ -223,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${clause.recommendations.map(rec => `<li>${rec}</li>`).join('')}
                 </ul>
             `;
-            
+
             const standards = document.createElement('div');
             standards.className = 'standards';
             standards.innerHTML = `
@@ -232,12 +238,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${clause.industry_standards.map(std => `<li>${std}</li>`).join('')}
                 </ul>
             `;
-            
+
             content.appendChild(text);
             content.appendChild(implications);
             content.appendChild(recommendations);
             content.appendChild(standards);
-            
+
             clauseElement.appendChild(header);
             clauseElement.appendChild(content);
             clauseAnalysisList.appendChild(clauseElement);
