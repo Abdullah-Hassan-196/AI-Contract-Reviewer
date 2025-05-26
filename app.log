@@ -1579,3 +1579,25 @@ ValueError: Invalid format specifier ' "...",
 2025-05-27 00:30:55,338 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\target_143d847d_pip install pytesseract pillow.pdf
 2025-05-27 00:30:55,346 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_6a289db4.pdf
 2025-05-27 00:30:55,347 - main - INFO - Analysis complete with 5 contradictions
+2025-05-27 00:38:13,964 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 00:38:13,980 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 00:40:58,953 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 00:40:58,969 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 00:41:16,584 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 00:41:16,601 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 00:41:41,961 - main - INFO - Files saved: temp\main_37ee3d70_pip document.pdf, temp\target_c4122e03_pip install pytesseract pillow.pdf
+2025-05-27 00:41:41,974 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_37ee3d70_pip document.pdf
+2025-05-27 00:41:41,988 - app.services.pdf_service - INFO - Page 1 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:41:45,574 - app.services.pdf_service - INFO - Successfully extracted text from image on page 1
+2025-05-27 00:41:45,579 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 00:41:45,581 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_c4122e03_pip install pytesseract pillow.pdf
+2025-05-27 00:41:45,589 - app.services.pdf_service - INFO - Page 1 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:41:48,554 - app.services.pdf_service - INFO - Successfully extracted text from image on page 1
+2025-05-27 00:41:48,562 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 00:41:48,563 - app.services.ai_service - INFO - Starting document analysis
+2025-05-27 00:42:01,190 - app.services.ai_service - INFO - Found 5 contradictions or inconsistencies
+2025-05-27 00:42:07,898 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\main_37ee3d70_pip document.pdf
+2025-05-27 00:42:07,910 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_deab0aab.pdf
+2025-05-27 00:42:07,921 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\target_c4122e03_pip install pytesseract pillow.pdf
+2025-05-27 00:42:07,939 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_eb9e1745.pdf
+2025-05-27 00:42:07,943 - main - INFO - Analysis complete with 5 contradictions

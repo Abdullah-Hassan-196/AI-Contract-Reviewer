@@ -31,6 +31,7 @@ class AIService:
 
         if main_text.strip() == target_text.strip():
             logger.info("Documents are identical")
+            print("\nNo contradictions found - Documents are identical")
             return {
                 "similarity": 100.0,
                 "contradictions": [],
@@ -45,6 +46,19 @@ class AIService:
 
         contradictions = self._extract_contradictions(main_text, target_text)
         logger.info(f"Found {len(contradictions)} contradictions or inconsistencies")
+
+        # Print contradictions in terminal
+        if contradictions:
+            print("\nContradictions found:")
+            print("-" * 50)
+            for i, contradiction in enumerate(contradictions, 1):
+                print(f"\nContradiction {i}:")
+                print(f"Main Document: {contradiction.get('main_text', '')}")
+                print(f"Target Document: {contradiction.get('target_text', '')}")
+                print(f"Explanation: {contradiction.get('explanation', '')}")
+                print("-" * 50)
+        else:
+            print("\nNo contradictions found between the documents")
 
         main_highlights = [{"text": c.get("main_text", "")} for c in contradictions]
         target_highlights = [{"text": c.get("target_text", "")} for c in contradictions]
