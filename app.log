@@ -1425,3 +1425,157 @@ ValueError: Invalid format specifier ' "...",
 2025-05-14 01:08:26,691 - main - INFO - Analysis complete with 6 contradictions
 2025-05-14 01:08:48,051 - app.services.ai_service - INFO - AIService initialized with Gemini model
 2025-05-14 01:08:48,073 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 00:23:31,555 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 00:23:31,564 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 00:23:47,976 - main - INFO - Files saved: temp\main_fc40ebac_pip document.pdf, temp\target_fe9e1925_pip install pytesseract pillow.pdf
+2025-05-27 00:23:47,976 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_fc40ebac_pip document.pdf
+2025-05-27 00:23:47,992 - app.services.pdf_service - INFO - Page 1 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:23:49,363 - app.services.pdf_service - ERROR - Error extracting text from image: 404 Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.
+2025-05-27 00:23:49,370 - app.services.pdf_service - WARNING - Failed to extract text from image on page 1
+2025-05-27 00:23:49,377 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 00:23:49,382 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_fe9e1925_pip install pytesseract pillow.pdf
+2025-05-27 00:23:49,396 - app.services.pdf_service - INFO - Page 1 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:23:50,389 - app.services.pdf_service - ERROR - Error extracting text from image: 404 Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.
+2025-05-27 00:23:50,394 - app.services.pdf_service - WARNING - Failed to extract text from image on page 1
+2025-05-27 00:23:50,402 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 00:23:50,403 - app.services.ai_service - INFO - Starting document analysis
+2025-05-27 00:24:01,015 - app.services.ai_service - INFO - Found 1 contradictions or inconsistencies
+2025-05-27 00:24:10,334 - app.services.pdf_service - INFO - Highlighting 1 contradictions in temp\main_fc40ebac_pip document.pdf
+2025-05-27 00:24:10,340 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_c695d070.pdf
+2025-05-27 00:24:10,340 - app.services.pdf_service - INFO - Highlighting 1 contradictions in temp\target_fe9e1925_pip install pytesseract pillow.pdf
+2025-05-27 00:24:10,347 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_5ac8fb34.pdf
+2025-05-27 00:24:10,352 - main - INFO - Analysis complete with 1 contradictions
+2025-05-27 00:25:30,480 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 00:25:30,502 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 00:26:02,602 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 00:26:02,628 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 00:26:20,676 - main - INFO - Files saved: temp\main_4fb58980_pip document.pdf, temp\target_bbffdcba_pip install pytesseract pillow.pdf
+2025-05-27 00:26:20,679 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_4fb58980_pip document.pdf
+2025-05-27 00:26:20,692 - app.services.pdf_service - INFO - Page 1 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:26:23,996 - app.services.pdf_service - INFO - Successfully extracted text from image on page 1
+2025-05-27 00:26:24,012 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 00:26:24,014 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_bbffdcba_pip install pytesseract pillow.pdf
+2025-05-27 00:26:24,022 - app.services.pdf_service - INFO - Page 1 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:26:26,832 - app.services.pdf_service - INFO - Successfully extracted text from image on page 1
+2025-05-27 00:26:26,840 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 00:26:26,840 - app.services.ai_service - INFO - Starting document analysis
+2025-05-27 00:26:37,294 - app.services.ai_service - INFO - Found 5 contradictions or inconsistencies
+2025-05-27 00:26:44,956 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\main_4fb58980_pip document.pdf
+2025-05-27 00:26:44,972 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_254fb618.pdf
+2025-05-27 00:26:44,973 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\target_bbffdcba_pip install pytesseract pillow.pdf
+2025-05-27 00:26:44,986 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_565044f1.pdf
+2025-05-27 00:26:44,988 - main - INFO - Analysis complete with 5 contradictions
+2025-05-27 00:27:12,014 - main - INFO - Files saved: temp\main_3dc9c1b6_MSA - 1.pdf, temp\target_07c162b4_782 MSA.pdf
+2025-05-27 00:27:12,014 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_3dc9c1b6_MSA - 1.pdf
+2025-05-27 00:27:12,098 - app.services.pdf_service - INFO - Page 1 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:27:15,487 - app.services.pdf_service - INFO - Successfully extracted text from image on page 1
+2025-05-27 00:27:15,524 - app.services.pdf_service - INFO - Page 2 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:27:19,056 - app.services.pdf_service - INFO - Successfully extracted text from image on page 2
+2025-05-27 00:27:19,092 - app.services.pdf_service - INFO - Page 3 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:27:23,357 - app.services.pdf_service - INFO - Successfully extracted text from image on page 3
+2025-05-27 00:27:23,528 - app.services.pdf_service - INFO - Page 6 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:27:28,789 - app.services.pdf_service - INFO - Successfully extracted text from image on page 6
+2025-05-27 00:27:28,825 - app.services.pdf_service - INFO - Page 7 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:27:33,202 - app.services.pdf_service - INFO - Successfully extracted text from image on page 7
+2025-05-27 00:27:33,242 - app.services.pdf_service - INFO - Page 8 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:27:39,615 - app.services.pdf_service - INFO - Successfully extracted text from image on page 8
+2025-05-27 00:27:39,659 - app.services.pdf_service - INFO - Page 9 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:27:43,530 - app.services.pdf_service - INFO - Successfully extracted text from image on page 9
+2025-05-27 00:27:43,660 - app.services.pdf_service - INFO - Page 11 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:27:46,506 - app.services.pdf_service - INFO - Successfully extracted text from image on page 11
+2025-05-27 00:27:46,563 - app.services.pdf_service - INFO - Page 12 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:27:51,524 - app.services.pdf_service - INFO - Successfully extracted text from image on page 12
+2025-05-27 00:27:51,701 - app.services.pdf_service - INFO - Page 13 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:27:59,402 - app.services.pdf_service - INFO - Successfully extracted text from image on page 13
+2025-05-27 00:27:59,455 - app.services.pdf_service - INFO - Page 14 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:04,009 - app.services.pdf_service - INFO - Successfully extracted text from image on page 14
+2025-05-27 00:28:04,051 - app.services.pdf_service - INFO - Page 15 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:08,618 - app.services.pdf_service - INFO - Successfully extracted text from image on page 15
+2025-05-27 00:28:08,654 - app.services.pdf_service - INFO - Page 16 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:14,562 - app.services.pdf_service - INFO - Successfully extracted text from image on page 16
+2025-05-27 00:28:14,762 - app.services.pdf_service - INFO - Page 17 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:19,677 - app.services.pdf_service - INFO - Successfully extracted text from image on page 17
+2025-05-27 00:28:19,717 - app.services.pdf_service - INFO - Page 18 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:20,540 - app.services.pdf_service - ERROR - Error extracting text from image: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 10
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 38
+}
+]
+2025-05-27 00:28:20,573 - app.services.pdf_service - WARNING - Failed to extract text from image on page 18
+2025-05-27 00:28:20,664 - app.services.pdf_service - INFO - Page 19 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:21,708 - app.services.pdf_service - ERROR - Error extracting text from image: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 10
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 37
+}
+]
+2025-05-27 00:28:21,732 - app.services.pdf_service - WARNING - Failed to extract text from image on page 19
+2025-05-27 00:28:21,807 - app.services.pdf_service - INFO - Page 20 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:26,336 - app.services.pdf_service - INFO - Successfully extracted text from image on page 20
+2025-05-27 00:28:26,372 - app.services.pdf_service - INFO - Page 21 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:35,245 - app.services.pdf_service - INFO - Successfully extracted text from image on page 21
+2025-05-27 00:28:35,332 - app.services.pdf_service - INFO - Page 22 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:40,137 - app.services.pdf_service - INFO - Successfully extracted text from image on page 22
+2025-05-27 00:28:40,185 - app.services.pdf_service - INFO - Page 23 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:43,843 - app.services.pdf_service - INFO - Successfully extracted text from image on page 23
+2025-05-27 00:28:43,904 - app.services.pdf_service - INFO - Page 24 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:46,514 - app.services.pdf_service - INFO - Successfully extracted text from image on page 24
+2025-05-27 00:28:46,884 - app.services.pdf_service - INFO - Extracted text from 28 pages
+2025-05-27 00:28:46,884 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_07c162b4_782 MSA.pdf
+2025-05-27 00:28:46,892 - app.services.pdf_service - INFO - Page 1 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:55,006 - app.services.pdf_service - INFO - Successfully extracted text from image on page 1
+2025-05-27 00:28:55,039 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 00:28:55,041 - app.services.ai_service - INFO - Starting document analysis
+2025-05-27 00:29:22,246 - app.services.ai_service - INFO - Found 17 contradictions or inconsistencies
+2025-05-27 00:29:44,814 - app.services.pdf_service - INFO - Highlighting 17 contradictions in temp\main_3dc9c1b6_MSA - 1.pdf
+2025-05-27 00:29:46,674 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_37ba08fa.pdf
+2025-05-27 00:29:46,674 - app.services.pdf_service - INFO - Highlighting 17 contradictions in temp\target_07c162b4_782 MSA.pdf
+2025-05-27 00:29:46,682 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_954417c3.pdf
+2025-05-27 00:29:46,683 - main - INFO - Analysis complete with 17 contradictions
+2025-05-27 00:30:20,264 - main - INFO - Files saved: temp\main_33771520_pip document.pdf, temp\target_143d847d_pip install pytesseract pillow.pdf
+2025-05-27 00:30:20,264 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_33771520_pip document.pdf
+2025-05-27 00:30:20,274 - app.services.pdf_service - INFO - Page 1 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:30:22,866 - app.services.pdf_service - INFO - Successfully extracted text from image on page 1
+2025-05-27 00:30:22,874 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 00:30:22,874 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_143d847d_pip install pytesseract pillow.pdf
+2025-05-27 00:30:22,886 - app.services.pdf_service - INFO - Page 1 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:30:26,322 - app.services.pdf_service - INFO - Successfully extracted text from image on page 1
+2025-05-27 00:30:26,488 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 00:30:26,533 - app.services.ai_service - INFO - Starting document analysis
+2025-05-27 00:30:49,899 - app.services.ai_service - INFO - Found 5 contradictions or inconsistencies
+2025-05-27 00:30:55,331 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\main_33771520_pip document.pdf
+2025-05-27 00:30:55,337 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_60e15ce8.pdf
+2025-05-27 00:30:55,338 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\target_143d847d_pip install pytesseract pillow.pdf
+2025-05-27 00:30:55,346 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_6a289db4.pdf
+2025-05-27 00:30:55,347 - main - INFO - Analysis complete with 5 contradictions
