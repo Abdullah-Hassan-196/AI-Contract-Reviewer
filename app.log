@@ -1425,3 +1425,410 @@ ValueError: Invalid format specifier ' "...",
 2025-05-14 01:08:26,691 - main - INFO - Analysis complete with 6 contradictions
 2025-05-14 01:08:48,051 - app.services.ai_service - INFO - AIService initialized with Gemini model
 2025-05-14 01:08:48,073 - main - INFO - Starting AI Contract Reviewer API
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+2025-05-27 00:23:31,555 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 00:23:31,564 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 00:23:47,976 - main - INFO - Files saved: temp\main_fc40ebac_pip document.pdf, temp\target_fe9e1925_pip install pytesseract pillow.pdf
+2025-05-27 00:23:47,976 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_fc40ebac_pip document.pdf
+2025-05-27 00:23:47,992 - app.services.pdf_service - INFO - Page 1 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:23:49,363 - app.services.pdf_service - ERROR - Error extracting text from image: 404 Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.
+2025-05-27 00:23:49,370 - app.services.pdf_service - WARNING - Failed to extract text from image on page 1
+2025-05-27 00:23:49,377 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 00:23:49,382 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_fe9e1925_pip install pytesseract pillow.pdf
+2025-05-27 00:23:49,396 - app.services.pdf_service - INFO - Page 1 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:23:50,389 - app.services.pdf_service - ERROR - Error extracting text from image: 404 Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.
+2025-05-27 00:23:50,394 - app.services.pdf_service - WARNING - Failed to extract text from image on page 1
+2025-05-27 00:23:50,402 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 00:23:50,403 - app.services.ai_service - INFO - Starting document analysis
+2025-05-27 00:24:01,015 - app.services.ai_service - INFO - Found 1 contradictions or inconsistencies
+2025-05-27 00:24:10,334 - app.services.pdf_service - INFO - Highlighting 1 contradictions in temp\main_fc40ebac_pip document.pdf
+2025-05-27 00:24:10,340 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_c695d070.pdf
+2025-05-27 00:24:10,340 - app.services.pdf_service - INFO - Highlighting 1 contradictions in temp\target_fe9e1925_pip install pytesseract pillow.pdf
+2025-05-27 00:24:10,347 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_5ac8fb34.pdf
+2025-05-27 00:24:10,352 - main - INFO - Analysis complete with 1 contradictions
+2025-05-27 00:25:30,480 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 00:25:30,502 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 00:26:02,602 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 00:26:02,628 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 00:26:20,676 - main - INFO - Files saved: temp\main_4fb58980_pip document.pdf, temp\target_bbffdcba_pip install pytesseract pillow.pdf
+2025-05-27 00:26:20,679 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_4fb58980_pip document.pdf
+2025-05-27 00:26:20,692 - app.services.pdf_service - INFO - Page 1 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:26:23,996 - app.services.pdf_service - INFO - Successfully extracted text from image on page 1
+2025-05-27 00:26:24,012 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 00:26:24,014 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_bbffdcba_pip install pytesseract pillow.pdf
+2025-05-27 00:26:24,022 - app.services.pdf_service - INFO - Page 1 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:26:26,832 - app.services.pdf_service - INFO - Successfully extracted text from image on page 1
+2025-05-27 00:26:26,840 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 00:26:26,840 - app.services.ai_service - INFO - Starting document analysis
+2025-05-27 00:26:37,294 - app.services.ai_service - INFO - Found 5 contradictions or inconsistencies
+2025-05-27 00:26:44,956 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\main_4fb58980_pip document.pdf
+2025-05-27 00:26:44,972 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_254fb618.pdf
+2025-05-27 00:26:44,973 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\target_bbffdcba_pip install pytesseract pillow.pdf
+2025-05-27 00:26:44,986 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_565044f1.pdf
+2025-05-27 00:26:44,988 - main - INFO - Analysis complete with 5 contradictions
+2025-05-27 00:27:12,014 - main - INFO - Files saved: temp\main_3dc9c1b6_MSA - 1.pdf, temp\target_07c162b4_782 MSA.pdf
+2025-05-27 00:27:12,014 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_3dc9c1b6_MSA - 1.pdf
+2025-05-27 00:27:12,098 - app.services.pdf_service - INFO - Page 1 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:27:15,487 - app.services.pdf_service - INFO - Successfully extracted text from image on page 1
+2025-05-27 00:27:15,524 - app.services.pdf_service - INFO - Page 2 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:27:19,056 - app.services.pdf_service - INFO - Successfully extracted text from image on page 2
+2025-05-27 00:27:19,092 - app.services.pdf_service - INFO - Page 3 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:27:23,357 - app.services.pdf_service - INFO - Successfully extracted text from image on page 3
+2025-05-27 00:27:23,528 - app.services.pdf_service - INFO - Page 6 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:27:28,789 - app.services.pdf_service - INFO - Successfully extracted text from image on page 6
+2025-05-27 00:27:28,825 - app.services.pdf_service - INFO - Page 7 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:27:33,202 - app.services.pdf_service - INFO - Successfully extracted text from image on page 7
+2025-05-27 00:27:33,242 - app.services.pdf_service - INFO - Page 8 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:27:39,615 - app.services.pdf_service - INFO - Successfully extracted text from image on page 8
+2025-05-27 00:27:39,659 - app.services.pdf_service - INFO - Page 9 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:27:43,530 - app.services.pdf_service - INFO - Successfully extracted text from image on page 9
+2025-05-27 00:27:43,660 - app.services.pdf_service - INFO - Page 11 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:27:46,506 - app.services.pdf_service - INFO - Successfully extracted text from image on page 11
+2025-05-27 00:27:46,563 - app.services.pdf_service - INFO - Page 12 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:27:51,524 - app.services.pdf_service - INFO - Successfully extracted text from image on page 12
+2025-05-27 00:27:51,701 - app.services.pdf_service - INFO - Page 13 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:27:59,402 - app.services.pdf_service - INFO - Successfully extracted text from image on page 13
+2025-05-27 00:27:59,455 - app.services.pdf_service - INFO - Page 14 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:04,009 - app.services.pdf_service - INFO - Successfully extracted text from image on page 14
+2025-05-27 00:28:04,051 - app.services.pdf_service - INFO - Page 15 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:08,618 - app.services.pdf_service - INFO - Successfully extracted text from image on page 15
+2025-05-27 00:28:08,654 - app.services.pdf_service - INFO - Page 16 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:14,562 - app.services.pdf_service - INFO - Successfully extracted text from image on page 16
+2025-05-27 00:28:14,762 - app.services.pdf_service - INFO - Page 17 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:19,677 - app.services.pdf_service - INFO - Successfully extracted text from image on page 17
+2025-05-27 00:28:19,717 - app.services.pdf_service - INFO - Page 18 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:20,540 - app.services.pdf_service - ERROR - Error extracting text from image: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 10
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 38
+}
+]
+2025-05-27 00:28:20,573 - app.services.pdf_service - WARNING - Failed to extract text from image on page 18
+2025-05-27 00:28:20,664 - app.services.pdf_service - INFO - Page 19 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:21,708 - app.services.pdf_service - ERROR - Error extracting text from image: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 10
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 37
+}
+]
+2025-05-27 00:28:21,732 - app.services.pdf_service - WARNING - Failed to extract text from image on page 19
+2025-05-27 00:28:21,807 - app.services.pdf_service - INFO - Page 20 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:26,336 - app.services.pdf_service - INFO - Successfully extracted text from image on page 20
+2025-05-27 00:28:26,372 - app.services.pdf_service - INFO - Page 21 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:35,245 - app.services.pdf_service - INFO - Successfully extracted text from image on page 21
+2025-05-27 00:28:35,332 - app.services.pdf_service - INFO - Page 22 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:40,137 - app.services.pdf_service - INFO - Successfully extracted text from image on page 22
+2025-05-27 00:28:40,185 - app.services.pdf_service - INFO - Page 23 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:43,843 - app.services.pdf_service - INFO - Successfully extracted text from image on page 23
+2025-05-27 00:28:43,904 - app.services.pdf_service - INFO - Page 24 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:46,514 - app.services.pdf_service - INFO - Successfully extracted text from image on page 24
+2025-05-27 00:28:46,884 - app.services.pdf_service - INFO - Extracted text from 28 pages
+2025-05-27 00:28:46,884 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_07c162b4_782 MSA.pdf
+2025-05-27 00:28:46,892 - app.services.pdf_service - INFO - Page 1 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:28:55,006 - app.services.pdf_service - INFO - Successfully extracted text from image on page 1
+2025-05-27 00:28:55,039 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 00:28:55,041 - app.services.ai_service - INFO - Starting document analysis
+2025-05-27 00:29:22,246 - app.services.ai_service - INFO - Found 17 contradictions or inconsistencies
+2025-05-27 00:29:44,814 - app.services.pdf_service - INFO - Highlighting 17 contradictions in temp\main_3dc9c1b6_MSA - 1.pdf
+2025-05-27 00:29:46,674 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_37ba08fa.pdf
+2025-05-27 00:29:46,674 - app.services.pdf_service - INFO - Highlighting 17 contradictions in temp\target_07c162b4_782 MSA.pdf
+2025-05-27 00:29:46,682 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_954417c3.pdf
+2025-05-27 00:29:46,683 - main - INFO - Analysis complete with 17 contradictions
+2025-05-27 00:30:20,264 - main - INFO - Files saved: temp\main_33771520_pip document.pdf, temp\target_143d847d_pip install pytesseract pillow.pdf
+2025-05-27 00:30:20,264 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_33771520_pip document.pdf
+2025-05-27 00:30:20,274 - app.services.pdf_service - INFO - Page 1 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:30:22,866 - app.services.pdf_service - INFO - Successfully extracted text from image on page 1
+2025-05-27 00:30:22,874 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 00:30:22,874 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_143d847d_pip install pytesseract pillow.pdf
+2025-05-27 00:30:22,886 - app.services.pdf_service - INFO - Page 1 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:30:26,322 - app.services.pdf_service - INFO - Successfully extracted text from image on page 1
+2025-05-27 00:30:26,488 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 00:30:26,533 - app.services.ai_service - INFO - Starting document analysis
+2025-05-27 00:30:49,899 - app.services.ai_service - INFO - Found 5 contradictions or inconsistencies
+2025-05-27 00:30:55,331 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\main_33771520_pip document.pdf
+2025-05-27 00:30:55,337 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_60e15ce8.pdf
+2025-05-27 00:30:55,338 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\target_143d847d_pip install pytesseract pillow.pdf
+2025-05-27 00:30:55,346 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_6a289db4.pdf
+2025-05-27 00:30:55,347 - main - INFO - Analysis complete with 5 contradictions
+2025-05-27 00:38:13,964 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 00:38:13,980 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 00:40:58,953 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 00:40:58,969 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 00:41:16,584 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 00:41:16,601 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 00:41:41,961 - main - INFO - Files saved: temp\main_37ee3d70_pip document.pdf, temp\target_c4122e03_pip install pytesseract pillow.pdf
+2025-05-27 00:41:41,974 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_37ee3d70_pip document.pdf
+2025-05-27 00:41:41,988 - app.services.pdf_service - INFO - Page 1 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:41:45,574 - app.services.pdf_service - INFO - Successfully extracted text from image on page 1
+2025-05-27 00:41:45,579 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 00:41:45,581 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_c4122e03_pip install pytesseract pillow.pdf
+2025-05-27 00:41:45,589 - app.services.pdf_service - INFO - Page 1 appears to be an image or has no text. Attempting OCR...
+2025-05-27 00:41:48,554 - app.services.pdf_service - INFO - Successfully extracted text from image on page 1
+2025-05-27 00:41:48,562 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 00:41:48,563 - app.services.ai_service - INFO - Starting document analysis
+2025-05-27 00:42:01,190 - app.services.ai_service - INFO - Found 5 contradictions or inconsistencies
+2025-05-27 00:42:07,898 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\main_37ee3d70_pip document.pdf
+2025-05-27 00:42:07,910 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_deab0aab.pdf
+2025-05-27 00:42:07,921 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\target_c4122e03_pip install pytesseract pillow.pdf
+2025-05-27 00:42:07,939 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_eb9e1745.pdf
+2025-05-27 00:42:07,943 - main - INFO - Analysis complete with 5 contradictions
+=======
+2025-05-26 19:43:31,354 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-26 19:43:31,410 - main - INFO - Starting AI Contract Reviewer API
+2025-05-26 21:05:32,986 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-26 21:05:32,986 - main - INFO - Starting AI Contract Reviewer API
+2025-05-26 21:05:46,530 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-26 21:05:46,561 - main - INFO - Starting AI Contract Reviewer API
+2025-05-26 21:05:51,270 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-26 21:05:51,270 - main - INFO - Starting AI Contract Reviewer API
+2025-05-26 21:22:17,511 - main - INFO - Files saved: temp\main_d2a9418b_MSA - 1.pdf, temp\target_9656c1c8_782 MSA.pdf
+2025-05-26 21:22:17,512 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_d2a9418b_MSA - 1.pdf
+2025-05-26 21:22:17,790 - app.services.pdf_service - INFO - Extracted text from 28 pages
+2025-05-26 21:22:17,791 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_9656c1c8_782 MSA.pdf
+2025-05-26 21:22:17,804 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-26 21:22:17,805 - app.services.ai_service - INFO - Starting document analysis
+2025-05-26 21:22:50,893 - app.services.ai_service - INFO - Found 20 contradictions or inconsistencies
+2025-05-26 21:23:04,862 - app.services.pdf_service - INFO - Highlighting 20 contradictions in temp\main_d2a9418b_MSA - 1.pdf
+2025-05-26 21:23:07,044 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_40fa2637.pdf
+2025-05-26 21:23:07,045 - app.services.pdf_service - INFO - Highlighting 20 contradictions in temp\target_9656c1c8_782 MSA.pdf
+2025-05-26 21:23:07,054 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_fc887b39.pdf
+2025-05-26 21:23:07,055 - main - INFO - Analysis complete with 20 contradictions
+2025-05-26 21:38:03,986 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-26 21:38:03,994 - main - INFO - Starting AI Contract Reviewer API
+2025-05-26 21:41:22,793 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-26 21:41:22,801 - main - INFO - Starting AI Contract Reviewer API
+2025-05-26 21:42:04,031 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-26 21:42:04,041 - main - INFO - Starting AI Contract Reviewer API
+2025-05-26 21:42:23,848 - main - INFO - Files saved: temp\main_ad8a333b_MSA - 1.pdf, temp\target_59a0d608_782 MSA.pdf
+2025-05-26 21:42:23,851 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_ad8a333b_MSA - 1.pdf
+2025-05-26 21:42:24,107 - app.services.pdf_service - INFO - Extracted text from 28 pages
+2025-05-26 21:42:24,108 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_59a0d608_782 MSA.pdf
+2025-05-26 21:42:24,126 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-26 21:42:24,126 - app.services.ai_service - INFO - Starting document analysis
+2025-05-26 21:42:45,683 - app.services.ai_service - INFO - Found 14 contradictions or inconsistencies
+2025-05-26 21:42:57,743 - app.services.pdf_service - INFO - Highlighting 14 contradictions in temp\main_ad8a333b_MSA - 1.pdf
+2025-05-26 21:42:59,338 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_efd2aaed.pdf
+2025-05-26 21:42:59,339 - app.services.pdf_service - INFO - Highlighting 14 contradictions in temp\target_59a0d608_782 MSA.pdf
+2025-05-26 21:42:59,353 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_172e6367.pdf
+2025-05-26 21:42:59,354 - main - INFO - Analysis complete with 14 contradictions
+2025-05-26 21:46:11,439 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-26 21:46:11,457 - main - INFO - Starting AI Contract Reviewer API
+2025-05-26 21:46:28,218 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-26 21:46:28,229 - main - INFO - Starting AI Contract Reviewer API
+2025-05-26 21:48:13,313 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-26 21:48:13,325 - main - INFO - Starting AI Contract Reviewer API
+2025-05-26 21:48:14,514 - main - INFO - Files saved: temp\main_535438bf_MSA - 1.pdf, temp\target_147e4485_782 MSA.pdf
+2025-05-26 21:48:14,515 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_535438bf_MSA - 1.pdf
+2025-05-26 21:48:14,755 - app.services.pdf_service - INFO - Extracted text from 28 pages
+2025-05-26 21:48:14,756 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_147e4485_782 MSA.pdf
+2025-05-26 21:48:14,774 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-26 21:48:14,774 - app.services.ai_service - INFO - Starting document analysis
+2025-05-26 21:48:32,781 - app.services.ai_service - INFO - Found 1 contradictions or inconsistencies
+2025-05-26 21:48:41,014 - app.services.pdf_service - INFO - Highlighting 1 contradictions in temp\main_535438bf_MSA - 1.pdf
+2025-05-26 21:48:41,205 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_2d7cb93c.pdf
+2025-05-26 21:48:41,206 - app.services.pdf_service - INFO - Highlighting 1 contradictions in temp\target_147e4485_782 MSA.pdf
+2025-05-26 21:48:41,215 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_770e4e16.pdf
+2025-05-26 21:48:41,215 - main - INFO - Analysis complete with 1 contradictions
+2025-05-26 21:51:13,426 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-26 21:51:13,440 - main - INFO - Starting AI Contract Reviewer API
+2025-05-26 21:52:44,155 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-26 21:52:44,163 - main - INFO - Starting AI Contract Reviewer API
+2025-05-26 21:52:57,996 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-26 21:52:58,010 - main - INFO - Starting AI Contract Reviewer API
+2025-05-26 21:53:02,074 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-26 21:53:02,112 - main - INFO - Starting AI Contract Reviewer API
+2025-05-26 21:53:07,763 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-26 21:53:07,782 - main - INFO - Starting AI Contract Reviewer API
+2025-05-26 21:54:26,700 - main - INFO - Files saved: temp\main_bb53be9c_MSA - 1.pdf, temp\target_79a931ba_782 MSA.pdf
+2025-05-26 21:54:26,702 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_bb53be9c_MSA - 1.pdf
+2025-05-26 21:54:26,994 - app.services.pdf_service - INFO - Extracted text from 28 pages
+2025-05-26 21:54:26,995 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_79a931ba_782 MSA.pdf
+2025-05-26 21:54:27,011 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-26 21:54:27,012 - app.services.ai_service - INFO - Starting document analysis
+2025-05-26 21:54:45,899 - app.services.ai_service - INFO - Found 2 contradictions or inconsistencies
+2025-05-26 21:54:55,241 - app.services.pdf_service - INFO - Highlighting 2 contradictions in temp\main_bb53be9c_MSA - 1.pdf
+2025-05-26 21:54:55,552 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_26db6141.pdf
+2025-05-26 21:54:55,553 - app.services.pdf_service - INFO - Highlighting 2 contradictions in temp\target_79a931ba_782 MSA.pdf
+2025-05-26 21:54:55,562 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_3e656da8.pdf
+2025-05-26 21:54:55,563 - main - INFO - Analysis complete with 2 contradictions
+2025-05-27 00:52:37,579 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 00:52:37,583 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 00:52:57,310 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 00:52:57,418 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 00:53:13,997 - main - INFO - Files saved: temp\main_3d671bcc_MSA - 1.pdf, temp\target_a1df83cb_782 MSA.pdf
+2025-05-27 00:53:14,001 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_3d671bcc_MSA - 1.pdf
+2025-05-27 00:53:14,358 - app.services.pdf_service - INFO - Extracted text from 28 pages
+2025-05-27 00:53:14,358 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_a1df83cb_782 MSA.pdf
+2025-05-27 00:53:14,379 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 00:53:14,379 - app.services.ai_service - INFO - Starting document analysis
+2025-05-27 00:53:33,518 - app.services.ai_service - INFO - Found 10 contradictions or inconsistencies
+2025-05-27 00:53:46,721 - app.services.pdf_service - INFO - Highlighting 10 contradictions in temp\main_3d671bcc_MSA - 1.pdf
+2025-05-27 00:53:49,112 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_76f9d212.pdf
+2025-05-27 00:53:49,113 - app.services.pdf_service - INFO - Highlighting 10 contradictions in temp\target_a1df83cb_782 MSA.pdf
+2025-05-27 00:53:49,133 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_43c83d53.pdf
+2025-05-27 00:53:49,134 - main - INFO - Analysis complete with 10 contradictions
+2025-05-27 00:58:39,262 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 00:58:39,296 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 00:58:45,173 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 00:58:45,201 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 00:58:49,935 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 00:58:49,966 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 00:58:50,440 - main - INFO - Files saved: temp\main_1c3d9538_MSA - 1.pdf, temp\target_177e0619_782 MSA.pdf
+2025-05-27 00:58:50,443 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_1c3d9538_MSA - 1.pdf
+2025-05-27 00:58:50,722 - app.services.pdf_service - INFO - Extracted text from 28 pages
+2025-05-27 00:58:50,723 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_177e0619_782 MSA.pdf
+2025-05-27 00:58:50,738 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 00:58:50,740 - app.services.ai_service - INFO - Starting document analysis
+2025-05-27 00:59:07,908 - app.services.ai_service - INFO - Found 11 contradictions or inconsistencies
+2025-05-27 00:59:48,763 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 00:59:48,775 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 01:03:08,908 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 01:03:08,944 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 09:04:24,521 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 09:04:24,550 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 09:04:42,340 - main - INFO - Files saved: temp\main_4bf6e770_MSA - 1.pdf, temp\target_977d3a3f_782 MSA.pdf
+2025-05-27 09:04:42,340 - app.services.pdf_service - INFO - Extracting text from PDF: temp\main_4bf6e770_MSA - 1.pdf
+2025-05-27 09:04:42,574 - app.services.pdf_service - INFO - Extracted text from 28 pages
+2025-05-27 09:04:42,574 - app.services.pdf_service - INFO - Extracting text from PDF: temp\target_977d3a3f_782 MSA.pdf
+2025-05-27 09:04:42,574 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 09:04:42,574 - app.services.ai_service - INFO - Starting document analysis
+2025-05-27 09:05:04,297 - app.services.ai_service - INFO - Found 8 contradictions or inconsistencies
+2025-05-27 09:05:07,107 - app.services.pdf_service - INFO - Highlighting 8 contradictions in temp\main_4bf6e770_MSA - 1.pdf
+2025-05-27 09:05:08,026 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_7db8b0d9.pdf
+2025-05-27 09:05:08,026 - app.services.pdf_service - INFO - Highlighting 8 contradictions in temp\target_977d3a3f_782 MSA.pdf
+2025-05-27 09:05:08,042 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_ef0b36ef.pdf
+2025-05-27 09:05:08,042 - main - INFO - Analysis complete with 8 contradictions
+2025-05-27 09:08:13,163 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 09:08:13,183 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 09:08:27,232 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 09:08:27,254 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 09:09:15,728 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 09:09:15,751 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 09:09:25,676 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 09:09:25,693 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 09:10:12,227 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 09:10:12,243 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 09:10:20,400 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 09:10:20,552 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 09:10:42,904 - main - INFO - Files saved: temp\main_aef570cc_MSA - 1.pdf, temp\target_27225c3a_782 MSA.pdf
+2025-05-27 09:10:42,904 - app.services.pdf_converter - INFO - PDFConverter initialized with Tesseract OCR
+2025-05-27 09:10:42,971 - app.services.pdf_converter - INFO - PDF is already text-based, copying to output: temp\main_aef570cc_MSA - 1.pdf
+2025-05-27 09:10:43,005 - app.services.pdf_converter - INFO - PDF appears to be scanned, converting to searchable: temp\target_27225c3a_782 MSA.pdf
+2025-05-27 09:10:43,005 - app.services.pdf_converter - INFO - Converting PDF to searchable format: temp\target_27225c3a_782 MSA.pdf
+2025-05-27 09:10:53,281 - app.services.pdf_converter - INFO - Successfully converted PDF to searchable format: temp\searchable_target_27225c3a_782 MSA.pdf
+2025-05-27 09:10:53,286 - app.services.pdf_service - INFO - Extracting text from PDF: temp\text_main_aef570cc_MSA - 1.pdf
+2025-05-27 09:10:53,518 - app.services.pdf_service - INFO - Extracted text from 28 pages
+2025-05-27 09:10:53,518 - app.services.pdf_service - INFO - Extracting text from PDF: temp\searchable_target_27225c3a_782 MSA.pdf
+2025-05-27 09:10:53,587 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 09:10:53,588 - app.services.ai_service - INFO - Starting document analysis
+2025-05-27 09:11:42,747 - app.services.ai_service - INFO - Found 17 contradictions or inconsistencies
+2025-05-27 09:12:00,546 - app.services.pdf_service - INFO - Highlighting 17 contradictions in temp\text_main_aef570cc_MSA - 1.pdf
+2025-05-27 09:12:02,194 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_d4464958.pdf
+2025-05-27 09:12:02,194 - app.services.pdf_service - INFO - Highlighting 17 contradictions in temp\searchable_target_27225c3a_782 MSA.pdf
+2025-05-27 09:12:02,304 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_b27c8f0f.pdf
+2025-05-27 09:12:02,305 - main - INFO - Analysis complete with 17 contradictions
+2025-05-27 09:20:29,605 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 09:20:29,628 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 09:20:57,573 - main - INFO - Files saved: temp\main_2accef7b_782 MSA.pdf, temp\target_7ebab4d6_782 MSA.pdf
+2025-05-27 09:20:57,579 - app.services.pdf_converter - INFO - PDFConverter initialized with Tesseract OCR
+2025-05-27 09:20:57,598 - app.services.pdf_converter - INFO - PDF appears to be scanned, converting to searchable: temp\main_2accef7b_782 MSA.pdf
+2025-05-27 09:20:57,598 - app.services.pdf_converter - INFO - Converting PDF to searchable format: temp\main_2accef7b_782 MSA.pdf
+2025-05-27 09:21:08,052 - app.services.pdf_converter - INFO - Successfully converted PDF to searchable format: temp\searchable_main_2accef7b_782 MSA.pdf
+2025-05-27 09:21:08,075 - app.services.pdf_converter - INFO - PDF appears to be scanned, converting to searchable: temp\target_7ebab4d6_782 MSA.pdf
+2025-05-27 09:21:08,076 - app.services.pdf_converter - INFO - Converting PDF to searchable format: temp\target_7ebab4d6_782 MSA.pdf
+2025-05-27 09:21:17,636 - app.services.pdf_converter - INFO - Successfully converted PDF to searchable format: temp\searchable_target_7ebab4d6_782 MSA.pdf
+2025-05-27 09:21:17,657 - app.services.pdf_service - INFO - Extracting text from PDF: temp\searchable_main_2accef7b_782 MSA.pdf
+2025-05-27 09:21:17,752 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 09:21:17,769 - app.services.pdf_service - INFO - Extracting text from PDF: temp\searchable_target_7ebab4d6_782 MSA.pdf
+2025-05-27 09:21:17,811 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 09:21:17,833 - app.services.ai_service - INFO - Starting document analysis
+2025-05-27 09:21:17,879 - app.services.ai_service - INFO - Documents are identical
+2025-05-27 09:21:17,896 - app.services.pdf_service - WARNING - No highlights provided for temp\searchable_main_2accef7b_782 MSA.pdf
+2025-05-27 09:21:17,911 - app.services.pdf_service - WARNING - No highlights provided for temp\searchable_target_7ebab4d6_782 MSA.pdf
+2025-05-27 09:21:17,928 - main - INFO - Analysis complete with 0 contradictions
+2025-05-27 09:21:46,699 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-27 09:21:46,724 - main - INFO - Starting AI Contract Reviewer API
+2025-05-27 09:22:23,865 - main - INFO - Files saved: temp\main_8abb8c2a_MSA - 1.pdf, temp\target_4196d840_782 MSA.pdf
+2025-05-27 09:22:23,881 - app.services.pdf_converter - INFO - PDFConverter initialized with Tesseract OCR
+2025-05-27 09:22:23,950 - app.services.pdf_converter - INFO - PDF is already text-based, copying to output: temp\main_8abb8c2a_MSA - 1.pdf
+2025-05-27 09:22:23,991 - app.services.pdf_converter - INFO - PDF appears to be scanned, converting to searchable: temp\target_4196d840_782 MSA.pdf
+2025-05-27 09:22:23,991 - app.services.pdf_converter - INFO - Converting PDF to searchable format: temp\target_4196d840_782 MSA.pdf
+2025-05-27 09:22:32,187 - app.services.pdf_converter - INFO - Successfully converted PDF to searchable format: temp\searchable_target_4196d840_782 MSA.pdf
+2025-05-27 09:22:32,196 - app.services.pdf_service - INFO - Extracting text from PDF: temp\text_main_8abb8c2a_MSA - 1.pdf
+2025-05-27 09:22:32,423 - app.services.pdf_service - INFO - Extracted text from 28 pages
+2025-05-27 09:22:32,423 - app.services.pdf_service - INFO - Extracting text from PDF: temp\searchable_target_4196d840_782 MSA.pdf
+2025-05-27 09:22:32,460 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-27 09:22:32,461 - app.services.ai_service - INFO - Starting document analysis
+2025-05-27 09:23:12,519 - app.services.ai_service - INFO - Found 22 contradictions or inconsistencies
+2025-05-27 09:23:28,819 - app.services.pdf_service - INFO - Highlighting 22 contradictions in temp\text_main_8abb8c2a_MSA - 1.pdf
+2025-05-27 09:23:31,434 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_6896dafb.pdf
+2025-05-27 09:23:31,451 - app.services.pdf_service - INFO - Highlighting 22 contradictions in temp\searchable_target_4196d840_782 MSA.pdf
+2025-05-27 09:23:31,617 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_bf85b8d9.pdf
+2025-05-27 09:23:31,617 - main - INFO - Analysis complete with 22 contradictions
+>>>>>>> Stashed changes
+>>>>>>> 1948514 (OCR plus highlight)
+2025-05-28 22:41:37,061 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-28 22:41:37,077 - main - INFO - Starting AI Contract Reviewer API
+2025-05-28 22:41:52,612 - main - INFO - Files saved: temp\main_3b1cf108_pip document.pdf, temp\target_70501d08_pip install pytesseract pillow.pdf
+2025-05-28 22:41:52,614 - app.services.pdf_converter - INFO - PDFConverter initialized with Tesseract OCR
+2025-05-28 22:41:52,626 - app.services.pdf_converter - INFO - PDF appears to be scanned, converting to searchable: temp\main_3b1cf108_pip document.pdf
+2025-05-28 22:41:52,632 - app.services.pdf_converter - INFO - Converting PDF to searchable format: temp\main_3b1cf108_pip document.pdf
+2025-05-28 22:41:52,637 - app.services.pdf_converter - ERROR - Error converting PDF: Unable to get page count. Is poppler installed and in PATH?
+2025-05-28 22:41:52,651 - main - ERROR - Error in compare-documents: 500: Failed to process main document
+Traceback (most recent call last):
+  File "E:\GITHUB\AI-Contract-Reviewer\main.py", line 99, in compare_documents
+    raise HTTPException(
+fastapi.exceptions.HTTPException: 500: Failed to process main document
+2025-05-28 22:42:29,621 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-28 22:42:29,676 - main - INFO - Starting AI Contract Reviewer API
+2025-05-28 22:43:31,237 - main - INFO - Files saved: temp\main_5fbfd4ac_pip document.pdf, temp\target_cef0b94f_pip install pytesseract pillow.pdf
+2025-05-28 22:43:31,238 - app.services.pdf_converter - INFO - PDFConverter initialized with Tesseract OCR
+2025-05-28 22:43:31,246 - app.services.pdf_converter - INFO - PDF appears to be scanned, converting to searchable: temp\main_5fbfd4ac_pip document.pdf
+2025-05-28 22:43:31,246 - app.services.pdf_converter - INFO - Converting PDF to searchable format: temp\main_5fbfd4ac_pip document.pdf
+2025-05-28 22:43:36,913 - app.services.pdf_converter - INFO - Successfully converted PDF to searchable format: temp\searchable_main_5fbfd4ac_pip document.pdf
+2025-05-28 22:43:36,925 - app.services.pdf_converter - INFO - PDF appears to be scanned, converting to searchable: temp\target_cef0b94f_pip install pytesseract pillow.pdf
+2025-05-28 22:43:36,926 - app.services.pdf_converter - INFO - Converting PDF to searchable format: temp\target_cef0b94f_pip install pytesseract pillow.pdf
+2025-05-28 22:43:41,300 - app.services.pdf_converter - INFO - Successfully converted PDF to searchable format: temp\searchable_target_cef0b94f_pip install pytesseract pillow.pdf
+2025-05-28 22:43:41,307 - app.services.pdf_service - INFO - Extracting text from PDF: temp\searchable_main_5fbfd4ac_pip document.pdf
+2025-05-28 22:43:41,312 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-28 22:43:41,312 - app.services.pdf_service - INFO - Extracting text from PDF: temp\searchable_target_cef0b94f_pip install pytesseract pillow.pdf
+2025-05-28 22:43:41,324 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-28 22:43:41,326 - app.services.ai_service - INFO - Starting document analysis
+2025-05-28 22:43:57,036 - app.services.ai_service - INFO - Found 6 contradictions or inconsistencies
+2025-05-28 22:44:04,611 - app.services.pdf_service - INFO - Highlighting 6 contradictions in temp\searchable_main_5fbfd4ac_pip document.pdf
+2025-05-28 22:44:04,668 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_16c49925.pdf
+2025-05-28 22:44:04,669 - app.services.pdf_service - INFO - Highlighting 6 contradictions in temp\searchable_target_cef0b94f_pip install pytesseract pillow.pdf
+2025-05-28 22:44:04,698 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_c3f481b4.pdf
+2025-05-28 22:44:04,698 - main - INFO - Analysis complete with 6 contradictions

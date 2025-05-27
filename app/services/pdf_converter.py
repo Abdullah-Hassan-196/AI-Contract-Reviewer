@@ -30,7 +30,7 @@ class PDFConverter:
             
         # Set Poppler path
         self.poppler_path = poppler_path or (
-            r"C:\Program Files\poppler-24.08.0\Library\bin"
+            r"C:\Users\HP\Downloads\poppler-24.08.0\Library\bin"
         )
         logger.info("PDFConverter initialized with Tesseract OCR")
 
