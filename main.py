@@ -9,6 +9,7 @@ import os
 
 from app.services.pdf_service import PDFService
 from app.services.ai_service import AIService
+from app.services.pdf_converter import PDFConverter
 
 # Configure logging
 logging.basicConfig(
@@ -63,6 +64,7 @@ async def compare_documents(
 ):
     """
     Compare two PDF documents and highlight contradictions.
+    First converts scanned PDFs to text-based PDFs if needed.
     
     Returns an analysis of the documents along with links to highlighted versions.
     """
@@ -88,16 +90,40 @@ async def compare_documents(
         
         logger.info(f"Files saved: {main_path}, {target_path}")
         
-        # Extract text from both documents
-        main_text, main_blocks = pdf_service.extract_text_from_pdf(str(main_path))
-        target_text, target_blocks = pdf_service.extract_text_from_pdf(str(target_path))
+        # Process PDFs through converter first
+        pdf_converter = PDFConverter()
+        
+        # Process main document
+        success, processed_main_path = pdf_converter.process_pdf(str(main_path))
+        if not success:
+            raise HTTPException(
+                status_code=500,
+                detail="Failed to process main document"
+            )
+            
+        # Process target document
+        success, processed_target_path = pdf_converter.process_pdf(str(target_path))
+        if not success:
+            raise HTTPException(
+                status_code=500,
+                detail="Failed to process target document"
+            )
+        
+        # Extract text from processed documents
+        main_text, main_blocks = pdf_service.extract_text_from_pdf(processed_main_path)
+        target_text, target_blocks = pdf_service.extract_text_from_pdf(processed_target_path)
         
         # Log extracted text samples for debugging
         logger.debug(f"Main text sample: {main_text[:200]}...")
         logger.debug(f"Target text sample: {target_text[:200]}...")
         
         # Analyze documents using AI
-        analysis_result = ai_service.analyze_documents(main_text, target_text, main_blocks, target_blocks)
+        analysis_result = ai_service.analyze_documents(
+            main_text, 
+            target_text, 
+            main_blocks, 
+            target_blocks
+        )
         
         # Generate output filenames
         main_output_filename = f"main_highlighted_{os.urandom(4).hex()}.pdf"
@@ -107,9 +133,17 @@ async def compare_documents(
         main_output = TEMP_DIR / main_output_filename
         target_output = TEMP_DIR / target_output_filename
         
-        # Create highlighted versions
-        pdf_service.highlight_contradictions(str(main_path), analysis_result["main_highlights"], str(main_output))
-        pdf_service.highlight_contradictions(str(target_path), analysis_result["target_highlights"], str(target_output))
+        # Create highlighted versions using processed PDFs
+        pdf_service.highlight_contradictions(
+            processed_main_path, 
+            analysis_result["main_highlights"], 
+            str(main_output)
+        )
+        pdf_service.highlight_contradictions(
+            processed_target_path, 
+            analysis_result["target_highlights"], 
+            str(target_output)
+        )
         
         # Include debug info in response
         response_data = {
@@ -134,9 +168,13 @@ async def compare_documents(
         logger.error(f"Error in compare-documents: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
     finally:
-        # In a production environment, you might want to implement a cleanup strategy
-        # For now, we're leaving files for debugging purposes
-        pass
+        # Clean up temporary files
+        for path in [main_path, target_path]:
+            if path and path.exists():
+                try:
+                    path.unlink()
+                except Exception as e:
+                    logger.error(f"Error deleting temporary file {path}: {str(e)}")
 
 
 @app.get("/temp/{file_path:path}")
@@ -153,6 +191,53 @@ async def download_file(file_path: str):
         filename=os.path.basename(file_path),
         media_type="application/pdf"
     )
+
+
+@app.post("/convert-pdf")
+async def convert_pdf(
+    document: UploadFile = File(...)
+):
+    """
+    Convert a scanned PDF to a text-based PDF while preserving the original 
+    formatting.
+    
+    Returns the path to the converted PDF.
+    """
+    try:
+        # Generate unique filename
+        filename = f"{os.urandom(4).hex()}_{document.filename}"
+        input_path = TEMP_DIR / filename
+        
+        # Save uploaded file temporarily
+        with open(input_path, "wb") as buffer:
+            shutil.copyfileobj(document.file, buffer)
+        
+        logger.info(f"File saved: {input_path}")
+        
+        # Convert PDF
+        pdf_converter = PDFConverter()
+        success, output_path = pdf_converter.convert_to_text_pdf(
+            str(input_path)
+        )
+        
+        if not success:
+            raise HTTPException(
+                status_code=500,
+                detail="Failed to convert PDF"
+            )
+        
+        return {"output_path": output_path}
+        
+    except Exception as e:
+        logger.error(f"Error converting PDF: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail=str(e)
+        )
+    finally:
+        # Clean up input file
+        if input_path and input_path.exists():
+            input_path.unlink()
 
 
 @app.on_event("startup")

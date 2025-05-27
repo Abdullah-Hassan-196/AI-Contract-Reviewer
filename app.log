@@ -899,21 +899,21 @@ AttributeError: 'Document' object has no attribute 'search_for'
 2025-05-12 02:29:27,705 - app.services.pdf_service - INFO - Searching for text: '$18,000...' in 34 blocks
 2025-05-12 02:29:27,705 - app.services.pdf_service - INFO - Found 1 matching blocks
 2025-05-12 02:29:27,709 - app.services.ai_service - INFO - Processed contradiction: 'a fixed fee of $15,000...' vs '$18,000...'
-2025-05-12 02:29:27,709 - app.services.pdf_service - INFO - Searching for text: 'Milestone 1 (June 10) – Backend API complete – $5,...' in 38 blocks
+2025-05-12 02:29:27,709 - app.services.pdf_service - INFO - Searching for text: 'Milestone 1 (June 10) ï¿½ Backend API complete ï¿½ $5,...' in 38 blocks
 2025-05-12 02:29:27,711 - app.services.pdf_service - INFO - Found 1 matching blocks
-2025-05-12 02:29:27,711 - app.services.pdf_service - INFO - Searching for text: 'Milestone 1 (June 10) – $4,500...' in 34 blocks
+2025-05-12 02:29:27,711 - app.services.pdf_service - INFO - Searching for text: 'Milestone 1 (June 10) ï¿½ $4,500...' in 34 blocks
 2025-05-12 02:29:27,713 - app.services.pdf_service - INFO - Found 1 matching blocks
-2025-05-12 02:29:27,714 - app.services.ai_service - INFO - Processed contradiction: 'Milestone 1 (June 10) – Backen...' vs 'Milestone 1 (June 10) – $4,500...'
-2025-05-12 02:29:27,714 - app.services.pdf_service - INFO - Searching for text: 'Milestone 2 (July 10) – Frontend integration and d...' in 38 blocks
+2025-05-12 02:29:27,714 - app.services.ai_service - INFO - Processed contradiction: 'Milestone 1 (June 10) ï¿½ Backen...' vs 'Milestone 1 (June 10) ï¿½ $4,500...'
+2025-05-12 02:29:27,714 - app.services.pdf_service - INFO - Searching for text: 'Milestone 2 (July 10) ï¿½ Frontend integration and d...' in 38 blocks
 2025-05-12 02:29:27,714 - app.services.pdf_service - INFO - Found 1 matching blocks
-2025-05-12 02:29:27,714 - app.services.pdf_service - INFO - Searching for text: 'Milestone 2 (July 5) – $4,500...' in 34 blocks
+2025-05-12 02:29:27,714 - app.services.pdf_service - INFO - Searching for text: 'Milestone 2 (July 5) ï¿½ $4,500...' in 34 blocks
 2025-05-12 02:29:27,714 - app.services.pdf_service - INFO - Found 1 matching blocks
-2025-05-12 02:29:27,719 - app.services.ai_service - INFO - Processed contradiction: 'Milestone 2 (July 10) – Fronte...' vs 'Milestone 2 (July 5) – $4,500...'
-2025-05-12 02:29:27,719 - app.services.pdf_service - INFO - Searching for text: 'Milestone 3 (August 10) – Testing, handover, docum...' in 38 blocks
+2025-05-12 02:29:27,719 - app.services.ai_service - INFO - Processed contradiction: 'Milestone 2 (July 10) ï¿½ Fronte...' vs 'Milestone 2 (July 5) ï¿½ $4,500...'
+2025-05-12 02:29:27,719 - app.services.pdf_service - INFO - Searching for text: 'Milestone 3 (August 10) ï¿½ Testing, handover, docum...' in 38 blocks
 2025-05-12 02:29:27,719 - app.services.pdf_service - INFO - Found 1 matching blocks
-2025-05-12 02:29:27,722 - app.services.pdf_service - INFO - Searching for text: 'Milestone 3 (August 5) – $4,500...' in 34 blocks
+2025-05-12 02:29:27,722 - app.services.pdf_service - INFO - Searching for text: 'Milestone 3 (August 5) ï¿½ $4,500...' in 34 blocks
 2025-05-12 02:29:27,722 - app.services.pdf_service - INFO - Found 1 matching blocks
-2025-05-12 02:29:27,722 - app.services.ai_service - INFO - Processed contradiction: 'Milestone 3 (August 10) – Test...' vs 'Milestone 3 (August 5) – $4,50...'
+2025-05-12 02:29:27,722 - app.services.ai_service - INFO - Processed contradiction: 'Milestone 3 (August 10) ï¿½ Test...' vs 'Milestone 3 (August 5) ï¿½ $4,50...'
 2025-05-12 02:29:27,722 - app.services.pdf_service - INFO - Searching for text: 'disbursed in the following milestones: Milestone 1...' in 38 blocks
 2025-05-12 02:29:27,722 - app.services.pdf_service - INFO - Found 1 matching blocks
 2025-05-12 02:29:27,728 - app.services.pdf_service - INFO - Searching for text: '$18,000, in four installments: Milestone 1... Mile...' in 34 blocks
@@ -926,7 +926,7 @@ AttributeError: 'Document' object has no attribute 'search_for'
 2025-05-12 02:29:27,736 - app.services.ai_service - INFO - Processed contradiction: 'All code, deliverables, and do...' vs 'Freelancer retains the right t...'
 2025-05-12 02:29:27,736 - app.services.pdf_service - INFO - Searching for text: 'Either party may terminate this Agreement with 14 ...' in 38 blocks
 2025-05-12 02:29:27,736 - app.services.pdf_service - INFO - Found 1 matching blocks
-2025-05-12 02:29:27,739 - app.services.pdf_service - INFO - Searching for text: 'Either party may terminate with 30 days’ written n...' in 34 blocks
+2025-05-12 02:29:27,739 - app.services.pdf_service - INFO - Searching for text: 'Either party may terminate with 30 daysï¿½ written n...' in 34 blocks
 2025-05-12 02:29:27,739 - app.services.pdf_service - INFO - Found 1 matching blocks
 2025-05-12 02:29:27,744 - app.services.ai_service - INFO - Processed contradiction: 'Either party may terminate thi...' vs 'Either party may terminate wit...'
 2025-05-12 02:29:27,746 - app.services.pdf_service - INFO - Searching for text: 'If terminated early, Contractor will be paid for a...' in 38 blocks
@@ -942,16 +942,16 @@ AttributeError: 'Document' object has no attribute 'search_for'
 2025-05-12 02:29:42,009 - app.services.pdf_service - INFO - Highlighting 8 contradictions in temp\main_7eb30e77_f1.pdf
 2025-05-12 02:29:42,239 - app.services.pdf_service - INFO - Highlighted 'Company shall pay Contractor a fixed fee of $15,000, disbursed in the following' on page 1 at Rect(54.0, 317.94537353515625, 527.4618530273438, 328.84466552734375)
 2025-05-12 02:29:42,333 - app.services.pdf_service - WARNING - Text 'Company shall pay Contractor a fixed fee of $15,000, disbursed in the following' not found on page 2
-2025-05-12 02:29:42,451 - app.services.pdf_service - INFO - Highlighted 'Milestone 1 (June 10) – Backend API complete – $5,000' on page 1 at Rect(54.0, 356.4653625488281, 371.63592529296875, 367.3646545410156)
-2025-05-12 02:29:42,461 - app.services.pdf_service - WARNING - Text 'Milestone 1 (June 10) – Backend API complete – $5,000' not found on page 2
-2025-05-12 02:29:42,528 - app.services.pdf_service - INFO - Highlighted 'Milestone 2 (July 10) – Frontend integration and deployment – $5,000' on page 1 at Rect(54.0, 382.1453552246094, 461.5360107421875, 393.0446472167969)
-2025-05-12 02:29:42,532 - app.services.pdf_service - WARNING - Text 'Milestone 2 (July 10) – Frontend integration and deployment – $5,000' not found on page 2
-2025-05-12 02:29:42,645 - app.services.pdf_service - INFO - Highlighted 'Milestone 3 (August 10) – Testing, handover, documentation – $5,000' on page 1 at Rect(54.0, 407.8253479003906, 455.54351806640625, 418.7246398925781)
-2025-05-12 02:29:42,680 - app.services.pdf_service - WARNING - Text 'Milestone 3 (August 10) – Testing, handover, documentation – $5,000' not found on page 2
+2025-05-12 02:29:42,451 - app.services.pdf_service - INFO - Highlighted 'Milestone 1 (June 10) ï¿½ Backend API complete ï¿½ $5,000' on page 1 at Rect(54.0, 356.4653625488281, 371.63592529296875, 367.3646545410156)
+2025-05-12 02:29:42,461 - app.services.pdf_service - WARNING - Text 'Milestone 1 (June 10) ï¿½ Backend API complete ï¿½ $5,000' not found on page 2
+2025-05-12 02:29:42,528 - app.services.pdf_service - INFO - Highlighted 'Milestone 2 (July 10) ï¿½ Frontend integration and deployment ï¿½ $5,000' on page 1 at Rect(54.0, 382.1453552246094, 461.5360107421875, 393.0446472167969)
+2025-05-12 02:29:42,532 - app.services.pdf_service - WARNING - Text 'Milestone 2 (July 10) ï¿½ Frontend integration and deployment ï¿½ $5,000' not found on page 2
+2025-05-12 02:29:42,645 - app.services.pdf_service - INFO - Highlighted 'Milestone 3 (August 10) ï¿½ Testing, handover, documentation ï¿½ $5,000' on page 1 at Rect(54.0, 407.8253479003906, 455.54351806640625, 418.7246398925781)
+2025-05-12 02:29:42,680 - app.services.pdf_service - WARNING - Text 'Milestone 3 (August 10) ï¿½ Testing, handover, documentation ï¿½ $5,000' not found on page 2
 2025-05-12 02:29:42,776 - app.services.pdf_service - INFO - Highlighted 'All code, deliverables, and documentation produced under this Agreement shall be the' on page 1 at Rect(54.0, 549.0653686523438, 557.4285278320312, 559.9646606445312)
 2025-05-12 02:29:42,783 - app.services.pdf_service - WARNING - Text 'All code, deliverables, and documentation produced under this Agreement shall be the' not found on page 2
-2025-05-12 02:29:42,852 - app.services.pdf_service - INFO - Highlighted 'Either party may terminate this Agreement with 14 days’ written notice. If' on page 1 at Rect(54.0, 651.7853393554688, 497.49517822265625, 662.6846313476562)
-2025-05-12 02:29:42,861 - app.services.pdf_service - WARNING - Text 'Either party may terminate this Agreement with 14 days’ written notice. If' not found on page 2
+2025-05-12 02:29:42,852 - app.services.pdf_service - INFO - Highlighted 'Either party may terminate this Agreement with 14 daysï¿½ written notice. If' on page 1 at Rect(54.0, 651.7853393554688, 497.49517822265625, 662.6846313476562)
+2025-05-12 02:29:42,861 - app.services.pdf_service - WARNING - Text 'Either party may terminate this Agreement with 14 daysï¿½ written notice. If' not found on page 2
 2025-05-12 02:29:42,931 - app.services.pdf_service - INFO - Highlighted 'terminated early, Contractor will be paid for approved, completed milestones.' on page 1 at Rect(54.0, 664.6253662109375, 515.4768676757812, 675.524658203125)
 2025-05-12 02:29:42,948 - app.services.pdf_service - WARNING - Text 'terminated early, Contractor will be paid for approved, completed milestones.' not found on page 2
 2025-05-12 02:29:43,066 - app.services.pdf_service - INFO - Highlighted 'This Agreement shall be governed by and construed in accordance with the laws of the' on page 1 at Rect(54.0, 703.1453247070312, 557.4285278320312, 714.0446166992188)
@@ -960,16 +960,16 @@ AttributeError: 'Document' object has no attribute 'search_for'
 2025-05-12 02:29:43,146 - app.services.pdf_service - INFO - Highlighting 8 contradictions in temp\target_298f54d1_f2.pdf
 2025-05-12 02:29:43,211 - app.services.pdf_service - INFO - Highlighted 'Client agrees to pay the Freelancer $18,000, in four installments:' on page 1 at Rect(54.0, 382.1453552246094, 449.43994140625, 393.0446472167969)
 2025-05-12 02:29:43,249 - app.services.pdf_service - WARNING - Text 'Client agrees to pay the Freelancer $18,000, in four installments:' not found on page 2
-2025-05-12 02:29:43,315 - app.services.pdf_service - INFO - Highlighted 'Milestone 1 (June 10) – $4,500' on page 1 at Rect(54.0, 407.8253479003906, 233.78732299804688, 418.7246398925781)
-2025-05-12 02:29:43,400 - app.services.pdf_service - WARNING - Text 'Milestone 1 (June 10) – $4,500' not found on page 2
-2025-05-12 02:29:43,483 - app.services.pdf_service - INFO - Highlighted 'Milestone 2 (July 5) – $4,500' on page 1 at Rect(54.0, 433.5053405761719, 227.79483032226562, 444.4046325683594)
-2025-05-12 02:29:43,496 - app.services.pdf_service - WARNING - Text 'Milestone 2 (July 5) – $4,500' not found on page 2
-2025-05-12 02:29:43,578 - app.services.pdf_service - INFO - Highlighted 'Milestone 3 (August 5) – $4,500' on page 1 at Rect(54.0, 459.1853332519531, 239.77981567382812, 470.0846252441406)
-2025-05-12 02:29:43,586 - app.services.pdf_service - WARNING - Text 'Milestone 3 (August 5) – $4,500' not found on page 2
+2025-05-12 02:29:43,315 - app.services.pdf_service - INFO - Highlighted 'Milestone 1 (June 10) ï¿½ $4,500' on page 1 at Rect(54.0, 407.8253479003906, 233.78732299804688, 418.7246398925781)
+2025-05-12 02:29:43,400 - app.services.pdf_service - WARNING - Text 'Milestone 1 (June 10) ï¿½ $4,500' not found on page 2
+2025-05-12 02:29:43,483 - app.services.pdf_service - INFO - Highlighted 'Milestone 2 (July 5) ï¿½ $4,500' on page 1 at Rect(54.0, 433.5053405761719, 227.79483032226562, 444.4046325683594)
+2025-05-12 02:29:43,496 - app.services.pdf_service - WARNING - Text 'Milestone 2 (July 5) ï¿½ $4,500' not found on page 2
+2025-05-12 02:29:43,578 - app.services.pdf_service - INFO - Highlighted 'Milestone 3 (August 5) ï¿½ $4,500' on page 1 at Rect(54.0, 459.1853332519531, 239.77981567382812, 470.0846252441406)
+2025-05-12 02:29:43,586 - app.services.pdf_service - WARNING - Text 'Milestone 3 (August 5) ï¿½ $4,500' not found on page 2
 2025-05-12 02:29:43,675 - app.services.pdf_service - INFO - Highlighted 'Freelancer retains the right to display portions of the work (excluding confidential' on page 1 at Rect(54.0, 549.0653686523438, 557.4285278320312, 559.9646606445312)
 2025-05-12 02:29:43,682 - app.services.pdf_service - WARNING - Text 'Freelancer retains the right to display portions of the work (excluding confidential' not found on page 2
-2025-05-12 02:29:43,817 - app.services.pdf_service - INFO - Highlighted 'Either party may terminate with 30 days’ written notice. Upon termination, Client' on page 1 at Rect(54.0, 664.6253662109375, 539.4510498046875, 675.524658203125)
-2025-05-12 02:29:43,860 - app.services.pdf_service - WARNING - Text 'Either party may terminate with 30 days’ written notice. Upon termination, Client' not found on page 2
+2025-05-12 02:29:43,817 - app.services.pdf_service - INFO - Highlighted 'Either party may terminate with 30 daysï¿½ written notice. Upon termination, Client' on page 1 at Rect(54.0, 664.6253662109375, 539.4510498046875, 675.524658203125)
+2025-05-12 02:29:43,860 - app.services.pdf_service - WARNING - Text 'Either party may terminate with 30 daysï¿½ written notice. Upon termination, Client' not found on page 2
 2025-05-12 02:29:43,949 - app.services.pdf_service - INFO - Highlighted 'will compensate Freelancer for work completed and any non-recoverable costs.' on page 1 at Rect(54.0, 677.46533203125, 509.484375, 688.3646240234375)
 2025-05-12 02:29:43,979 - app.services.pdf_service - WARNING - Text 'will compensate Freelancer for work completed and any non-recoverable costs.' not found on page 2
 2025-05-12 02:29:44,016 - app.services.pdf_service - WARNING - Text 'This Agreement shall be governed by the laws of the State of Texas.' not found on page 1
