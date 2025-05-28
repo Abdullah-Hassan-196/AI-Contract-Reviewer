@@ -57,7 +57,7 @@ async def root():
 async def health_check():
     return {"status": "healthy"}
 
-@app.post("/compare-documents")
+@app.post("/compare")
 async def compare_documents(
     main_document: UploadFile = File(...),
     target_document: UploadFile = File(...)

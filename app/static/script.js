@@ -15,11 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const findingsList = document.getElementById('findingsList');
     const clauseAnalysisList = document.getElementById('clauseAnalysisList');
     const missingClausesList = document.getElementById('missingClausesList');
-    const contradictionsList = document.getElementById('contradictionsList');
+    
     const segmentsList = document.getElementById('segmentsList');
-    const mainDownload = document.getElementById('mainDownload');
-    const targetDownload = document.getElementById('targetDownload');
-    const analysisDownload = document.getElementById('analysisDownload');
+    
+    
+    
     const mainPdfViewer = document.getElementById('mainPdfViewer');
     const targetPdfViewer = document.getElementById('targetPdfViewer');
 
@@ -29,45 +29,54 @@ document.addEventListener('DOMContentLoaded', () => {
     let mainPdfDocument = null;
     let targetPdfDocument = null;
 
-    // Update file names when files are selected
-    mainDocument.addEventListener('change', async (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            mainFileName.textContent = file.name;
-            mainPdfData = await file.arrayBuffer();
-            checkFilesSelected();
-        }
-    });
-
-    targetDocument.addEventListener('change', async (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            targetFileName.textContent = file.name;
-            targetPdfData = await file.arrayBuffer();
-            checkFilesSelected();
-        }
-    });
-
-    // Enable compare button only when both files are selected
-    function checkFilesSelected() {
-        compareBtn.disabled = !(mainDocument.files[0] && targetDocument.files[0]);
+    // Function to update file names
+    function updateFileName(inputElement, fileNameElement) {
+        const fileName = inputElement.files[0] ? inputElement.files[0].name : 'No file chosen';
+        fileNameElement.textContent = fileName;
+        checkFilesSelected();
     }
 
-    // Handle file comparison
-    compareBtn.addEventListener('click', async () => {
-        const formData = new FormData();
-        formData.append('main_document', mainDocument.files[0]);
-        formData.append('target_document', targetDocument.files[0]);
+    // Check if both files are selected
+    function checkFilesSelected() {
+        if (mainDocument.files.length > 0 && targetDocument.files.length > 0) {
+            compareBtn.disabled = false;
+        } else {
+            compareBtn.disabled = true;
+        }
+    }
 
-        // Show loading state
+    // Event listeners for file inputs
+    mainDocument.addEventListener('change', () => {
+        updateFileName(mainDocument, mainFileName);
+    });
+
+    targetDocument.addEventListener('change', () => {
+        updateFileName(targetDocument, targetFileName);
+    });
+
+    // Event listener for compare button
+    compareBtn.addEventListener('click', async () => {
+        const mainFile = mainDocument.files[0];
+        const targetFile = targetDocument.files[0];
+
+        if (!mainFile || !targetFile) {
+            alert('Please select both documents.');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('main_document', mainFile);
+        formData.append('target_document', targetFile);
+
+        // Show loading spinner
         loading.classList.remove('hidden');
-        results.classList.add('hidden');
+        results.classList.add('hidden'); // Hide previous results
         compareBtn.disabled = true;
 
         try {
-            const response = await fetch('/compare-documents', {
+            const response = await fetch('/compare', {
                 method: 'POST',
-                body: formData
+                body: formData,
             });
 
             if (!response.ok) {
@@ -251,14 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
             missingClausesList.appendChild(li);
         });
 
-        // Update contradictions
-        contradictionsList.innerHTML = '';
-        data.analysis.contradictions.forEach(contradiction => {
-            const li = document.createElement('li');
-            li.textContent = contradiction;
-            contradictionsList.appendChild(li);
-        });
-
+        
         // Update segments
         segmentsList.innerHTML = '';
         data.analysis.contradictory_segments.forEach(segment => {
