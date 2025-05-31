@@ -1984,3 +1984,165 @@ fastapi.exceptions.HTTPException: 500: Failed to process main document
 2025-05-28 23:23:34,240 - app.services.ai_service - INFO - Starting document analysis
 2025-05-28 23:24:03,146 - app.services.ai_service - INFO - Found 17 contradictions or inconsistencies
 2025-05-28 23:24:18,640 - app.services.pdf_service - INFO - Highlighting 17 contradictions in temp\text_main_a68ab56c_MSA - 1.pdf
+2025-05-31 16:47:27,566 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-31 16:47:27,577 - main - INFO - Starting AI Contract Reviewer API
+2025-05-31 16:48:40,140 - main - INFO - Files saved: temp\main_20250531_164840_d7a21a19_782 MSA(1).pdf, temp\target_20250531_164840_4ef0c608_10175 MSA 211(4).pdf
+2025-05-31 16:48:40,142 - app.services.pdf_converter - INFO - PDFConverter initialized with Tesseract OCR
+2025-05-31 16:48:40,143 - main - ERROR - Error in compare-documents: 'coroutine' object is not subscriptable
+Traceback (most recent call last):
+  File "C:\Users\Sohaib\AI-Contract-Reviewer\main.py", line 126, in compare_documents
+    if not main_result[0] or not target_result[0]:
+           ~~~~~~~~~~~^^^
+TypeError: 'coroutine' object is not subscriptable
+2025-05-31 16:49:20,244 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-31 16:49:20,255 - main - INFO - Starting AI Contract Reviewer API
+2025-05-31 16:49:25,879 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-31 16:49:25,898 - main - INFO - Starting AI Contract Reviewer API
+2025-05-31 16:50:36,335 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-31 16:50:36,348 - main - INFO - Starting AI Contract Reviewer API
+2025-05-31 16:51:01,673 - main - INFO - Files saved: temp\main_20250531_165101_a640e6c7_782 MSA(1).pdf, temp\target_20250531_165101_e30151b2_10175 MSA 211(4).pdf
+2025-05-31 16:51:01,674 - app.services.pdf_converter - INFO - PDFConverter initialized with Tesseract OCR
+2025-05-31 16:51:01,727 - app.services.pdf_converter - INFO - PDF appears to be scanned, converting to searchable: temp\main_20250531_165101_a640e6c7_782 MSA(1).pdf
+2025-05-31 16:51:01,728 - app.services.pdf_converter - INFO - Converting PDF to searchable format: temp\main_20250531_165101_a640e6c7_782 MSA(1).pdf
+2025-05-31 16:51:01,730 - app.services.pdf_converter - ERROR - Error converting PDF: Unable to get page count. Is poppler installed and in PATH?
+2025-05-31 16:51:01,845 - app.services.pdf_converter - INFO - PDF is already text-based, copying to output: temp\target_20250531_165101_e30151b2_10175 MSA 211(4).pdf
+2025-05-31 16:51:01,925 - main - ERROR - Error in compare-documents: 500: Failed to process one or both documents
+Traceback (most recent call last):
+  File "C:\Users\Sohaib\AI-Contract-Reviewer\main.py", line 121, in compare_documents
+    raise HTTPException(
+fastapi.exceptions.HTTPException: 500: Failed to process one or both documents
+2025-05-31 16:51:39,282 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-31 16:51:39,319 - main - INFO - Starting AI Contract Reviewer API
+2025-05-31 16:52:24,173 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-31 16:52:24,196 - main - INFO - Starting AI Contract Reviewer API
+2025-05-31 16:52:28,003 - main - INFO - Files saved: temp\main_20250531_165228_afe0d9a0_782 MSA(1).pdf, temp\target_20250531_165228_629ad873_10175 MSA 211(4).pdf
+2025-05-31 16:52:28,003 - app.services.pdf_converter - INFO - PDFConverter initialized with Tesseract OCR
+2025-05-31 16:52:28,003 - main - INFO - Processing main document: temp\main_20250531_165228_afe0d9a0_782 MSA(1).pdf
+2025-05-31 16:52:28,030 - app.services.pdf_converter - INFO - PDF temp\main_20250531_165228_afe0d9a0_782 MSA(1).pdf is scanned
+2025-05-31 16:52:28,030 - app.services.pdf_converter - INFO - PDF appears to be scanned, converting to searchable: temp\main_20250531_165228_afe0d9a0_782 MSA(1).pdf
+2025-05-31 16:52:28,039 - app.services.pdf_converter - INFO - Converting PDF to searchable format: temp\main_20250531_165228_afe0d9a0_782 MSA(1).pdf
+2025-05-31 16:52:28,042 - app.services.pdf_converter - ERROR - Error converting PDF: Unable to get page count. Is poppler installed and in PATH?
+2025-05-31 16:52:28,043 - main - INFO - Main document processing result: (False, None)
+2025-05-31 16:52:28,044 - main - INFO - Processing target document: temp\target_20250531_165228_629ad873_10175 MSA 211(4).pdf
+2025-05-31 16:52:28,138 - app.services.pdf_converter - INFO - PDF temp\target_20250531_165228_629ad873_10175 MSA 211(4).pdf is text-based
+2025-05-31 16:52:28,138 - app.services.pdf_converter - INFO - PDF is already text-based, copying to output: temp\target_20250531_165228_629ad873_10175 MSA 211(4).pdf
+2025-05-31 16:52:28,227 - main - INFO - Target document processing result: (True, 'temp\\text_target_20250531_165228_629ad873_10175 MSA 211(4).pdf')
+2025-05-31 16:52:28,229 - main - ERROR - PDF processing failed. Main success: False, Target success: True
+2025-05-31 16:52:28,229 - main - ERROR - Error processing PDFs: 500: PDF processing failed. Main success: False, Target success: True
+Traceback (most recent call last):
+  File "C:\Users\Sohaib\AI-Contract-Reviewer\main.py", line 132, in compare_documents
+    raise HTTPException(
+fastapi.exceptions.HTTPException: 500: PDF processing failed. Main success: False, Target success: True
+2025-05-31 16:52:28,232 - main - ERROR - Error in compare-documents: 500: Error processing PDFs: 500: PDF processing failed. Main success: False, Target success: True
+Traceback (most recent call last):
+  File "C:\Users\Sohaib\AI-Contract-Reviewer\main.py", line 132, in compare_documents
+    raise HTTPException(
+fastapi.exceptions.HTTPException: 500: PDF processing failed. Main success: False, Target success: True
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Sohaib\AI-Contract-Reviewer\main.py", line 144, in compare_documents
+    raise HTTPException(
+fastapi.exceptions.HTTPException: 500: Error processing PDFs: 500: PDF processing failed. Main success: False, Target success: True
+2025-05-31 16:57:30,265 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-31 16:57:30,267 - app.services.pdf_converter - INFO - PDFConverter initialized with Tesseract OCR and Poppler path: C:\Program Files\poppler-24.08.0\Library\bin
+2025-05-31 16:57:30,284 - main - INFO - Starting AI Contract Reviewer API
+2025-05-31 16:57:30,386 - main - INFO - Files saved: temp\main_20250531_165730_60cc3cc4_782 MSA(1).pdf, temp\target_20250531_165730_2a6fbd9c_10175 MSA 211(4).pdf
+2025-05-31 16:57:30,390 - app.services.pdf_converter - INFO - PDFConverter initialized with Tesseract OCR and Poppler path: C:\Program Files\poppler-24.08.0\Library\bin
+2025-05-31 16:57:30,390 - main - INFO - Processing main document: temp\main_20250531_165730_60cc3cc4_782 MSA(1).pdf
+2025-05-31 16:57:30,411 - app.services.pdf_converter - INFO - PDF temp\main_20250531_165730_60cc3cc4_782 MSA(1).pdf is scanned
+2025-05-31 16:57:30,411 - app.services.pdf_converter - INFO - PDF appears to be scanned, converting to searchable: temp\main_20250531_165730_60cc3cc4_782 MSA(1).pdf
+2025-05-31 16:57:30,412 - app.services.pdf_converter - INFO - Converting PDF to searchable format: temp\main_20250531_165730_60cc3cc4_782 MSA(1).pdf
+2025-05-31 16:57:41,666 - app.services.pdf_converter - INFO - Successfully converted PDF to searchable format: temp\searchable_main_20250531_165730_60cc3cc4_782 MSA(1).pdf
+2025-05-31 16:57:41,671 - main - INFO - Main document processing result: (True, 'temp\\searchable_main_20250531_165730_60cc3cc4_782 MSA(1).pdf')
+2025-05-31 16:57:41,671 - main - INFO - Processing target document: temp\target_20250531_165730_2a6fbd9c_10175 MSA 211(4).pdf
+2025-05-31 16:57:41,768 - app.services.pdf_converter - INFO - PDF temp\target_20250531_165730_2a6fbd9c_10175 MSA 211(4).pdf is text-based
+2025-05-31 16:57:41,769 - app.services.pdf_converter - INFO - PDF is already text-based, copying to output: temp\target_20250531_165730_2a6fbd9c_10175 MSA 211(4).pdf
+2025-05-31 16:57:41,835 - main - INFO - Target document processing result: (True, 'temp\\text_target_20250531_165730_2a6fbd9c_10175 MSA 211(4).pdf')
+2025-05-31 16:57:41,836 - main - INFO - Successfully processed PDFs. Main: temp\searchable_main_20250531_165730_60cc3cc4_782 MSA(1).pdf, Target: temp\text_target_20250531_165730_2a6fbd9c_10175 MSA 211(4).pdf
+2025-05-31 16:57:41,837 - app.services.pdf_service - INFO - Extracting text from PDF: temp\searchable_main_20250531_165730_60cc3cc4_782 MSA(1).pdf
+2025-05-31 16:57:41,837 - app.services.pdf_service - INFO - Extracting text from PDF: temp\text_target_20250531_165730_2a6fbd9c_10175 MSA 211(4).pdf
+2025-05-31 16:57:41,865 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-31 16:57:41,865 - app.services.pdf_service - INFO - Extracted text from 4 pages
+2025-05-31 16:57:41,868 - main - ERROR - Error in compare-documents: 'coroutine' object is not subscriptable
+Traceback (most recent call last):
+  File "C:\Users\Sohaib\AI-Contract-Reviewer\main.py", line 192, in compare_documents
+    analysis_result["main_highlights"],
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+TypeError: 'coroutine' object is not subscriptable
+2025-05-31 16:58:16,718 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-05-31 16:58:16,720 - app.services.pdf_converter - INFO - PDFConverter initialized with Tesseract OCR and Poppler path: C:\Program Files\poppler-24.08.0\Library\bin
+2025-05-31 16:58:16,731 - main - INFO - Starting AI Contract Reviewer API
+2025-05-31 16:58:56,034 - main - INFO - Files saved: temp\main_20250531_165856_3c2e45ca_782 MSA(1).pdf, temp\target_20250531_165856_8b5909f1_10175 MSA 211(4).pdf
+2025-05-31 16:58:56,036 - app.services.pdf_converter - INFO - PDFConverter initialized with Tesseract OCR and Poppler path: C:\Program Files\poppler-24.08.0\Library\bin
+2025-05-31 16:58:56,036 - main - INFO - Processing main document: temp\main_20250531_165856_3c2e45ca_782 MSA(1).pdf
+2025-05-31 16:58:56,053 - app.services.pdf_converter - INFO - PDF temp\main_20250531_165856_3c2e45ca_782 MSA(1).pdf is scanned
+2025-05-31 16:58:56,053 - app.services.pdf_converter - INFO - PDF appears to be scanned, converting to searchable: temp\main_20250531_165856_3c2e45ca_782 MSA(1).pdf
+2025-05-31 16:58:56,055 - app.services.pdf_converter - INFO - Converting PDF to searchable format: temp\main_20250531_165856_3c2e45ca_782 MSA(1).pdf
+2025-05-31 16:59:04,016 - app.services.pdf_converter - INFO - Successfully converted PDF to searchable format: temp\searchable_main_20250531_165856_3c2e45ca_782 MSA(1).pdf
+2025-05-31 16:59:04,021 - main - INFO - Main document processing result: (True, 'temp\\searchable_main_20250531_165856_3c2e45ca_782 MSA(1).pdf')
+2025-05-31 16:59:04,022 - main - INFO - Processing target document: temp\target_20250531_165856_8b5909f1_10175 MSA 211(4).pdf
+2025-05-31 16:59:04,102 - app.services.pdf_converter - INFO - PDF temp\target_20250531_165856_8b5909f1_10175 MSA 211(4).pdf is text-based
+2025-05-31 16:59:04,102 - app.services.pdf_converter - INFO - PDF is already text-based, copying to output: temp\target_20250531_165856_8b5909f1_10175 MSA 211(4).pdf
+2025-05-31 16:59:04,164 - main - INFO - Target document processing result: (True, 'temp\\text_target_20250531_165856_8b5909f1_10175 MSA 211(4).pdf')
+2025-05-31 16:59:04,167 - main - INFO - Successfully processed PDFs. Main: temp\searchable_main_20250531_165856_3c2e45ca_782 MSA(1).pdf, Target: temp\text_target_20250531_165856_8b5909f1_10175 MSA 211(4).pdf
+2025-05-31 16:59:04,168 - app.services.pdf_service - INFO - Extracting text from PDF: temp\searchable_main_20250531_165856_3c2e45ca_782 MSA(1).pdf
+2025-05-31 16:59:04,168 - app.services.pdf_service - INFO - Extracting text from PDF: temp\text_target_20250531_165856_8b5909f1_10175 MSA 211(4).pdf
+2025-05-31 16:59:04,195 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-31 16:59:04,195 - app.services.pdf_service - INFO - Extracted text from 4 pages
+2025-05-31 16:59:04,197 - app.services.ai_service - INFO - Starting document analysis
+2025-05-31 16:59:22,671 - app.services.ai_service - INFO - Found 6 contradictions or inconsistencies
+2025-05-31 16:59:22,674 - app.services.pdf_service - INFO - Highlighting 6 contradictions in temp\searchable_main_20250531_165856_3c2e45ca_782 MSA(1).pdf
+2025-05-31 16:59:22,674 - app.services.pdf_service - INFO - Highlighting 6 contradictions in temp\text_target_20250531_165856_8b5909f1_10175 MSA 211(4).pdf
+2025-05-31 16:59:22,765 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_20250531_165922_4abd1f86.pdf
+2025-05-31 16:59:22,831 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_20250531_165922_cba06874.pdf
+2025-05-31 16:59:22,834 - main - INFO - Analysis complete with 6 contradictions
+2025-05-31 17:09:05,045 - main - INFO - Files saved: temp\main_20250531_170905_1ef5c8b8_782 MSA(1).pdf, temp\target_20250531_170905_98758f0d_10175 MSA 211(4).pdf
+2025-05-31 17:09:05,046 - app.services.pdf_converter - INFO - PDFConverter initialized with Tesseract OCR and Poppler path: C:\Program Files\poppler-24.08.0\Library\bin
+2025-05-31 17:09:05,046 - main - INFO - Processing main document: temp\main_20250531_170905_1ef5c8b8_782 MSA(1).pdf
+2025-05-31 17:09:05,063 - app.services.pdf_converter - INFO - PDF temp\main_20250531_170905_1ef5c8b8_782 MSA(1).pdf is scanned
+2025-05-31 17:09:05,063 - app.services.pdf_converter - INFO - PDF appears to be scanned, converting to searchable: temp\main_20250531_170905_1ef5c8b8_782 MSA(1).pdf
+2025-05-31 17:09:05,065 - app.services.pdf_converter - INFO - Converting PDF to searchable format: temp\main_20250531_170905_1ef5c8b8_782 MSA(1).pdf
+2025-05-31 17:09:12,652 - app.services.pdf_converter - INFO - Successfully converted PDF to searchable format: temp\searchable_main_20250531_170905_1ef5c8b8_782 MSA(1).pdf
+2025-05-31 17:09:12,655 - main - INFO - Main document processing result: (True, 'temp\\searchable_main_20250531_170905_1ef5c8b8_782 MSA(1).pdf')
+2025-05-31 17:09:12,656 - main - INFO - Processing target document: temp\target_20250531_170905_98758f0d_10175 MSA 211(4).pdf
+2025-05-31 17:09:12,750 - app.services.pdf_converter - INFO - PDF temp\target_20250531_170905_98758f0d_10175 MSA 211(4).pdf is text-based
+2025-05-31 17:09:12,750 - app.services.pdf_converter - INFO - PDF is already text-based, copying to output: temp\target_20250531_170905_98758f0d_10175 MSA 211(4).pdf
+2025-05-31 17:09:12,837 - main - INFO - Target document processing result: (True, 'temp\\text_target_20250531_170905_98758f0d_10175 MSA 211(4).pdf')
+2025-05-31 17:09:12,839 - main - INFO - Successfully processed PDFs. Main: temp\searchable_main_20250531_170905_1ef5c8b8_782 MSA(1).pdf, Target: temp\text_target_20250531_170905_98758f0d_10175 MSA 211(4).pdf
+2025-05-31 17:09:12,841 - app.services.pdf_service - INFO - Extracting text from PDF: temp\searchable_main_20250531_170905_1ef5c8b8_782 MSA(1).pdf
+2025-05-31 17:09:12,841 - app.services.pdf_service - INFO - Extracting text from PDF: temp\text_target_20250531_170905_98758f0d_10175 MSA 211(4).pdf
+2025-05-31 17:09:12,853 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-31 17:09:12,878 - app.services.pdf_service - INFO - Extracted text from 4 pages
+2025-05-31 17:09:12,879 - app.services.ai_service - INFO - Starting document analysis
+2025-05-31 17:09:27,604 - app.services.ai_service - INFO - Found 13 contradictions or inconsistencies
+2025-05-31 17:09:27,608 - app.services.pdf_service - INFO - Highlighting 13 contradictions in temp\searchable_main_20250531_170905_1ef5c8b8_782 MSA(1).pdf
+2025-05-31 17:09:27,608 - app.services.pdf_service - INFO - Highlighting 13 contradictions in temp\text_target_20250531_170905_98758f0d_10175 MSA 211(4).pdf
+2025-05-31 17:09:27,765 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_20250531_170927_dbb259ea.pdf
+2025-05-31 17:09:27,849 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_20250531_170927_124a206d.pdf
+2025-05-31 17:09:27,852 - main - INFO - Analysis complete with 13 contradictions
+2025-05-31 17:17:12,061 - main - INFO - Files saved: temp\main_20250531_171712_db31d6fe_782 MSA(1).pdf, temp\target_20250531_171712_be3bd8ef_10175 MSA 211(4).pdf
+2025-05-31 17:17:12,062 - app.services.pdf_converter - INFO - PDFConverter initialized with Tesseract OCR and Poppler path: C:\Program Files\poppler-24.08.0\Library\bin
+2025-05-31 17:17:12,063 - main - INFO - Processing main document: temp\main_20250531_171712_db31d6fe_782 MSA(1).pdf
+2025-05-31 17:17:12,086 - app.services.pdf_converter - INFO - PDF temp\main_20250531_171712_db31d6fe_782 MSA(1).pdf is scanned
+2025-05-31 17:17:12,087 - app.services.pdf_converter - INFO - PDF appears to be scanned, converting to searchable: temp\main_20250531_171712_db31d6fe_782 MSA(1).pdf
+2025-05-31 17:17:12,087 - app.services.pdf_converter - INFO - Converting PDF to searchable format: temp\main_20250531_171712_db31d6fe_782 MSA(1).pdf
+2025-05-31 17:17:19,757 - app.services.pdf_converter - INFO - Successfully converted PDF to searchable format: temp\searchable_main_20250531_171712_db31d6fe_782 MSA(1).pdf
+2025-05-31 17:17:19,765 - main - INFO - Main document processing result: (True, 'temp\\searchable_main_20250531_171712_db31d6fe_782 MSA(1).pdf')
+2025-05-31 17:17:19,765 - main - INFO - Processing target document: temp\target_20250531_171712_be3bd8ef_10175 MSA 211(4).pdf
+2025-05-31 17:17:19,866 - app.services.pdf_converter - INFO - PDF temp\target_20250531_171712_be3bd8ef_10175 MSA 211(4).pdf is text-based
+2025-05-31 17:17:19,866 - app.services.pdf_converter - INFO - PDF is already text-based, copying to output: temp\target_20250531_171712_be3bd8ef_10175 MSA 211(4).pdf
+2025-05-31 17:17:19,933 - main - INFO - Target document processing result: (True, 'temp\\text_target_20250531_171712_be3bd8ef_10175 MSA 211(4).pdf')
+2025-05-31 17:17:19,934 - main - INFO - Successfully processed PDFs. Main: temp\searchable_main_20250531_171712_db31d6fe_782 MSA(1).pdf, Target: temp\text_target_20250531_171712_be3bd8ef_10175 MSA 211(4).pdf
+2025-05-31 17:17:19,935 - app.services.pdf_service - INFO - Extracting text from PDF: temp\searchable_main_20250531_171712_db31d6fe_782 MSA(1).pdf
+2025-05-31 17:17:19,935 - app.services.pdf_service - INFO - Extracting text from PDF: temp\text_target_20250531_171712_be3bd8ef_10175 MSA 211(4).pdf
+2025-05-31 17:17:19,965 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-05-31 17:17:19,965 - app.services.pdf_service - INFO - Extracted text from 4 pages
+2025-05-31 17:17:19,967 - app.services.ai_service - INFO - Starting document analysis
+2025-05-31 17:17:19,983 - app.services.ai_service - INFO - Using cached analysis results
+2025-05-31 17:17:19,984 - app.services.pdf_service - INFO - Highlighting 13 contradictions in temp\searchable_main_20250531_171712_db31d6fe_782 MSA(1).pdf
+2025-05-31 17:17:19,984 - app.services.pdf_service - INFO - Highlighting 13 contradictions in temp\text_target_20250531_171712_be3bd8ef_10175 MSA 211(4).pdf
+2025-05-31 17:17:20,085 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_20250531_171719_273cbdbc.pdf
+2025-05-31 17:17:20,196 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_20250531_171719_b770d805.pdf
+2025-05-31 17:17:20,199 - main - INFO - Analysis complete with 13 contradictions

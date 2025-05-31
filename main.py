@@ -1,11 +1,13 @@
-from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi import FastAPI, UploadFile, File, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 import logging
-import shutil
 from pathlib import Path
 import os
+import asyncio
+import aiofiles
+from datetime import datetime, timedelta
 
 from app.services.pdf_service import PDFService
 from app.services.ai_service import AIService
@@ -41,6 +43,9 @@ app.add_middleware(
 # Initialize services
 ai_service = AIService()
 pdf_service = PDFService()
+pdf_converter = PDFConverter(
+    poppler_path=r"C:\Program Files\poppler-24.08.0\Library\bin"  # Update this path to match your Poppler installation
+)
 
 # Create temporary directory for file processing
 TEMP_DIR = Path("temp")
@@ -48,6 +53,22 @@ TEMP_DIR.mkdir(exist_ok=True)
 
 # Mount static files
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
+
+async def cleanup_file(file_path: Path):
+    """Asynchronously clean up a file"""
+    try:
+        if file_path and file_path.exists():
+            await asyncio.to_thread(file_path.unlink)
+    except Exception as e:
+        logger.error(f"Error deleting file {file_path}: {str(e)}")
+
+async def save_upload_file(upload_file: UploadFile, filename: str) -> Path:
+    """Asynchronously save an uploaded file"""
+    file_path = TEMP_DIR / filename
+    async with aiofiles.open(file_path, 'wb') as out_file:
+        content = await upload_file.read()
+        await out_file.write(content)
+    return file_path
 
 @app.get("/")
 async def root():
@@ -59,6 +80,7 @@ async def health_check():
 
 @app.post("/compare")
 async def compare_documents(
+    background_tasks: BackgroundTasks,
     main_document: UploadFile = File(...),
     target_document: UploadFile = File(...)
 ):
@@ -68,82 +90,124 @@ async def compare_documents(
     
     Returns an analysis of the documents along with links to highlighted versions.
     """
-    # Initialize variables
     main_path = None
     target_path = None
     main_output = None
     target_output = None
     
     try:
-        # Generate unique filenames to prevent collisions
-        main_filename = f"main_{os.urandom(4).hex()}_{main_document.filename}"
-        target_filename = f"target_{os.urandom(4).hex()}_{target_document.filename}"
+        # Generate unique filenames
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        main_filename = (
+            f"main_{timestamp}_{os.urandom(4).hex()}_{main_document.filename}"
+        )
+        target_filename = (
+            f"target_{timestamp}_{os.urandom(4).hex()}_{target_document.filename}"
+        )
         
-        # Save uploaded files temporarily
-        main_path = TEMP_DIR / main_filename
-        target_path = TEMP_DIR / target_filename
-        
-        with open(main_path, "wb") as buffer:
-            shutil.copyfileobj(main_document.file, buffer)
-        with open(target_path, "wb") as buffer:
-            shutil.copyfileobj(target_document.file, buffer)
+        # Save uploaded files asynchronously
+        main_path, target_path = await asyncio.gather(
+            save_upload_file(main_document, main_filename),
+            save_upload_file(target_document, target_filename)
+        )
         
         logger.info(f"Files saved: {main_path}, {target_path}")
         
-        # Process PDFs through converter first
+        # Process PDFs in parallel
         pdf_converter = PDFConverter()
         
-        # Process main document
-        success, processed_main_path = pdf_converter.process_pdf(str(main_path))
-        if not success:
-            raise HTTPException(
-                status_code=500,
-                detail="Failed to process main document"
-            )
+        # Process both documents concurrently
+        try:
+            logger.info(f"Processing main document: {main_path}")
+            main_result = await pdf_converter.process_pdf(str(main_path))
+            logger.info(f"Main document processing result: {main_result}")
             
-        # Process target document
-        success, processed_target_path = pdf_converter.process_pdf(str(target_path))
-        if not success:
+            logger.info(f"Processing target document: {target_path}")
+            target_result = await pdf_converter.process_pdf(str(target_path))
+            logger.info(f"Target document processing result: {target_result}")
+            
+            if not main_result[0] or not target_result[0]:
+                error_msg = (
+                    f"PDF processing failed. Main success: {main_result[0]}, "
+                    f"Target success: {target_result[0]}"
+                )
+                logger.error(error_msg)
+                raise HTTPException(
+                    status_code=500,
+                    detail=error_msg
+                )
+                
+            processed_main_path, processed_target_path = main_result[1], target_result[1]
+            logger.info(
+                f"Successfully processed PDFs. Main: {processed_main_path}, "
+                f"Target: {processed_target_path}"
+            )
+        except Exception as e:
+            logger.error(f"Error processing PDFs: {str(e)}", exc_info=True)
             raise HTTPException(
                 status_code=500,
-                detail="Failed to process target document"
+                detail=f"Error processing PDFs: {str(e)}"
             )
         
-        # Extract text from processed documents
-        main_text, main_blocks = pdf_service.extract_text_from_pdf(processed_main_path)
-        target_text, target_blocks = pdf_service.extract_text_from_pdf(processed_target_path)
+        # Extract text from processed documents concurrently
+        main_text_task = asyncio.create_task(
+            asyncio.to_thread(pdf_service.extract_text_from_pdf, processed_main_path)
+        )
+        target_text_task = asyncio.create_task(
+            asyncio.to_thread(pdf_service.extract_text_from_pdf, processed_target_path)
+        )
         
-        # Log extracted text samples for debugging
-        logger.debug(f"Main text sample: {main_text[:200]}...")
-        logger.debug(f"Target text sample: {target_text[:200]}...")
+        main_result, target_result = await asyncio.gather(main_text_task, target_text_task)
+        main_text, main_blocks = main_result
+        target_text, target_blocks = target_result
         
         # Analyze documents using AI
-        analysis_result = ai_service.analyze_documents(
-            main_text, 
-            target_text, 
-            main_blocks, 
+        analysis_result = await ai_service.analyze_documents(
+            main_text,
+            target_text,
+            main_blocks,
             target_blocks
         )
         
         # Generate output filenames
-        main_output_filename = f"main_highlighted_{os.urandom(4).hex()}.pdf"
-        target_output_filename = f"target_highlighted_{os.urandom(4).hex()}.pdf"
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        main_output_filename = (
+            f"main_highlighted_{timestamp}_{os.urandom(4).hex()}.pdf"
+        )
+        target_output_filename = (
+            f"target_highlighted_{timestamp}_{os.urandom(4).hex()}.pdf"
+        )
         
         # Set output paths
         main_output = TEMP_DIR / main_output_filename
         target_output = TEMP_DIR / target_output_filename
         
-        # Create highlighted versions using processed PDFs
-        pdf_service.highlight_contradictions(
-            processed_main_path, 
-            analysis_result["main_highlights"], 
-            str(main_output)
-        )
-        pdf_service.highlight_contradictions(
-            processed_target_path, 
-            analysis_result["target_highlights"], 
-            str(target_output)
-        )
+        # Create highlighted versions concurrently
+        highlight_tasks = [
+            asyncio.create_task(
+                asyncio.to_thread(
+                    pdf_service.highlight_contradictions,
+                    processed_main_path,
+                    analysis_result["main_highlights"],
+                    str(main_output)
+                )
+            ),
+            asyncio.create_task(
+                asyncio.to_thread(
+                    pdf_service.highlight_contradictions,
+                    processed_target_path,
+                    analysis_result["target_highlights"],
+                    str(target_output)
+                )
+            )
+        ]
+        await asyncio.gather(*highlight_tasks)
+        
+        # Schedule cleanup of temporary files
+        background_tasks.add_task(cleanup_file, main_path)
+        background_tasks.add_task(cleanup_file, target_path)
+        background_tasks.add_task(cleanup_file, Path(processed_main_path))
+        background_tasks.add_task(cleanup_file, Path(processed_target_path))
         
         # Include debug info in response
         response_data = {
@@ -161,21 +225,15 @@ async def compare_documents(
             }
         }
         
-        logger.info(f"Analysis complete with {len(analysis_result.get('contradictions', []))} contradictions")
+        logger.info(
+            f"Analysis complete with {len(analysis_result.get('contradictions', []))} "
+            "contradictions"
+        )
         return JSONResponse(content=response_data)
     
     except Exception as e:
         logger.error(f"Error in compare-documents: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
-    finally:
-        # Clean up temporary files
-        for path in [main_path, target_path]:
-            if path and path.exists():
-                try:
-                    path.unlink()
-                except Exception as e:
-                    logger.error(f"Error deleting temporary file {path}: {str(e)}")
-
 
 @app.get("/temp/{file_path:path}")
 async def download_file(file_path: str):
@@ -192,9 +250,9 @@ async def download_file(file_path: str):
         media_type="application/pdf"
     )
 
-
 @app.post("/convert-pdf")
 async def convert_pdf(
+    background_tasks: BackgroundTasks,
     document: UploadFile = File(...)
 ):
     """
@@ -203,20 +261,24 @@ async def convert_pdf(
     
     Returns the path to the converted PDF.
     """
+    input_path = None
     try:
         # Generate unique filename
-        filename = f"{os.urandom(4).hex()}_{document.filename}"
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"{timestamp}_{os.urandom(4).hex()}_{document.filename}"
         input_path = TEMP_DIR / filename
         
-        # Save uploaded file temporarily
-        with open(input_path, "wb") as buffer:
-            shutil.copyfileobj(document.file, buffer)
+        # Save uploaded file asynchronously
+        async with aiofiles.open(input_path, 'wb') as out_file:
+            content = await document.read()
+            await out_file.write(content)
         
         logger.info(f"File saved: {input_path}")
         
         # Convert PDF
         pdf_converter = PDFConverter()
-        success, output_path = pdf_converter.convert_to_text_pdf(
+        success, output_path = await asyncio.to_thread(
+            pdf_converter.convert_to_text_pdf,
             str(input_path)
         )
         
@@ -226,6 +288,9 @@ async def convert_pdf(
                 detail="Failed to convert PDF"
             )
         
+        # Schedule cleanup of input file
+        background_tasks.add_task(cleanup_file, input_path)
+        
         return {"output_path": output_path}
         
     except Exception as e:
@@ -234,11 +299,6 @@ async def convert_pdf(
             status_code=500,
             detail=str(e)
         )
-    finally:
-        # Clean up input file
-        if input_path and input_path.exists():
-            input_path.unlink()
-
 
 @app.on_event("startup")
 async def startup_event():
@@ -250,32 +310,35 @@ async def startup_event():
     # Ensure temp directory exists
     TEMP_DIR.mkdir(exist_ok=True)
     
-    # Optional: clean old files
-    # This would be better handled with a scheduled task in production
-    # cleanup_old_files()
+    # Start background task for cleaning up old files
+    asyncio.create_task(periodic_cleanup())
 
+async def periodic_cleanup():
+    """
+    Periodically clean up old files in the temp directory.
+    """
+    while True:
+        try:
+            await cleanup_old_files()
+        except Exception as e:
+            logger.error(f"Error in periodic cleanup: {str(e)}")
+        await asyncio.sleep(3600)  # Run every hour
 
-def cleanup_old_files(max_age_hours=24):
+async def cleanup_old_files(max_age_hours: int = 24):
     """
-    Clean up old files in the temp directory.
+    Clean up files older than max_age_hours in the temp directory.
     """
-    import time
-    current_time = time.time()
-    count = 0
+    cutoff_time = datetime.now() - timedelta(hours=max_age_hours)
     
     for file_path in TEMP_DIR.glob("*"):
-        if file_path.is_file():
-            file_age_hours = (current_time - file_path.stat().st_mtime) / 3600
-            if file_age_hours > max_age_hours:
-                try:
-                    file_path.unlink()
-                    count += 1
-                except Exception as e:
-                    logger.error(f"Error deleting old file {file_path}: {str(e)}")
-    
-    logger.info(f"Cleaned up {count} old files from temp directory")
-
+        try:
+            if file_path.is_file():
+                file_age = datetime.fromtimestamp(file_path.stat().st_mtime)
+                if file_age < cutoff_time:
+                    await cleanup_file(file_path)
+        except Exception as e:
+            logger.error(f"Error cleaning up file {file_path}: {str(e)}")
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
