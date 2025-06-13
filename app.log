@@ -2146,3 +2146,30 @@ TypeError: 'coroutine' object is not subscriptable
 2025-05-31 17:17:20,085 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_20250531_171719_273cbdbc.pdf
 2025-05-31 17:17:20,196 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_20250531_171719_b770d805.pdf
 2025-05-31 17:17:20,199 - main - INFO - Analysis complete with 13 contradictions
+2025-06-13 23:55:14,927 - app.services.ai_service - INFO - AIService initialized with Gemini model
+2025-06-13 23:55:14,933 - app.services.pdf_converter - INFO - PDFConverter initialized with Tesseract OCR and Poppler path: C:\Program Files\poppler-24.08.0\Library\bin
+2025-06-13 23:55:14,957 - main - INFO - Starting AI Contract Reviewer API
+2025-06-13 23:55:26,584 - main - INFO - Files saved: temp\main_20250613_235526_2c33775f_6597 MSA.pdf, temp\target_20250613_235526_ccb8cda7_4282 MSA.pdf
+2025-06-13 23:55:26,586 - app.services.pdf_converter - INFO - PDFConverter initialized with Tesseract OCR and Poppler path: C:\Program Files\poppler-24.08.0\Library\bin
+2025-06-13 23:55:26,589 - main - INFO - Processing main document: temp\main_20250613_235526_2c33775f_6597 MSA.pdf
+2025-06-13 23:55:26,595 - app.services.pdf_converter - INFO - PDF temp\main_20250613_235526_2c33775f_6597 MSA.pdf is scanned
+2025-06-13 23:55:26,603 - app.services.pdf_converter - INFO - PDF appears to be scanned, converting to searchable: temp\main_20250613_235526_2c33775f_6597 MSA.pdf
+2025-06-13 23:55:26,612 - app.services.pdf_converter - INFO - Converting PDF to searchable format: temp\main_20250613_235526_2c33775f_6597 MSA.pdf
+2025-06-13 23:55:32,437 - app.services.pdf_converter - INFO - Successfully converted PDF to searchable format: temp\searchable_main_20250613_235526_2c33775f_6597 MSA.pdf
+2025-06-13 23:55:32,445 - main - INFO - Main document processing result: (True, 'temp\\searchable_main_20250613_235526_2c33775f_6597 MSA.pdf')
+2025-06-13 23:55:32,446 - main - INFO - Processing target document: temp\target_20250613_235526_ccb8cda7_4282 MSA.pdf
+2025-06-13 23:55:32,474 - app.services.pdf_converter - INFO - PDF temp\target_20250613_235526_ccb8cda7_4282 MSA.pdf is text-based
+2025-06-13 23:55:32,474 - app.services.pdf_converter - INFO - PDF is already text-based, copying to output: temp\target_20250613_235526_ccb8cda7_4282 MSA.pdf
+2025-06-13 23:55:32,488 - main - INFO - Target document processing result: (True, 'temp\\text_target_20250613_235526_ccb8cda7_4282 MSA.pdf')
+2025-06-13 23:55:32,489 - main - INFO - Successfully processed PDFs. Main: temp\searchable_main_20250613_235526_2c33775f_6597 MSA.pdf, Target: temp\text_target_20250613_235526_ccb8cda7_4282 MSA.pdf
+2025-06-13 23:55:32,491 - app.services.pdf_service - INFO - Extracting text from PDF: temp\searchable_main_20250613_235526_2c33775f_6597 MSA.pdf
+2025-06-13 23:55:32,491 - app.services.pdf_service - INFO - Extracting text from PDF: temp\text_target_20250613_235526_ccb8cda7_4282 MSA.pdf
+2025-06-13 23:55:32,507 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-06-13 23:55:32,519 - app.services.pdf_service - INFO - Extracted text from 1 pages
+2025-06-13 23:55:32,522 - app.services.ai_service - INFO - Starting document analysis
+2025-06-13 23:55:48,067 - app.services.ai_service - INFO - Found 5 contradictions or inconsistencies
+2025-06-13 23:55:48,071 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\searchable_main_20250613_235526_2c33775f_6597 MSA.pdf
+2025-06-13 23:55:48,071 - app.services.pdf_service - INFO - Highlighting 5 contradictions in temp\text_target_20250613_235526_ccb8cda7_4282 MSA.pdf
+2025-06-13 23:55:48,104 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\main_highlighted_20250613_235548_84c779c1.pdf
+2025-06-13 23:55:48,158 - app.services.pdf_service - INFO - Saved highlighted PDF to temp\target_highlighted_20250613_235548_e8b84995.pdf
+2025-06-13 23:55:48,160 - main - INFO - Analysis complete with 5 contradictions
