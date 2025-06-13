@@ -12,6 +12,10 @@ from functools import lru_cache
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
 import time
+from PIL import Image, ImageEnhance
+
+# Configure PIL to allow larger images
+Image.MAX_IMAGE_PIXELS = 933120000  # Increased limit to handle larger PDFs
 
 logger = logging.getLogger(__name__)
 
@@ -276,7 +280,7 @@ class PDFConverter:
         
         Args:
             pdf_path: Path to the PDF file
-            dpi: DPI for image conversion
+            dpi: DPI for image conversion (default: 300 for high quality)
             
         Returns:
             List of PIL Image objects
@@ -288,11 +292,47 @@ class PDFConverter:
             )
             
         try:
-            return convert_from_path(
+            # Convert PDF to images with high DPI
+            images = convert_from_path(
                 pdf_path,
                 dpi=dpi,
                 poppler_path=self.poppler_path
             )
+            
+            # Process each image to ensure it's not too large while maintaining quality
+            processed_images = []
+            max_dimension = 6000  # Increased maximum dimension
+            
+            for img in images:
+                # Convert to RGB if needed
+                if img.mode != 'RGB':
+                    img = img.convert('RGB')
+                
+                # Enhance image quality
+                enhancer = ImageEnhance.Sharpness(img)
+                img = enhancer.enhance(1.5)  # Increase sharpness
+                
+                # Enhance contrast
+                enhancer = ImageEnhance.Contrast(img)
+                img = enhancer.enhance(1.2)  # Increase contrast
+                
+                # Check if image needs resizing
+                if img.width > max_dimension or img.height > max_dimension:
+                    # Calculate new dimensions maintaining aspect ratio
+                    ratio = min(max_dimension / img.width, max_dimension / img.height)
+                    new_width = int(img.width * ratio)
+                    new_height = int(img.height * ratio)
+                    
+                    # Resize image with high-quality settings
+                    img = img.resize(
+                        (new_width, new_height),
+                        Image.Resampling.LANCZOS
+                    )
+                
+                processed_images.append(img)
+            
+            return processed_images
+            
         except Exception as e:
             logger.error(f"Error converting PDF to images: {str(e)}", exc_info=True)
             raise ValueError(
@@ -315,10 +355,15 @@ class PDFConverter:
             # Process images in parallel
             def process_image(args):
                 idx, image = args
+                # Enhance image before OCR
+                enhancer = ImageEnhance.Sharpness(image)
+                image = enhancer.enhance(1.5)
+                
                 # Convert image to PDF with OCR
                 pdf_bytes = pytesseract.image_to_pdf_or_hocr(
                     image,
-                    extension='pdf'
+                    extension='pdf',
+                    config='--psm 6 --oem 3'  # Use LSTM OCR Engine Mode with page segmentation mode 6
                 )
                 temp_pdf_path = temp_dir_path / f"page_{idx}.pdf"
                 
